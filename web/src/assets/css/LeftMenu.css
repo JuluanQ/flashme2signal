@@ -1,0 +1,8 @@
+.LeftMenuContainer {
+    display: flex;
+
+    height: 100em;
+    width: 15%;
+
+    background-color: #2F2E31;
+}
