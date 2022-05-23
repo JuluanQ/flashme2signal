@@ -1,8 +1,5 @@
-import '../assets/css/App.css';
-
 import Home from './Home.js'
 import Appareil from './Appareil';
-import LeftMenu from "../components/LeftMenu";
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 

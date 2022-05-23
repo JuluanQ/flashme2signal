@@ -1,8 +1,40 @@
 .LeftMenuContainer {
     display: flex;
+    flex-direction: column;
+    text-align: left;
 
-    height: 100%;
-    width: 15%;
+    height: 100vh;
+    max-width: 15vw;
+
+    margin-right: auto;
+    padding-left: 2em;
 
     background-color: #2F2E31;
+}
+
+/* Logo */
+
+.LogoUnivNanteMenu {
+    height: 5em;
+    width: 10em;
+}
+
+/* Menu */
+.MenusContainer a {
+    text-decoration-line: none;
+    text-decoration-color: currentcolor;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.MenusContainer .active::after {
+    font-weight: bold;
+}
+
+.MenusContainer .inactive::after {
+    font-weight: normal;
+}
+
+.MenusContainer .Deconnexion {
+    color: #F04949;
 }
