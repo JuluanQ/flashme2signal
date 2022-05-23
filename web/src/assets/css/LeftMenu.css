@@ -1,4 +1,4 @@
-.LeftMenuContainer {
+.MenuContainer {
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -10,6 +10,20 @@
 
 
     background-color: #2F2E31;
+}
+
+.mobileDisplay {
+    display: none;
+}
+
+@media only screen and (max-width: 950px) {
+    .desktopDisplay {
+        display: none;
+    }
+
+    .mobileDisplay {
+        display: flex;
+    }
 }
 
 /* Logo */
@@ -45,4 +59,68 @@
 
 .MenusContainer .Deconnexion {
     color: #F04949;
+}
+
+.mobileMenuContainer {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+
+    height: 5vh;
+    width: 100vw;
+
+    margin-bottom: auto;
+
+    background-color: #2F2E31;
+}
+
+.mobileMenuContainer .LogoContainer {
+    height: auto;
+    width: 10em;
+}
+
+.mobileMenuContainer .LogoContainer {
+    margin-top: .5em;
+    margin-left: auto;
+    padding-left: 1em;
+}
+
+/* Dropdown menu */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+
+
+    margin-top: 5vh;
+    padding-left: 2em;
+
+    width: 100vw;
+
+    background-color: #2F2E31;
+}
+
+.dropdown-content a {
+    text-decoration-line: none;
+    text-decoration-color: currentcolor;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.dropdown-content .Deconnexion {
+    color: #F04949;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #3452FF;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }
