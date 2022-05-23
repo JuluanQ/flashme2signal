@@ -15,6 +15,7 @@ const LeftMenu = () => {
             <div className='MenusContainer'>
                 <NavLink to="/Demandes" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Demandes</h3></NavLink>
                 <NavLink to="/Appareils" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Appareils</h3></NavLink>
+                {/* TODO Deconnexion */}
                 <h3 className='Deconnexion'>Se Déconnecter</h3>
             </div>
 
