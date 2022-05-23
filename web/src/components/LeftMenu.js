@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../assets/css/LeftMenu.css'
+
 const LeftMenu = () => {
     return (
         <div className='LeftMenuContainer'>
