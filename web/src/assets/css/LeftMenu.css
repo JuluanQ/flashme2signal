@@ -7,19 +7,27 @@
     max-width: 15vw;
 
     margin-right: auto;
-    padding-left: 2em;
+
 
     background-color: #2F2E31;
 }
 
 /* Logo */
+.LogoContainer {
+    margin-top: 2em;
+    padding-left: 1em;
+}
 
 .LogoUnivNanteMenu {
-    height: 5em;
-    width: 10em;
+    height: auto;
+    width: 70%;
 }
 
 /* Menu */
+.MenusContainer {
+    padding-left: 2em;
+}
+
 .MenusContainer a {
     text-decoration-line: none;
     text-decoration-color: currentcolor;
