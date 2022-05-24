@@ -1,0 +1,49 @@
+.connectionCardContainer {
+    background-color: #3B3B3F;
+
+    width: 30vw;
+    min-width: 15em;
+
+    height: 35vh;
+    min-height: 15em;
+
+    text-align: left;
+    padding: 1.5em;
+}
+
+.formContainer {
+    text-align: left;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-bottom: auto;
+}
+
+.connexionHeader {
+    margin: 0;
+    margin-bottom: 1em;
+    color: #FFFFFF;
+}
+
+.inputIdentifiant {
+    display: flex;
+    flex-direction: column;
+
+    margin: auto;
+    width: 90%;
+}
+
+.inputMotDePasse {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 90%;
+}
+
+.submitConnexion {
+    width: 100%;
+}
+
+label {
+    text-align: left;
+    color: #908F98;
+}
