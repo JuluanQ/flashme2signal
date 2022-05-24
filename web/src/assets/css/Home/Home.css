@@ -1,0 +1,11 @@
+
+.Home {
+    background-color: #0C0B0B;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 5%;
+    padding-bottom: 3%;
+}

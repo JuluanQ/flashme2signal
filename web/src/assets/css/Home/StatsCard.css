@@ -1,0 +1,33 @@
+.StatsComponents {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 3%;
+
+    justify-content: center;
+}
+
+.CardOpenIssue {
+    background-color: #3B3B3F;
+    width: calc(90%/3);
+    height: 75px;
+
+    margin: auto;
+}
+
+.CardImportantIssue {
+    background-color: #672020;
+    width: calc(90%/3);
+    
+    margin: auto;
+}
+
+.imgStatsComp {
+    float: left;
+    margin-left: 5%;
+    width: 32px;
+    height: 32px;
+}
+
+.CardText {
+    float: right;
+}

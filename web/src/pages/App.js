@@ -2,6 +2,9 @@ import Home from './Home.js'
 import Appareil from './Appareil';
 import LeftMenu from '../components/LeftMenu';
 
+// CSS
+import '../assets/css/App.css'
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 const App = () => {
