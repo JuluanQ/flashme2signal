@@ -15,6 +15,7 @@
     width: calc(90%/3);
     height: 75px;
 
+    padding-top: 1em;
     padding: .5em;
     margin: auto;
 }
@@ -29,6 +30,7 @@
     height: 75px;
 
     padding: .5em;
+    padding-top: 1em;
     margin: auto;
 }
 
@@ -52,32 +54,19 @@
     display: flex;
     align-items: center;
     width: 100%;
-    padding-right: 2em;
+    margin-top: .5em;
 }
 
 .cardName {
     margin: 0;
+    margin-right: 2em;
     font-size: large;
 }
 
-.nCardOpenIssue {
+.cardValue {
     margin: 0;
     margin-left: auto;
 
-    padding-right: 2em;
-    font-size: large;
-}
-
-.nCardNewIssue {
-    margin: 0;
-    margin-left: auto;
-    padding-right: 2em;
-    font-size: large;
-}
-
-.nCardImportantIssue {
-    margin: 0;
-    margin-left: auto;
     padding-right: 2em;
     font-size: large;
 }

@@ -18,7 +18,7 @@ const StatsCard = () => {
                         <GoFileDirectory className='imgStatsComp' />
                         <p className='cardName'>Dossiers ouverts</p>
                     </div>
-                    <p className='nCardOpenIssue'>3</p>
+                    <p className='nCardOpenIssue cardValue'>3</p>
                 </div>
 
                 <div className='CardOpenIssue'>
@@ -26,7 +26,7 @@ const StatsCard = () => {
                         <GoIssueOpened className='imgStatsComp' />
                         <p className='cardName'>Nouveaux dossiers</p>
                     </div>
-                    <p className='nCardNewIssue'>3</p>
+                    <p className='nCardNewIssue cardValue'>3</p>
                 </div>
 
                 <div className='CardImportantIssue'>
@@ -34,7 +34,7 @@ const StatsCard = () => {
                         <RiAlarmWarningFill className='imgImportantComp' />
                         <p className='cardName'>Dossiers urgent</p>
                     </div>
-                    <p className='nCardImportantIssue'>3</p>
+                    <p className='nCardImportantIssue cardValue'>3</p>
                 </div>
 
             </div>
