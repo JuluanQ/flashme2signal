@@ -7,39 +7,70 @@
 }
 
 .CardOpenIssue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     background-color: #3B3B3F;
     width: calc(90%/3);
     height: 75px;
 
+    padding: .5em;
     margin: auto;
 }
 
 .CardImportantIssue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     background-color: #672020;
     width: calc(90%/3);
     height: 75px;
 
+    padding: .5em;
     margin: auto;
 }
 
 .imgStatsComp {
-    float: left;
-    margin-left: 5%;
+    margin-right: auto;
+    margin-left: 2em;
     width: 32px;
     height: 32px;
     color: #3452FF;
 }
 
 .imgImportantComp {
-    float: left;
-    margin-left: 5%;
+    margin-right: auto;
+    margin-left: 2em;
     width: 32px;
     height: 32px;
     color: #FF3434;
 }
 
 .CardText {
-    float: right;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-right: 2em;
+}
+
+.nCardOpenIssue {
+    margin: 0;
+    margin-left: auto;
+    padding-right: 2em;
+}
+
+.nCardNewIssue {
+    margin: 0;
+    margin-left: auto;
+    padding-right: 2em;
+}
+
+.nCardImportantIssue {
+    margin: 0;
+    margin-left: auto;
+    padding-right: 2em;
 }
 
 @media only screen and (max-width: 950px) {

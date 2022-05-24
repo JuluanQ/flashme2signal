@@ -9,32 +9,32 @@ import { RiAlarmWarningFill } from 'react-icons/ri';
 
 const StatsCard = () => {
 
-    return(
+    return (
         <>
             <div className='StatsComponents'>
 
                 <div className='CardOpenIssue'>
-                    <GoFileDirectory className='imgStatsComp'/>
                     <div className='CardText'>
+                        <GoFileDirectory className='imgStatsComp' />
                         <p>Dossiers ouverts</p>
-                        <p className='nCardOpenIssue'>3</p> 
                     </div>
+                    <p className='nCardOpenIssue'>3</p>
                 </div>
 
                 <div className='CardOpenIssue'>
-                    <GoIssueOpened className='imgStatsComp'/>
                     <div className='CardText'>
+                        <GoIssueOpened className='imgStatsComp' />
                         <p>Nouveaux dossiers</p>
-                        <p className='nCardNewIssue'>3</p>
                     </div>
+                    <p className='nCardNewIssue'>3</p>
                 </div>
 
                 <div className='CardImportantIssue'>
-                    <RiAlarmWarningFill className='imgImportantComp'/>  
                     <div className='CardText'>
+                        <RiAlarmWarningFill className='imgImportantComp' />
                         <p>Dossiers urgent</p>
-                        <p className='nCardNewIssue'>3</p>
                     </div>
+                    <p className='nCardImportantIssue'>3</p>
                 </div>
 
             </div>
