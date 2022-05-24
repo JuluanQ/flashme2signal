@@ -17,6 +17,7 @@
 .CardImportantIssue {
     background-color: #672020;
     width: calc(90%/3);
+    height: 75px;
     
     margin: auto;
 }
@@ -26,6 +27,15 @@
     margin-left: 5%;
     width: 32px;
     height: 32px;
+    color: #3452FF;
+}
+
+.imgImportantComp {
+    float: left;
+    margin-left: 5%;
+    width: 32px;
+    height: 32px;
+    color: #FF3434;
 }
 
 .CardText {

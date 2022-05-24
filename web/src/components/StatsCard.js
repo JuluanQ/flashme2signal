@@ -2,7 +2,10 @@ import React from 'react';
 
 import '../assets/css/Home/StatsCard.css'
 
-//import { NavLink } from 'react-router-dom';
+// Icons
+import { GoFileDirectory, GoIssueOpened } from 'react-icons/go';
+import { RiAlarmWarningFill } from 'react-icons/ri';
+
 
 const StatsCard = () => {
 
@@ -11,7 +14,7 @@ const StatsCard = () => {
             <div className='StatsComponents'>
 
                 <div className='CardOpenIssue'>
-                    <img src={require("../assets/icons/OpenIssue.png")} alt='Dossiers ouverts' className='imgStatsComp'/>
+                    <GoFileDirectory className='imgStatsComp'/>
                     <div className='CardText'>
                         <p>Dossiers ouverts</p>
                         <p className='nCardOpenIssue'>3</p> 
@@ -19,7 +22,7 @@ const StatsCard = () => {
                 </div>
 
                 <div className='CardOpenIssue'>
-                    <img src={require("../assets/icons/NewIssue.png")} alt='Nouveaux dossiers' className='imgStatsComp'/>
+                    <GoIssueOpened className='imgStatsComp'/>
                     <div className='CardText'>
                         <p>Nouveaux dossiers</p>
                         <p className='nCardNewIssue'>3</p>
@@ -27,7 +30,7 @@ const StatsCard = () => {
                 </div>
 
                 <div className='CardImportantIssue'>
-                    <img src={require("../assets/icons/ImportantIssue.png")} alt='Dossiers urgent' className='imgStatsComp'/>
+                    <RiAlarmWarningFill className='imgImportantComp'/>  
                     <div className='CardText'>
                         <p>Dossiers urgent</p>
                         <p className='nCardNewIssue'>3</p>
