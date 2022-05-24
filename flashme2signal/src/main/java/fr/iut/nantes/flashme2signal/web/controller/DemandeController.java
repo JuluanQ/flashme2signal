@@ -1,5 +1,6 @@
 package fr.iut.nantes.flashme2signal.web.controller;
 
+import fr.iut.nantes.flashme2signal.web.exceptions.DemandeNotFoundException;
 import io.swagger.annotations.ApiOperation;
 import fr.iut.nantes.flashme2signal.dao.DemandeDao;
 import fr.iut.nantes.flashme2signal.model.Demande;
@@ -25,6 +26,7 @@ public class DemandeController {
     @RequestMapping(value = "/demande/{id}", method = RequestMethod.GET)
     public Demande demande(@PathVariable("id") int id) {
         Demande demande = demandeDao.findById(id);
+        if(demande==null) throw new DemandeNotFoundException("La demande avec l'id " + id + " est INTROUVABLE.");
         return demande;
     }
 
