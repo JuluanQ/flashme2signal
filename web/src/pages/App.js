@@ -12,7 +12,6 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-        <LeftMenu />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/co" element={<Connexion />}></Route>
