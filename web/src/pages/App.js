@@ -1,5 +1,6 @@
 import Home from './Home.js'
 import Appareil from './Appareil';
+import LeftMenu from '../components/LeftMenu';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -7,6 +8,7 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
+        <LeftMenu />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Appareil" element={<Appareil />} />
