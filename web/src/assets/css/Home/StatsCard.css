@@ -55,22 +55,31 @@
     padding-right: 2em;
 }
 
+.cardName {
+    margin: 0;
+    font-size: large;
+}
+
 .nCardOpenIssue {
     margin: 0;
     margin-left: auto;
+
     padding-right: 2em;
+    font-size: large;
 }
 
 .nCardNewIssue {
     margin: 0;
     margin-left: auto;
     padding-right: 2em;
+    font-size: large;
 }
 
 .nCardImportantIssue {
     margin: 0;
     margin-left: auto;
     padding-right: 2em;
+    font-size: large;
 }
 
 @media only screen and (max-width: 950px) {
