@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     padding-bottom: 3%;
-
+    width: 80%;
     justify-content: center;
 }
 
@@ -18,7 +18,7 @@
     background-color: #672020;
     width: calc(90%/3);
     height: 75px;
-    
+
     margin: auto;
 }
 
@@ -40,4 +40,20 @@
 
 .CardText {
     float: right;
+}
+
+@media only screen and (max-width: 950px) {
+    .StatsComponents {
+        flex-direction: column;
+    }
+
+    .CardOpenIssue {
+        width: 80%;
+        margin-top: 1em;
+    }
+
+    .CardImportantIssue {
+        width: 80%;
+        margin-top: 1em;
+    }
 }
