@@ -115,3 +115,6 @@ tbody{
 tbody td, thead th {
     width: 120px;
 }
+.ComputerIssue {
+    background-color: #3B3B3F;
+}
