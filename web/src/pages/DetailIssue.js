@@ -3,8 +3,9 @@ import LeftMenu from '../components/LeftMenu';
 import ButtonInput from '../components/ButtonInput';
 
 // Imports
-import { Tag, Select, Button } from 'antd';
+import { Tag, Select} from 'antd';
 import { useParams } from 'react-router-dom';
+import InputText from '../components/InputText';
 
 // CSS
 import '../assets/css/DetailIssue.css';
@@ -27,7 +28,7 @@ const DetailIssue = () => {
                 <div className='DetailContentIssue'>
                     <div className='DescriptionIssue'>
                         <p className='DescriptionText'>Description :</p>
-                        <input type="text" id="iptDesc"></input>
+                        <textarea type="textarea" id="iptDesc"></textarea>
                         <p>Cette demande a été créée il y'a <span id="nCreation">2 jours</span></p>
                         <p className='DescriptionText'>Sévérité :</p>
                         <Select className='SelectSeverity' size="small">
@@ -41,12 +42,10 @@ const DetailIssue = () => {
                         </div>
                     </div>
                     <div className='ComputerIssue'>
-                        <p>Ordinateur <span>#{params.device}</span></p>
-                        <p className='DescriptionText'>Salle :</p>
-                        <input type="text"></input>
-                        <p className='DescriptionText'>Autres problèmes :</p>
-                        <input type="text"></input>
-                        <ButtonInput value="Voir plus"></ButtonInput>
+                        <p className='ComputerTitle'>Ordinateur <span id='IdIssue'>#{params.device}</span></p>
+                        <InputText title="Salle" type="text"/>
+                        <InputText title="Autres problèmes" type="text"/>
+                        <ButtonInput value="Voir plus" className="BtnVoirPlus"></ButtonInput>
                     </div>
                 </div>
             </div>
