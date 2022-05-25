@@ -105,6 +105,19 @@
     transition: 0.3s linear;
 }
 
+thead{
+    display: block;
+}
+
+tbody{
+    display: block;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+tbody td, thead th {
+    width: 120px;
+}
 .ComputerIssue {
     width: 30%;
     border-radius: 4px;
