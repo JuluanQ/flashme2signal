@@ -253,7 +253,7 @@ const IssueTable = () => {
                         onRow={(record, rowIndex) => {
                             return {
                                 onClick: event => {
-                                    navigate("/Detail/" + record.id + "/" + record.appareil)
+                                    navigate("/Detail/" + record.id)
                                 },
                             };
                         }}
