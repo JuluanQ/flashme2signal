@@ -18,13 +18,14 @@
 }
 
 .tableContainer {
+    width: 90%;
     display: flex;
     flex-direction: column;
     padding: 40px;
+    margin: auto;
 }
 
 .tableData {
-    width: fit-content;
     margin-top: 1em;
 }
 
