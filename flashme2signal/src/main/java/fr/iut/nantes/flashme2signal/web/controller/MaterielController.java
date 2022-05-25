@@ -16,7 +16,7 @@ public class MaterielController {
     private MaterielDao materielDao;
 
     @ApiOperation(value = "Récupère tous les materiels")
-    @RequestMapping(value = "/materiel", method = RequestMethod.GET)
+    @RequestMapping(value = "/materiels", method = RequestMethod.GET)
     public List<Materiel> materielList() {
         List<Materiel> materiel = materielDao.findAll();
         return materiel;
@@ -42,6 +42,7 @@ public class MaterielController {
     public Materiel updateMateriel(@PathVariable("id") int id, @RequestBody Materiel materiel) {
         Materiel materielToUpdate = materielDao.findById(id);
         materielToUpdate.setSalle(materiel.getSalle());
+        materielToUpdate.setType(materiel.getType());
         materielDao.save(materielToUpdate);
         return materielToUpdate;
     }
