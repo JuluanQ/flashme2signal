@@ -12,29 +12,33 @@
 }
 
 .tableName h3 {
-    text-align: left;
+    color: #FFF !important;
     margin: 0;
+}
+
+.tableContainer {
+    display: flex;
+    flex-direction: column;
+
+    margin: auto;
 }
 
 .tableData {
     display: flex;
-    align-content: center;
-    width: 100%;
     margin-top: 1em;
 }
 
-.ant-table-wrapper {
-    margin: auto;
-    width: 80%;
-}
 
 .ant-table-thead>tr>th {
-    background: #3452FF !important;
+    background: #2F2E31 !important;
+    color: #FFF !important;
     width: 1%;
     height: 2em;
 }
 
 .ant-table-tbody>tr>td {
+    background: #3B3B3F !important;
+    color: #FFF !important;
     width: 1%;
     height: 2em;
 }

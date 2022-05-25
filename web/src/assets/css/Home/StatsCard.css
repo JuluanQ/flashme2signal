@@ -17,6 +17,9 @@
 
     padding-top: 1em;
     padding: .5em;
+}
+
+.CardOpenIssue:nth-child(2) {
     margin: auto;
 }
 
@@ -29,7 +32,6 @@
     height: 75px;
     padding-top: 1em;
     padding: 0.5em;
-    margin: auto;
 }
 
 .imgStatsComp {
@@ -55,9 +57,11 @@
     width: 70%;
     padding: 2em;
 }
-.CardSVG{
+
+.CardSVG {
     width: 30%;
 }
+
 .cardName {
     font-weight: bold;
     margin: 0;
@@ -76,12 +80,12 @@
     }
 
     .CardOpenIssue {
-        width: 80%;
-        margin-top: 1em;
+        width: 100%;
+        margin-top: 1em !important;
     }
 
     .CardImportantIssue {
-        width: 80%;
-        margin-top: 1em;
+        width: 100%;
+        margin-top: 1em !important;
     }
 }

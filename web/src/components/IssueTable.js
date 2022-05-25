@@ -1,7 +1,9 @@
 import React from 'react';
 import { Table, Tag } from 'antd';
 
+
 import '../assets/css/Home/IssueTable.css'
+import "antd/dist/antd.css";
 
 const IssueTable = () => {
 
@@ -11,26 +13,27 @@ const IssueTable = () => {
             dataIndex: 'id',
             key: 'id',
             width: '5%',
-            height: '2em',
-            fixed: 'left'
         },
         {
             title: 'Appareil',
             dataIndex: 'appareil',
             key: 'appareil',
             width: '5%',
+            responsive: 'max-width: 950px',
         },
         {
             title: 'Date',
             dataIndex: 'date',
             key: 'date',
             width: '5%',
+            responsive: ['sm'],
         },
         {
             title: 'Demandeur',
             dataIndex: 'demandeur',
             key: 'demandeur',
             width: '5%',
+            responsive: ['sm'],
         },
         {
             title: 'Description',
@@ -43,11 +46,13 @@ const IssueTable = () => {
             dataIndex: 'type',
             key: 'type',
             width: '5%',
+            responsive: ['sm'],
         },
         {
             title: 'Sévérité',
             dataIndex: 'severite',
             key: 'severite',
+            responsive: ['sm'],
             width: '5%',
             render: (_, { severite }) => {
                 if (severite === "Moyen") {
@@ -138,7 +143,8 @@ const IssueTable = () => {
     ];
 
     const param = {
-        bordered: true,
+        bordered: false,
+
         loading: false,
         pagination: false,
         size: 'default',
@@ -146,12 +152,16 @@ const IssueTable = () => {
 
     return (
         <div className='IssueTable'>
-            <div className='tableName'>
-                <h3>Liste Demande</h3>
+            <div className='tableContainer'>
+                <div className='tableName'>
+                    <h3>Liste Demande</h3>
+                </div>
+                <div className='tableData'>
+                    <Table {...param} columns={columns} dataSource={data} className="tableDemandes" />
+                </div>
+
             </div>
-            <div className='tableData'>
-                <Table {...param} columns={columns} dataSource={data} className="tableDemandes" />
-            </div>
+
         </div>
     );
 };
