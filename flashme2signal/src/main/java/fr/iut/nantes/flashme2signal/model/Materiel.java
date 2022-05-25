@@ -16,6 +16,13 @@ public class Materiel {
     @NotNull
     private String salle;
 
+    public Materiel(String id, String salle) {
+        this.id = id;
+        this.salle = salle;
+    }
+
+    public Materiel() {}
+
     public String getId() {
         return id;
     }
