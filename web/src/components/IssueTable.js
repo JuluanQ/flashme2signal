@@ -15,6 +15,7 @@ const IssueTable = () => {
             title: 'ID',
             dataIndex: 'id',
             key: 'id',
+            width: '10%',
 
         },
         {
@@ -23,35 +24,41 @@ const IssueTable = () => {
             key: 'appareil',
 
             responsive: ['sm'],
+            width: '10%',
         },
         {
             title: 'Date',
             dataIndex: 'date',
             key: 'date',
             responsive: ['sm'],
+            width: '10%',
         },
         {
             title: 'Demandeur',
             dataIndex: 'demandeur',
             key: 'demandeur',
             responsive: ['sm'],
+            width: '10%',
         },
         {
             title: 'Description',
             dataIndex: 'description',
             key: 'description',
+            width: '30%',
         },
         {
             title: 'Type',
             dataIndex: 'type',
             key: 'type',
             responsive: ['sm'],
+            width: '10%',
         },
         {
             title: 'Sévérité',
             dataIndex: 'severite',
             key: 'severite',
             responsive: ['sm'],
+            width: '10%',
             render: (_, { severite }) => {
                 if (severite === "Moyen") {
                     return (
@@ -80,6 +87,7 @@ const IssueTable = () => {
             title: 'Statut',
             dataIndex: 'statut',
             key: 'statut',
+            width: '10%',
             render: (_, { statut }) => {
                 if (statut === "En Cours") {
                     return (
@@ -234,6 +242,8 @@ const IssueTable = () => {
         loading: false,
         pagination: false,
         size: 'default',
+        sticky: true,
+
     }
 
     return (
@@ -250,6 +260,9 @@ const IssueTable = () => {
                                     navigate("/DetailIssue/" + record.id)
                                 },
                             };
+                        }}
+                        scroll={{
+                            y: 240,
                         }}
                     />
                 </div>

@@ -14,7 +14,6 @@
 }
 
 .tableContainer {
-    width: 90%;
     display: flex;
     flex-direction: column;
     padding: 40px;
@@ -24,7 +23,6 @@
 .tableData {
     margin-top: 1em;
 }
-
 
 .ant-table-thead>tr>th {
     background: #2F2E31 !important;
@@ -36,7 +34,7 @@
     background: #3B3B3F !important;
     color: #FFF !important;
     height: 2em;
-
+    padding: 0 !important;
 }
 
 tr {
@@ -45,7 +43,7 @@ tr {
 
 .ant-table-thead>tr>th:nth-child(5),
 .ant-table-tbody>tr>td:nth-child(5) {
-    width: 30%;
+    width: 30% !important;
 }
 
 @media only screen and (max-width: 950px) {

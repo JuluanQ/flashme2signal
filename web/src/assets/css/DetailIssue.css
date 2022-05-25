@@ -6,7 +6,7 @@
     margin-top: 5%;
 }
 
-.ContentIssue .ant-tag{
+.ContentIssue .ant-tag {
     padding: 4px 14px;
     text-transform: uppercase;
 }
@@ -31,7 +31,7 @@
 }
 
 #IssueSeverity {
-    color: #FFFFFF; 
+    color: #FFFFFF;
 }
 
 .IssueStateCard {
@@ -85,39 +85,32 @@
     display: flex;
 }
 
-.boutons-descripfion input{
+.boutons-descripfion input {
     text-align: center;
     width: 130px;
     justify-content: center;
     margin-right: 10px;
 }
-.boutons-descripfion input:hover{
+
+.boutons-descripfion input:hover {
     font-weight: bold;
     color: red;
     background-color: white !important;
     transition: 0.3s linear;
 }
 
-.boutons-descripfion input:first-child:hover{
+.boutons-descripfion input:first-child:hover {
     font-weight: bold;
     color: #3452FF;
     background-color: white;
     transition: 0.3s linear;
 }
 
-thead{
-    display: block;
-}
-
-tbody{
-    display: block;
-    max-height: 250px;
-    overflow-y: auto;
-}
-
-tbody td, thead th {
+tbody td,
+thead th {
     width: 120px;
 }
+
 .ComputerIssue {
     width: 30%;
     border-radius: 4px;
