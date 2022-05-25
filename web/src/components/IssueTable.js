@@ -19,7 +19,7 @@ const IssueTable = () => {
             dataIndex: 'appareil',
             key: 'appareil',
             width: '5%',
-            responsive: 'max-width: 950px',
+            responsive: ['sm'],
         },
         {
             title: 'Date',
