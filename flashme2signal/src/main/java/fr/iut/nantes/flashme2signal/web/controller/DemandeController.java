@@ -1,5 +1,6 @@
 package fr.iut.nantes.flashme2signal.web.controller;
 
+import fr.iut.nantes.flashme2signal.web.exceptions.DemandeNotFoundException;
 import io.swagger.annotations.ApiOperation;
 import fr.iut.nantes.flashme2signal.dao.DemandeDao;
 import fr.iut.nantes.flashme2signal.model.Demande;
@@ -15,9 +16,10 @@ public class DemandeController {
     private DemandeDao demandeDao;
 
     @ApiOperation(value = "Récupère toutes les demandes")
-    @RequestMapping(value = "/demande", method = RequestMethod.GET)
+    @RequestMapping(value = "/demandes", method = RequestMethod.GET)
     public List<Demande> demandeList() {
         List<Demande> demande = demandeDao.findAll();
+        System.out.println(demande);
         return demande;
     }
 
@@ -25,6 +27,7 @@ public class DemandeController {
     @RequestMapping(value = "/demande/{id}", method = RequestMethod.GET)
     public Demande demande(@PathVariable("id") int id) {
         Demande demande = demandeDao.findById(id);
+        if(demande==null) throw new DemandeNotFoundException("La demande avec l'id " + id + " est INTROUVABLE.");
         return demande;
     }
 
@@ -42,7 +45,7 @@ public class DemandeController {
         demandeToUpdate.setIdMateriel(demande.getIdMateriel());
         demandeToUpdate.setSeverite(demande.getSeverite());
         demandeToUpdate.setDescription(demande.getDescription());
-        demandeToUpdate.setDate(demande.getDate());
+        demandeToUpdate.setDateDemande(demande.getDateDemande());
         demandeToUpdate.setType(demande.getType());
         demandeToUpdate.setEtat(demande.getEtat());
         demandeDao.save(demandeToUpdate);

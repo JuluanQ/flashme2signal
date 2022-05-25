@@ -7,14 +7,16 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@Table(name = "Demande")
 public class Demande {
 
     @Id
     private int id;
 
-    @Column
     @NotNull
-    private String idMateriel;
+    @ManyToOne
+    @JoinColumn(name = "id_materiel")
+    private Materiel idMateriel;
 
     @Column
     @NotNull
@@ -26,7 +28,7 @@ public class Demande {
 
     @Column
     @NotNull
-    private Date date;
+    private Date dateDemande;
 
     @Column
     @NotNull
@@ -39,11 +41,11 @@ public class Demande {
     public Demande() {
     }
 
-    public Demande(String idMateriel, String severite, String description, Date date, String type, String etat) {
+    public Demande(Materiel idMateriel, String severite, String description, Date dateDemande, String type, String etat) {
         this.idMateriel = idMateriel;
         this.severite = severite;
         this.description = description;
-        this.date = date;
+        this.dateDemande = dateDemande;
         this.type = type;
         this.etat = etat;
     }
@@ -56,11 +58,11 @@ public class Demande {
         this.id = id;
     }
 
-    public String getIdMateriel() {
+    public Materiel getIdMateriel() {
         return idMateriel;
     }
 
-    public void setIdMateriel(String idMateriel) {
+    public void setIdMateriel(Materiel idMateriel) {
         this.idMateriel = idMateriel;
     }
 
@@ -80,12 +82,12 @@ public class Demande {
         this.description = description;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateDemande() {
+        return dateDemande;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateDemande(Date date) {
+        this.dateDemande = date;
     }
 
     public String getType() {
@@ -109,11 +111,11 @@ public class Demande {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Demande demande = (Demande) o;
-        return id == demande.id && Objects.equals(idMateriel, demande.idMateriel) && Objects.equals(severite, demande.severite) && Objects.equals(description, demande.description) && Objects.equals(date, demande.date) && Objects.equals(type, demande.type) && Objects.equals(etat, demande.etat);
+        return id == demande.id && Objects.equals(idMateriel, demande.idMateriel) && Objects.equals(severite, demande.severite) && Objects.equals(description, demande.description) && Objects.equals(dateDemande, demande.dateDemande) && Objects.equals(type, demande.type) && Objects.equals(etat, demande.etat);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idMateriel, severite, description, date, type, etat);
+        return Objects.hash(id, idMateriel, severite, description, dateDemande, type, etat);
     }
 }
