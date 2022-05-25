@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="severiteValue">
+        <item>Mineure</item>
+        <item>Moyen</item>
+        <item>Majeure</item>
+    </string-array>
+    <string-array name="typeValue">
+        <item>Panne</item>
+        <item>Problème réseau</item>
+        <item>Matériel détérioré</item>
+        <item>Matériel manquant</item>
+        <item>Problème applicatif</item>
+        <item>Droits insuffisants</item>
+    </string-array>
+</resources>

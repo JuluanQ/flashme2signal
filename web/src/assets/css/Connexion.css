@@ -1,0 +1,45 @@
+.ConnexionContainer {
+    height: 100vh;
+    width: 100vw;
+    background-color: #0C0B0B;
+
+    display: flex;
+    flex-direction: column;
+
+    margin-left: auto;
+    margin-right: auto;
+    justify-items: center;
+}
+
+.LogoUnivNantes {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.LogoUnivNantes img {
+    width: auto;
+    height: 6em;
+}
+
+.connectionCard {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 950px) {
+    .connectionCard {
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .connectionCard {
+        width: 90%;
+    }
+    .connexionHeader {
+        font-size: 28px;
+    }
+}
