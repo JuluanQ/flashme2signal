@@ -20,9 +20,7 @@
 .tableContainer {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    margin: auto;
-
+    padding: 40px;
 }
 
 .tableData {
@@ -39,7 +37,6 @@
 .ant-table-tbody>tr>td {
     background: #3B3B3F !important;
     color: #FFF !important;
-    width: 1%;
     height: 2em;
 }
 

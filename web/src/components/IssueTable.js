@@ -15,40 +15,36 @@ const IssueTable = () => {
             title: 'ID',
             dataIndex: 'id',
             key: 'id',
-            width: '5%',
+
         },
         {
             title: 'Appareil',
             dataIndex: 'appareil',
             key: 'appareil',
-            width: '5%',
+
             responsive: ['sm'],
         },
         {
             title: 'Date',
             dataIndex: 'date',
             key: 'date',
-            width: '5%',
             responsive: ['sm'],
         },
         {
             title: 'Demandeur',
             dataIndex: 'demandeur',
             key: 'demandeur',
-            width: '5%',
             responsive: ['sm'],
         },
         {
             title: 'Description',
             dataIndex: 'description',
             key: 'description',
-            width: '30%',
         },
         {
             title: 'Type',
             dataIndex: 'type',
             key: 'type',
-            width: '5%',
             responsive: ['sm'],
         },
         {
@@ -56,7 +52,6 @@ const IssueTable = () => {
             dataIndex: 'severite',
             key: 'severite',
             responsive: ['sm'],
-            width: '5%',
             render: (_, { severite }) => {
                 if (severite === "Moyen") {
                     return (
@@ -85,7 +80,6 @@ const IssueTable = () => {
             title: 'Statut',
             dataIndex: 'statut',
             key: 'statut',
-            width: '5%',
             render: (_, { statut }) => {
                 if (statut === "En Cours") {
                     return (
