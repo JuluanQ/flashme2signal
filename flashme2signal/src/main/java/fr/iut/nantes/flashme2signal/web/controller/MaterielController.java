@@ -16,7 +16,7 @@ public class MaterielController {
     private MaterielDao materielDao;
 
     @ApiOperation(value = "Récupère tous les materiels")
-    @RequestMapping(value = "/materiel", method = RequestMethod.GET)
+    @RequestMapping(value = "/materiels", method = RequestMethod.GET)
     public List<Materiel> materielList() {
         List<Materiel> materiel = materielDao.findAll();
         return materiel;
