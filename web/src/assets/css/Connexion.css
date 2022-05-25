@@ -21,11 +21,25 @@
 
 .LogoUnivNantes img {
     width: auto;
-    height: 3em;
+    height: 6em;
 }
 
 .connectionCard {
     width: 30%;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media only screen and (max-width: 950px) {
+    .connectionCard {
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .connectionCard {
+        width: 90%;
+    }
+    .connexionHeader {
+        font-size: 28px;
+    }
 }

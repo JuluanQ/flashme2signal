@@ -27,13 +27,12 @@
 
 /* Logo */
 .LogoContainer {
-    margin-top: 2em;
-    padding-left: 1em;
+    padding: 10px;
 }
 
 .LogoUnivNanteMenu {
     height: auto;
-    width: 70%;
+    width: 100%;
 }
 
 /* Menu */
@@ -62,10 +61,10 @@
 
 .mobileMenuContainer {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     text-align: left;
 
-    height: 5vh;
+    height: 4em;
     width: 100vw;
 
     margin-bottom: auto;
@@ -79,10 +78,12 @@
 }
 
 .mobileMenuContainer .LogoContainer {
-    margin-top: .5em;
-    margin-left: auto;
-    padding-left: 1em;
+    margin-top: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
+
 
 /* Dropdown menu */
 

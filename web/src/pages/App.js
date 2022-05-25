@@ -1,6 +1,6 @@
 import Home from './Home.js'
 import Appareil from './Appareil';
-import LeftMenu from '../components/LeftMenu';
+import Detail from './DetailIssue';
 
 // CSS
 import '../assets/css/App.css'
@@ -16,6 +16,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/co" element={<Connexion />}></Route>
           <Route path="/Appareil" element={<Appareil />} />
+          <Route path="/Detail" element={<Detail />}/>
         </Routes>
       </BrowserRouter>
     </div>
