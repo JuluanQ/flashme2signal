@@ -4,6 +4,7 @@ import ButtonInput from '../components/ButtonInput';
 
 // Imports
 import { Tag, Select, Button } from 'antd';
+import { useParams } from 'react-router-dom';
 
 // CSS
 import '../assets/css/DetailIssue.css';
@@ -13,11 +14,12 @@ const { Option } = Select;
 
 
 const DetailIssue = () => {
+    const params = useParams();
     return (
         <>
             <LeftMenu />
             <div className='ContentIssue'>
-                <p className='IssueTitle'>Demande <span id='IdIssue'>#1234</span></p>
+                <p className='IssueTitle'>Demande <span id='IdIssue'>#{params.id}</span></p>
                 <div>
                     <Tag color="#F04949">Urgent</Tag>
                     <Tag color="#F09149">En cours</Tag>
