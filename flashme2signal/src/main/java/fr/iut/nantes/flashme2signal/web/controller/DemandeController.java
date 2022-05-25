@@ -44,7 +44,7 @@ public class DemandeController {
         demandeToUpdate.setIdMateriel(demande.getIdMateriel());
         demandeToUpdate.setSeverite(demande.getSeverite());
         demandeToUpdate.setDescription(demande.getDescription());
-        demandeToUpdate.setDate(demande.getDate());
+        demandeToUpdate.setDateDemande(demande.getDateDemande());
         demandeToUpdate.setType(demande.getType());
         demandeToUpdate.setEtat(demande.getEtat());
         demandeDao.save(demandeToUpdate);
