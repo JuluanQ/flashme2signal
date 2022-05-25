@@ -1,0 +1,4 @@
+.ContentIssue {
+    display: flex;
+    flex-direction: column;
+}
