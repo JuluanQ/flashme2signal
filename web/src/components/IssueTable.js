@@ -230,7 +230,7 @@ const IssueTable = () => {
     ];
 
     const param = {
-        bordered: false,
+        bordered: true,
         loading: false,
         pagination: false,
         size: 'default',
