@@ -12,6 +12,7 @@ const IssueTable = () => {
             key: 'id',
             width: '5%',
             height: '2em',
+            fixed: 'left'
         },
         {
             title: 'Appareil',
