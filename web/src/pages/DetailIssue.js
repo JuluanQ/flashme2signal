@@ -40,8 +40,13 @@ const DetailIssue = () => {
                             <ButtonInput value="Annuler" color="Red"></ButtonInput>
                         </div>
                     </div>
-                    <div>
-
+                    <div className='ComputerIssue'>
+                        <p>Ordinateur <span>#{params.device}</span></p>
+                        <p className='DescriptionText'>Salle :</p>
+                        <input type="text"></input>
+                        <p className='DescriptionText'>Autres problèmes :</p>
+                        <input type="text"></input>
+                        <ButtonInput value="Voir plus"></ButtonInput>
                     </div>
                 </div>
             </div>
