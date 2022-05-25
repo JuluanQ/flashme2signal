@@ -12,14 +12,6 @@ public class Flashme2signalApplication {
 
 	public static void main(String[] args) {
 
-		try {
-			QRCodeGenerator.generateQR("www.site.fr");
-		} catch (WriterException e) {
-			throw new RuntimeException(e);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-
 		SpringApplication.run(Flashme2signalApplication.class, args);
 
 	}

@@ -5,8 +5,11 @@ import com.sun.istack.NotNull;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
+@Table(name = "Materiel")
 public class Materiel {
 
     @Id
@@ -15,6 +18,13 @@ public class Materiel {
     @Column
     @NotNull
     private String salle;
+
+    public Materiel(int id, String salle) {
+        this.id = id;
+        this.salle = salle;
+    }
+
+    public Materiel() {}
 
     public int getId() {
         return id;
@@ -36,17 +46,12 @@ public class Materiel {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Materiel materiel = (Materiel) o;
-
-        if (id != materiel.id) return false;
-        return salle != null ? salle.equals(materiel.salle) : materiel.salle == null;
+        return Objects.equals(id, materiel.id) && Objects.equals(salle, materiel.salle);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (salle != null ? salle.hashCode() : 0);
-        return result;
+        return Objects.hash(id, salle);
     }
 }
