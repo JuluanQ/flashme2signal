@@ -7,14 +7,16 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@Table(name = "Demande")
 public class Demande {
 
     @Id
     private int id;
 
-    @Column
     @NotNull
-    private String idMateriel;
+    @OneToOne
+    @JoinColumn(name = "id_materiel")
+    private Materiel idMateriel;
 
     @Column
     @NotNull
@@ -39,7 +41,7 @@ public class Demande {
     public Demande() {
     }
 
-    public Demande(String idMateriel, String severite, String description, Date dateDemande, String type, String etat) {
+    public Demande(Materiel idMateriel, String severite, String description, Date dateDemande, String type, String etat) {
         this.idMateriel = idMateriel;
         this.severite = severite;
         this.description = description;
@@ -56,11 +58,11 @@ public class Demande {
         this.id = id;
     }
 
-    public String getIdMateriel() {
+    public Materiel getIdMateriel() {
         return idMateriel;
     }
 
-    public void setIdMateriel(String idMateriel) {
+    public void setIdMateriel(Materiel idMateriel) {
         this.idMateriel = idMateriel;
     }
 

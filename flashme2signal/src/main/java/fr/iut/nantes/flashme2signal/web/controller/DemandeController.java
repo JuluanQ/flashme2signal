@@ -16,9 +16,10 @@ public class DemandeController {
     private DemandeDao demandeDao;
 
     @ApiOperation(value = "Récupère toutes les demandes")
-    @RequestMapping(value = "/demande", method = RequestMethod.GET)
+    @RequestMapping(value = "/demandes", method = RequestMethod.GET)
     public List<Demande> demandeList() {
         List<Demande> demande = demandeDao.findAll();
+        System.out.println(demande);
         return demande;
     }
 
