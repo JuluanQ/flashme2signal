@@ -1,0 +1,104 @@
+.StatsComponents {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 3%;
+    width: 80%;
+    justify-content: center;
+}
+
+.CardOpenIssue {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+
+    background-color: #3B3B3F;
+    width: calc(90%/3);
+    height: 75px;
+
+    padding-top: 1em;
+    padding: .5em;
+}
+
+.CardOpenIssue:nth-child(2) {
+    margin: auto;
+}
+
+.CardImportantIssue {
+    background-color: #672020;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    width: calc(90%/3);
+    height: 75px;
+    padding-top: 1em;
+    padding: 0.5em;
+}
+
+.imgStatsComp {
+    margin-right: auto;
+    margin-left: 2em;
+    width: 42px;
+    height: 42px;
+    color: #3452FF;
+}
+
+.imgImportantComp {
+    margin-right: auto;
+    margin-left: 2em;
+    width: 42px;
+    height: 42px;
+    color: #FF3434;
+}
+
+.CardText {
+    display: flex;
+    text-align: end;
+    flex-direction: column;
+    width: 70%;
+    padding: 2em;
+}
+
+.CardSVG {
+    width: 30%;
+}
+
+.cardName {
+    font-weight: bold;
+    margin: 0;
+    font-size: large;
+}
+
+.cardValue {
+    margin: 0;
+    margin-left: auto;
+    font-size: large;
+}
+
+@media only screen and (max-width: 950px) {
+    .StatsComponents {
+        flex-direction: column;
+    }
+
+    .CardOpenIssue {
+        width: 100%;
+        margin-top: 1em !important;
+    }
+
+    .CardImportantIssue {
+        width: 100%;
+        margin-top: 1em !important;
+    }
+
+    .cardName, .cardValue {
+        font-size: 14px;
+    }
+
+    .imgStatsComp {
+        width: 32px;
+        height: 32px;
+    }
+    .imgImportantComp {
+        width: 32px;
+        height: 32px;
+    }
+}

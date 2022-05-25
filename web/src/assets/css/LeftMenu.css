@@ -1,0 +1,130 @@
+.MenuContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    height: 100vh;
+    max-width: 15vw;
+
+    margin-right: auto;
+
+
+    background-color: #2F2E31;
+}
+
+.mobileDisplay {
+    display: none;
+}
+
+@media only screen and (max-width: 950px) {
+    .desktopDisplay {
+        display: none;
+    }
+
+    .mobileDisplay {
+        display: flex;
+    }
+}
+
+/* Logo */
+.LogoContainer {
+    padding: 10px;
+}
+
+.LogoUnivNanteMenu {
+    height: auto;
+    width: 100%;
+}
+
+/* Menu */
+.MenusContainer {
+    padding-left: 2em;
+}
+
+.MenusContainer a {
+    text-decoration-line: none;
+    text-decoration-color: currentcolor;
+    cursor: pointer;
+}
+
+.MenusContainer a h3 {
+    color: #FFFFFF;
+}
+
+.MenusContainer .active h3 {
+    font-weight: bold;
+}
+
+.MenusContainer .inactive h3 {
+    font-weight: normal;
+}
+
+.MenusContainer .Deconnexion {
+    color: #F04949;
+}
+
+.mobileMenuContainer {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+
+    height: 4em;
+    width: 100vw;
+
+    margin-bottom: auto;
+
+    background-color: #2F2E31;
+}
+
+.mobileMenuContainer .LogoContainer {
+    height: auto;
+    width: 10em;
+}
+
+.mobileMenuContainer .LogoContainer {
+    margin-top: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+
+/* Dropdown menu */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+
+
+    margin-top: 5vh;
+    padding-left: 2em;
+
+    width: 100vw;
+
+    background-color: #2F2E31;
+}
+
+.dropdown-content a {
+    text-decoration-line: none;
+    text-decoration-color: currentcolor;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.dropdown-content .Deconnexion {
+    color: #F04949;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #3452FF;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
