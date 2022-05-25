@@ -42,3 +42,8 @@
     width: 1%;
     height: 2em;
 }
+
+.ant-table-tbody>tr:hover>td {
+    background: #2F2E31 !important;
+    cursor: pointer;
+}

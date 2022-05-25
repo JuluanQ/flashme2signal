@@ -4,8 +4,11 @@ import { Table, Tag } from 'antd';
 
 import '../assets/css/Home/IssueTable.css'
 import "antd/dist/antd.css";
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const IssueTable = () => {
+
+    const navigate = useNavigate()
 
     const columns = [
         {
@@ -111,7 +114,7 @@ const IssueTable = () => {
 
     const data = [
         {
-            id: '#123',
+            id: '123',
             appareil: '#28',
             date: '12/03/2021',
             demandeur: 'E183247G',
@@ -121,7 +124,7 @@ const IssueTable = () => {
             statut: 'En Cours',
         },
         {
-            id: '#123',
+            id: '123',
             appareil: '#28',
             date: '12/03/2021',
             demandeur: 'E183247G',
@@ -131,7 +134,7 @@ const IssueTable = () => {
             statut: 'Annulé',
         },
         {
-            id: '#123',
+            id: '123',
             appareil: '#28',
             date: '12/03/2021',
             demandeur: 'E183247G',
@@ -157,7 +160,16 @@ const IssueTable = () => {
                     <h3>Liste Demande</h3>
                 </div>
                 <div className='tableData'>
-                    <Table {...param} columns={columns} dataSource={data} className="tableDemandes" />
+                    <Table {...param} columns={columns} dataSource={data} className="tableDemandes"
+                        onRow={(record, rowIndex) => {
+                            return {
+                                onClick: event => {
+
+                                    navigate("/Detail/" + record.id)
+                                }, // click row
+                            };
+                        }}
+                    />
                 </div>
 
             </div>

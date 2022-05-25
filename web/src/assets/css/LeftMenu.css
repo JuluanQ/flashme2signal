@@ -8,6 +8,7 @@
 
     margin-right: auto;
 
+
     background-color: #2F2E31;
 }
 
@@ -43,8 +44,11 @@
 .MenusContainer a {
     text-decoration-line: none;
     text-decoration-color: currentcolor;
-    color: #FFFFFF;
     cursor: pointer;
+}
+
+.MenusContainer a h3 {
+    color: #FFFFFF;
 }
 
 .MenusContainer .active h3 {
