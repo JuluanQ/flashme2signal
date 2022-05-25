@@ -88,4 +88,17 @@
         width: 100%;
         margin-top: 1em !important;
     }
+
+    .cardName, .cardValue {
+        font-size: 14px;
+    }
+
+    .imgStatsComp {
+        width: 32px;
+        height: 32px;
+    }
+    .imgImportantComp {
+        width: 32px;
+        height: 32px;
+    }
 }

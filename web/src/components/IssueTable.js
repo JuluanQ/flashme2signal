@@ -157,7 +157,7 @@ const IssueTable = () => {
         <div className='IssueTable'>
             <div className='tableContainer'>
                 <div className='tableName'>
-                    <h3>Liste Demande</h3>
+                    <h3>Liste demandes</h3>
                 </div>
                 <div className='tableData'>
                     <Table {...param} columns={columns} dataSource={data} className="tableDemandes"
