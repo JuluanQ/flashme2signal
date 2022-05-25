@@ -10,17 +10,17 @@ import javax.persistence.Id;
 public class Materiel {
 
     @Id
-    private int id;
+    private String id;
 
     @Column
     @NotNull
     private String salle;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -39,13 +39,13 @@ public class Materiel {
 
         Materiel materiel = (Materiel) o;
 
-        if (id != materiel.id) return false;
+        if (id != null ? !id.equals(materiel.id) : materiel.id != null) return false;
         return salle != null ? salle.equals(materiel.salle) : materiel.salle == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (salle != null ? salle.hashCode() : 0);
         return result;
     }
