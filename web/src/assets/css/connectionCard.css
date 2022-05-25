@@ -45,6 +45,7 @@
 
 
 .submitConnexion input[type=submit]:hover{
+    font-weight: bold;
     color: #3452FF;
     background-color: white;
     transition: 0.3s linear;

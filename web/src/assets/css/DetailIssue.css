@@ -6,9 +6,15 @@
     margin-top: 5%;
 }
 
+.ContentIssue .ant-tag{
+    padding: 4px 14px;
+    text-transform: uppercase;
+}
+
 .IssueTitle {
     font-weight: bold;
-    font-size: medium;
+    font-size: 28px;
+    margin-bottom: 0;
 }
 
 #IdIssue {
@@ -39,7 +45,7 @@
 
 .DetailContentIssue {
     display: flex;
-    flex-direction: row;
+    width: 70%;
     margin-top: 4%;
 }
 
@@ -49,15 +55,18 @@
     padding-left: 5%;
     padding-top: 2%;
     padding-bottom: 2%;
+    border-radius: 4px;
 }
 
 .DescriptionText {
     color: #908F98;
+    margin-bottom: 0;
 }
 
 #iptDesc {
     width: 90%;
     height: 10vmax;
+    margin-bottom: 10px;
 }
 
 #nCreation {
@@ -65,5 +74,31 @@
 }
 
 .SelectSeverity {
-    width: 100px;
+    width: 150px;
+    margin-bottom: 20px;
 }
+
+.boutons-descripfion {
+    display: flex;
+}
+
+.boutons-descripfion input{
+    text-align: center;
+    width: 130px;
+    justify-content: center;
+    margin-right: 10px;
+}
+.boutons-descripfion input:hover{
+    font-weight: bold;
+    color: red;
+    background-color: white !important;
+    transition: 0.3s linear;
+}
+
+.boutons-descripfion input:first-child:hover{
+    font-weight: bold;
+    color: #3452FF;
+    background-color: white;
+    transition: 0.3s linear;
+}
+
