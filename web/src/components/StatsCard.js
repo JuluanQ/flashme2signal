@@ -13,7 +13,7 @@ const StatsCard = () => {
         <>
             <div className='StatsComponents'>
 
-                <div className='CardOpenIssue'>
+                <div className='CardOpenIssue hvr-grow'>
                     <div className='CardSVG'>
                         <GoFileDirectory className='imgStatsComp' />
                     </div>
@@ -23,7 +23,7 @@ const StatsCard = () => {
                     </div>
                 </div>
 
-                <div className='CardOpenIssue'>
+                <div className='CardOpenIssue hvr-grow'>
                     <div className='CardSVG'>
                         <GoIssueOpened className='imgStatsComp' />
                     </div>
@@ -33,7 +33,7 @@ const StatsCard = () => {
                     </div>
                 </div>
 
-                <div className='CardImportantIssue'>
+                <div className='CardImportantIssue hvr-grow'>
                     <div className='CardSVG'>
                         <RiAlarmWarningFill className='imgImportantComp' />
                     </div>
