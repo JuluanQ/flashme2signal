@@ -14,7 +14,7 @@ public class Demande {
     private int id;
 
     @NotNull
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_materiel")
     private Materiel idMateriel;
 
