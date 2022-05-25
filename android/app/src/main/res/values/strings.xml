@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">FlashMeToSignal</string>
+    <string name="s_v_rit">Sévérité :</string>
+    <string name="type">Type :</string>
+    <string name="identifiant">Identifiant :</string>
+    <string name="envoyer">Envoyer</string>
+    <string name="d_scription">Déscription :</string>
+    <string name="todo">TODO</string>
+    <string name="desc">déscription</string>
+    <string name="iden">indentifiant</string>
 </resources>
