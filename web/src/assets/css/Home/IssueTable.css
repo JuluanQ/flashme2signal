@@ -8,7 +8,8 @@
     flex-direction: column;
     justify-content: center;
     border-radius: 4px;
-    overflow-x: auto;
+
+
 }
 
 .tableName h3 {
@@ -21,10 +22,10 @@
     flex-direction: column;
     padding: 20px;
     margin: auto;
+
 }
 
 .tableData {
-    display: flex;
     margin-top: 1em;
 }
 
@@ -42,12 +43,14 @@
     height: 2em;
 }
 
-tr{
+tr {
     text-align: center;
 }
 
 @media only screen and (max-width: 950px) {
-    .ant-table-thead>tr>th,  .ant-table-tbody > tr > td{
+
+    .ant-table-thead>tr>th,
+    .ant-table-tbody>tr>td {
         padding: 0 !important;
     }
 }

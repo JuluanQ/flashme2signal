@@ -143,11 +143,100 @@ const IssueTable = () => {
             severite: 'Mineur',
             statut: 'Terminé',
         },
+        {
+            id: '123',
+            appareil: '#28',
+            date: '12/03/2021',
+            demandeur: 'E183247G',
+            description: 'L’ordinateur ne démarre pas quand...',
+            type: '',
+            severite: 'Moyen',
+            statut: 'En Cours',
+        },
+        {
+            id: '123',
+            appareil: '#28',
+            date: '12/03/2021',
+            demandeur: 'E183247G',
+            description: 'L’ordinateur ne démarre pas quand...',
+            type: '',
+            severite: 'Urgent',
+            statut: 'Annulé',
+        },
+        {
+            id: '123',
+            appareil: '#28',
+            date: '12/03/2021',
+            demandeur: 'E183247G',
+            description: 'L’ordinateur ne démarre pas quand...',
+            type: '',
+            severite: 'Mineur',
+            statut: 'Terminé',
+        },
+        {
+            id: '123',
+            appareil: '#28',
+            date: '12/03/2021',
+            demandeur: 'E183247G',
+            description: 'L’ordinateur ne démarre pas quand...',
+            type: '',
+            severite: 'Moyen',
+            statut: 'En Cours',
+        },
+        {
+            id: '123',
+            appareil: '#28',
+            date: '12/03/2021',
+            demandeur: 'E183247G',
+            description: 'L’ordinateur ne démarre pas quand...',
+            type: '',
+            severite: 'Urgent',
+            statut: 'Annulé',
+        },
+        {
+            id: '123',
+            appareil: '#28',
+            date: '12/03/2021',
+            demandeur: 'E183247G',
+            description: 'L’ordinateur ne démarre pas quand...',
+            type: '',
+            severite: 'Mineur',
+            statut: 'Terminé',
+        },
+        {
+            id: '123',
+            appareil: '#28',
+            date: '12/03/2021',
+            demandeur: 'E183247G',
+            description: 'L’ordinateur ne démarre pas quand...',
+            type: '',
+            severite: 'Moyen',
+            statut: 'En Cours',
+        },
+        {
+            id: '123',
+            appareil: '#28',
+            date: '12/03/2021',
+            demandeur: 'E183247G',
+            description: 'L’ordinateur ne démarre pas quand...',
+            type: '',
+            severite: 'Urgent',
+            statut: 'Annulé',
+        },
+        {
+            id: '123',
+            appareil: '#28',
+            date: '12/03/2021',
+            demandeur: 'E183247G',
+            description: 'L’ordinateur ne démarre pas quand...',
+            type: '',
+            severite: 'Mineur',
+            statut: 'Terminé',
+        },
     ];
 
     const param = {
         bordered: false,
-
         loading: false,
         pagination: false,
         size: 'default',
@@ -164,7 +253,6 @@ const IssueTable = () => {
                         onRow={(record, rowIndex) => {
                             return {
                                 onClick: event => {
-
                                     navigate("/Detail/" + record.id)
                                 }, // click row
                             };

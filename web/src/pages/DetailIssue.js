@@ -13,7 +13,7 @@ const { Option } = Select;
 
 
 const DetailIssue = () => {
-    return(
+    return (
         <>
             <LeftMenu />
             <div className='ContentIssue'>
@@ -33,8 +33,10 @@ const DetailIssue = () => {
                             <Option value="Moyen">Moyen</Option>
                             <Option value="Mineur">Mineur</Option>
                         </Select>
-                        <ButtonInput value="Terminé"></ButtonInput>
-                        <Button type="primary" danger>Annulé</Button>
+                        <div className='boutons-descripfion'>
+                            <ButtonInput value="Terminé"></ButtonInput>
+                            <ButtonInput value="Annuler" color="Red"></ButtonInput>
+                        </div>
                     </div>
                     <div>
 
