@@ -12,7 +12,7 @@ const LeftMenu = () => {
                 <div className="mobileMenuContainer">
                     <img src={require("../assets/icons/ComponentMenu.png")} onClick={() => dropDownClick()} className="dropbtn" alt="menu button" />
                     <div id="myDropdown" className="dropdown-content">
-                        <NavLink to="/Demandes" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Demandes</h3></NavLink>
+                        <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Demandes</h3></NavLink>
                         <NavLink to="/Appareils" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Appareils</h3></NavLink>
                         {/* TODO Deconnexion */}
                         <h3 className='Deconnexion'>Se Déconnecter</h3>
@@ -33,7 +33,7 @@ const LeftMenu = () => {
                         </NavLink>
                     </div>
                     <div className='MenusContainer'>
-                        <NavLink to="/Demandes" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Demandes</h3></NavLink>
+                        <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Demandes</h3></NavLink>
                         <NavLink to="/Appareils" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Appareils</h3></NavLink>
                         {/* TODO Deconnexion */}
                         <h3 className='Deconnexion'>Se Déconnecter</h3>

@@ -1,5 +1,5 @@
 import Home from './Home.js'
-import Appareil from './Appareil';
+import Appareils from './Appareils';
 import Detail from './DetailIssue';
 
 // CSS
@@ -15,7 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/co" element={<Connexion />}></Route>
-          <Route path="/Appareil" element={<Appareil />} />
+          <Route path="/Appareils" element={<Appareils />} />
           <Route path="/Detail/:id" element={<Detail />} />
         </Routes>
       </BrowserRouter>
