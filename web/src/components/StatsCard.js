@@ -14,27 +14,33 @@ const StatsCard = () => {
             <div className='StatsComponents'>
 
                 <div className='CardOpenIssue'>
-                    <div className='CardText'>
+                    <div className='CardSVG'>
                         <GoFileDirectory className='imgStatsComp' />
-                        <p className='cardName'>Dossiers ouverts</p>
                     </div>
-                    <p className='nCardOpenIssue cardValue'>3</p>
+                    <div className='CardText'>
+                        <p className='cardName'>Dossiers ouverts</p>
+                        <p className='nCardOpenIssue cardValue'>3</p>
+                    </div>
                 </div>
 
                 <div className='CardOpenIssue'>
-                    <div className='CardText'>
+                    <div className='CardSVG'>
                         <GoIssueOpened className='imgStatsComp' />
-                        <p className='cardName'>Nouveaux dossiers</p>
                     </div>
-                    <p className='nCardNewIssue cardValue'>3</p>
+                    <div className='CardText'>
+                        <p className='cardName'>Nouveaux dossiers</p>
+                        <p className='nCardNewIssue cardValue'>3</p>
+                    </div>
                 </div>
 
                 <div className='CardImportantIssue'>
-                    <div className='CardText'>
+                    <div className='CardSVG'>
                         <RiAlarmWarningFill className='imgImportantComp' />
-                        <p className='cardName'>Dossiers urgent</p>
                     </div>
-                    <p className='nCardImportantIssue cardValue'>3</p>
+                    <div className='CardText'>
+                        <p className='cardName'>Dossiers urgents</p>
+                        <p className='nCardImportantIssue cardValue'>3</p>
+                    </div>
                 </div>
 
             </div>

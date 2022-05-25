@@ -8,8 +8,8 @@
 
 .CardOpenIssue {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    border-radius: 4px;
 
     background-color: #3B3B3F;
     width: calc(90%/3);
@@ -21,53 +21,52 @@
 }
 
 .CardImportantIssue {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
     background-color: #672020;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
     width: calc(90%/3);
     height: 75px;
-
-    padding: .5em;
     padding-top: 1em;
+    padding: 0.5em;
     margin: auto;
 }
 
 .imgStatsComp {
     margin-right: auto;
     margin-left: 2em;
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
     color: #3452FF;
 }
 
 .imgImportantComp {
     margin-right: auto;
     margin-left: 2em;
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
     color: #FF3434;
 }
 
 .CardText {
     display: flex;
-    align-items: center;
-    width: 100%;
-    margin-top: .5em;
+    text-align: end;
+    flex-direction: column;
+    width: 70%;
+    padding: 2em;
 }
-
+.CardSVG{
+    width: 30%;
+}
 .cardName {
+    font-weight: bold;
     margin: 0;
-    margin-right: 2em;
     font-size: large;
 }
 
 .cardValue {
     margin: 0;
     margin-left: auto;
-
-    padding-right: 2em;
     font-size: large;
 }
 
