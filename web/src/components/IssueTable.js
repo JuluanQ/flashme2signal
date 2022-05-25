@@ -254,7 +254,7 @@ const IssueTable = () => {
                             return {
                                 onClick: event => {
                                     navigate("/Detail/" + record.id + "/" + record.appareil)
-                                }, // click row
+                                },
                             };
                         }}
                     />

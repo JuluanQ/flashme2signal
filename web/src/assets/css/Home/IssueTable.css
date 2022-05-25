@@ -8,8 +8,6 @@
     flex-direction: column;
     justify-content: center;
     border-radius: 4px;
-
-
 }
 
 .tableName h3 {
@@ -23,17 +21,23 @@
     padding: 20px;
     margin: auto;
 
+
 }
 
 .tableData {
     margin-top: 1em;
+    height: 30em;
+    overflow: scroll;
 }
-
 
 .ant-table-thead>tr>th {
     background: #2F2E31 !important;
     color: #FFF !important;
     text-align: center !important;
+}
+
+.ant-table-thead {
+    position: sticky;
 }
 
 .ant-table-tbody>tr>td {
