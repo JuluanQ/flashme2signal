@@ -1,15 +1,11 @@
 .IssueTable {
     background-color: #3B3B3F;
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-radius: 4px;
-
-
 }
 
 .tableName h3 {
@@ -44,18 +40,18 @@
 }
 
 tr {
-text-align: center;
+    text-align: center;
 }
 
 @media only screen and (max-width: 950px) {
 
-.ant-table-thead>tr>th,
-.ant-table-tbody>tr>td {
-padding: 0 !important;
-}
+    .ant-table-thead>tr>th,
+    .ant-table-tbody>tr>td {
+        padding: 0 !important;
+    }
 }
 
 .ant-table-tbody>tr:hover>td {
-background: #2F2E31 !important;
-cursor: pointer;
+    background: #2F2E31 !important;
+    cursor: pointer;
 }
