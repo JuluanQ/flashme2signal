@@ -11,8 +11,8 @@ const StatsCard = (props) => {
 
     const DemandeFilters = {
         open: "EN COURS",
-        new: new Date(),
-        urgent: "URGENT"
+        urgent: "URGENT",
+        new: new Date()
     };
 
     function filterData(filter) {
@@ -20,10 +20,12 @@ const StatsCard = (props) => {
         for (var i = 1; i < trs.length; i++)
         {
             var td = null
-            if (filter === "EN COURS") {
+            if (filter === DemandeFilters.open) {
                 td = trs[i].getElementsByTagName("td")[7];
-            } else if (filter === "URGENT") {
+            } else if (filter === DemandeFilters.open) {
                 td = trs[i].getElementsByTagName("td")[6];
+            } else if (filter === DemandeFilters.new.toISOString().split('T')[0]) {
+                td = trs[i].getElementsByTagName("td")[2];
             }
 
             if (td)
@@ -38,7 +40,6 @@ const StatsCard = (props) => {
             }
         }
     }
-const StatsCard = (props) => {
 
     return (
         <>

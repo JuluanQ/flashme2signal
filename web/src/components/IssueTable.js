@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Table, Tag } from 'antd';
 
 
@@ -147,129 +147,6 @@ const IssueTable = (props) => {
         }
     ];
 
-    const data = [
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Moyen',
-            statut: 'En Cours',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Urgent',
-            statut: 'Annulé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Mineur',
-            statut: 'Terminé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Moyen',
-            statut: 'En Cours',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Urgent',
-            statut: 'Annulé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Mineur',
-            statut: 'Terminé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Moyen',
-            statut: 'En Cours',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Urgent',
-            statut: 'Annulé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Mineur',
-            statut: 'Terminé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Moyen',
-            statut: 'En Cours',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Urgent',
-            statut: 'Annulé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Mineur',
-            statut: 'Terminé',
-        },
-    ];
-
     const param = {
         bordered: true,
         loading: false,
@@ -280,8 +157,6 @@ const IssueTable = (props) => {
     }
 
     return (
-        <>
-        <StatsCard key={"1"} demandes={data}/>
         <div className='IssueTable'>
             <div className='tableContainer'>
                 <div className='tableName'>
@@ -305,7 +180,6 @@ const IssueTable = (props) => {
             </div>
 
         </div>
-        </>
     );
 };
 
