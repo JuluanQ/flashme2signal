@@ -42,7 +42,6 @@ const Home = () => {
                 dataIssues.push(json);
             });
             setFinished(true)
-            console.log(dataIssues);
         }
 
     }, [data && !finished]);
