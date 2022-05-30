@@ -29,7 +29,6 @@ const IssueTable = () => {
         {
             title: 'Date',
             dataIndex: 'date',
-            sorter: (a, b) => new Date(a.date) - new Date(b.date),
             key: 'date',
             responsive: ['sm'],
             width: '10%',
@@ -57,42 +56,27 @@ const IssueTable = () => {
         {
             title: 'Sévérité',
             dataIndex: 'severite',
-            filters: [
-                {
-                    text: 'Urgent',
-                    value: 'Urgent',
-                },
-                {
-                    text: 'Moyen',
-                    value: 'Moyen',
-                },
-                {
-                    text: 'Mineur',
-                    value: 'Mineur',
-                }
-            ],
-            onFilter: (value, record) => record.severite.indexOf(value) === 0,
             key: 'severite',
             responsive: ['sm'],
             width: '10%',
             render: (_, { severite }) => {
                 if (severite === "Moyen") {
                     return (
-                        <Tag className="orange" key={severite}>
+                        <Tag color="volcano" key={severite}>
                             {severite.toUpperCase()}
                         </Tag>
                     )
                 }
                 if (severite === "Urgent") {
                     return (
-                        <Tag className="red" key={severite}>
+                        <Tag color="red" key={severite}>
                             {severite.toUpperCase()}
                         </Tag>
                     )
                 }
                 if (severite === "Mineur") {
                     return (
-                        <Tag className="green" key={severite}>
+                        <Tag color="green" key={severite}>
                             {severite.toUpperCase()}
                         </Tag>
                     )
@@ -102,41 +86,26 @@ const IssueTable = () => {
         {
             title: 'Statut',
             dataIndex: 'statut',
-            filters: [
-                {
-                    text: 'Terminé',
-                    value: 'Terminé',
-                },
-                {
-                    text: 'En cours',
-                    value: 'En Cours',
-                },
-                {
-                    text: 'Annulé',
-                    value: 'Annulé',
-                }
-            ],
-            onFilter: (value, record) => record.statut.indexOf(value) === 0,
             key: 'statut',
             width: '10%',
             render: (_, { statut }) => {
                 if (statut === "En Cours") {
                     return (
-                        <Tag className="orange" key={statut}>
+                        <Tag color="volcano" key={statut}>
                             {statut.toUpperCase()}
                         </Tag>
                     )
                 }
                 if (statut === "Annulé") {
                     return (
-                        <Tag className="red" key={statut}>
+                        <Tag color="red" key={statut}>
                             {statut.toUpperCase()}
                         </Tag>
                     )
                 }
                 if (statut === "Terminé") {
                     return (
-                        <Tag className="green" key={statut}>
+                        <Tag color="green" key={statut}>
                             {statut.toUpperCase()}
                         </Tag>
                     )
@@ -148,7 +117,7 @@ const IssueTable = () => {
     const data = [
         {
             id: '123',
-            appareil: '28',
+            appareil: '#28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -158,7 +127,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '28',
+            appareil: '#28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -168,7 +137,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '28',
+            appareil: '#28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -178,7 +147,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '28',
+            appareil: '#28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -188,7 +157,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '28',
+            appareil: '#28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -198,7 +167,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '28',
+            appareil: '#28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -208,8 +177,8 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '28',
-            date: '12/03/2022',
+            appareil: '#28',
+            date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
             type: '',
@@ -218,7 +187,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '28',
+            appareil: '#28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -228,7 +197,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '28',
+            appareil: '#28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -238,8 +207,8 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '28',
-            date: '12/03/2019',
+            appareil: '#28',
+            date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
             type: '',
@@ -248,8 +217,8 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '28',
-            date: '12/03/2020',
+            appareil: '#28',
+            date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
             type: '',
@@ -258,7 +227,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '28',
+            appareil: '#28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',

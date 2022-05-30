@@ -92,8 +92,8 @@ const Appareils = () => {
     return (
         <>
             <LeftMenu />
-            <div className='mainContainer'>
-                <div className='tableContainer'>
+            <div className='mainAppareilContainer'>
+                <div className='tableAppareilContainer'>
                     {
                         data ?
                             <Table {...tableParam} columns={columns} dataSource={data}
