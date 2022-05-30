@@ -1,13 +1,14 @@
 import Home from './Home.js'
 import Appareils from './Appareils';
 import DetailIssue from './DetailIssue';
+import Connexion from './Connexion.js';
+import DetailDevice from './DetailDevice.js';
+import FormDemande from './FormDemande.js';
 
 // CSS
 import '../assets/css/App.css'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Connexion from './Connexion.js';
-import DetailDevice from './DetailDevice.js';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/Appareils" element={<Appareils />} />
           <Route path="/DetailIssue/:id" element={<DetailIssue />} />
           <Route path="/DetailDevice/:id" element={<DetailDevice />} />
+          <Route path="/form/" element={<FormDemande />} />
         </Routes>
       </BrowserRouter>
     </div>
