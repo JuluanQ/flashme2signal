@@ -65,6 +65,7 @@ const DetailDevice = () => {
                     "appareil": issue.idMateriel.id,
                     "dateDemande": issue.dateDemande.split('T')[0],
                     "demandeur": issue.demandeur,
+                    "description": issue.description,
                     "type": issue.type,
                     "severite": issue.severite,
                 }
