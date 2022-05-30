@@ -14,6 +14,11 @@ const Home = () => {
     const [dataIssues, setDataIssues] = useState([]);
     const [finished, setFinished] = useState(false);
 
+    const [nbOpenIssues, setNbOpenIssues] = useState(0);
+    const [nbNewIssues, setNbNewIssues] = useState(0);
+    const [nbUrgentIssues, setNbUrgentIssues] = useState(0);
+
+
     useEffect(() => {
         fetch("http://212.227.3.231:8085/flashme2signal/demandes")
             .then(res => res.json())
@@ -36,8 +41,18 @@ const Home = () => {
                     type: issue.type,
                     severity: issue.severity,
                 }
+                let now = new Date();
+                if (json.dateDemande === now.toISOString().split('T')[0]) {
+                    setNbNewIssues(nbNewIssues => nbNewIssues + 1);
+                }
+                if (issue.severity === "Urgent") {
+                    setNbUrgentIssues(nbUrgentIssues => nbUrgentIssues + 1)
+                }
                 if (issue.etat != null) {
                     json.statut = issue.etat.libelle;
+                    if (issue.etat.libelle === "En cours") {
+                        setNbOpenIssues(nbOpenIssues => nbOpenIssues + 1);
+                    }
                 }
                 dataIssues.push(json);
             });
@@ -50,7 +65,7 @@ const Home = () => {
         <>
             <LeftMenu />
             <div className='Home'>
-                <StatsCard />
+                <StatsCard open={nbOpenIssues} new={nbNewIssues} urgent={nbUrgentIssues} />
                 {finished ? <IssueTable data={dataIssues} /> : <></>}
             </div>
         </>

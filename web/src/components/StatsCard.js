@@ -7,7 +7,7 @@ import { GoFileDirectory, GoIssueOpened } from 'react-icons/go';
 import { RiAlarmWarningFill } from 'react-icons/ri';
 
 
-const StatsCard = () => {
+const StatsCard = (props) => {
 
     return (
         <>
@@ -19,7 +19,7 @@ const StatsCard = () => {
                     </div>
                     <div className='CardText'>
                         <p className='cardName'>Dossiers ouverts</p>
-                        <p className='nCardOpenIssue cardValue'>3</p>
+                        <p className='nCardOpenIssue cardValue'>{props.open}</p>
                     </div>
                 </div>
 
@@ -29,7 +29,7 @@ const StatsCard = () => {
                     </div>
                     <div className='CardText'>
                         <p className='cardName'>Nouveaux dossiers</p>
-                        <p className='nCardNewIssue cardValue'>3</p>
+                        <p className='nCardNewIssue cardValue'>{props.new}</p>
                     </div>
                 </div>
 
@@ -39,7 +39,7 @@ const StatsCard = () => {
                     </div>
                     <div className='CardText'>
                         <p className='cardName'>Dossiers urgents</p>
-                        <p className='nCardImportantIssue cardValue'>3</p>
+                        <p className='nCardImportantIssue cardValue'>{props.urgent}</p>
                     </div>
                 </div>
 
