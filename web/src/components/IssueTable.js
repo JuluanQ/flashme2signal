@@ -5,11 +5,12 @@ import { Table, Tag } from 'antd';
 import '../assets/css/Home/IssueTable.css'
 import "antd/dist/antd.css";
 import { Navigate, useNavigate } from 'react-router-dom';
-import StatsCard from "./StatsCard";
 
-const IssueTable = () => {
+const IssueTable = (props) => {
 
     const navigate = useNavigate()
+    const [data, setData] = useState();
+
 
     const columns = [
         {
@@ -29,8 +30,8 @@ const IssueTable = () => {
         },
         {
             title: 'Date',
-            dataIndex: 'date',
-            key: 'date',
+            dataIndex: 'dateDemande',
+            key: 'dateDemande',
             responsive: ['sm'],
             sorter: (a, b) => new Date(a.date) - new Date(b.date),
             width: '10%',
@@ -57,8 +58,8 @@ const IssueTable = () => {
         },
         {
             title: 'Sévérité',
-            dataIndex: 'severite',
-            key: 'severite',
+            dataIndex: 'severity',
+            key: 'severity',
             responsive: ['sm'],
             filters: [
                 {
@@ -280,30 +281,30 @@ const IssueTable = () => {
 
     return (
         <>
-            <StatsCard key={"1"} demandes={data}/>
-            <div className='IssueTable'>
-                <div className='tableContainer'>
-                    <div className='tableName'>
-                        <h3>Liste demandes</h3>
-                    </div>
-                    <div className='tableData'>
-                        <Table {...param} columns={columns} dataSource={data} className="tableDemandes"
-                               onRow={(record, rowIndex) => {
-                                   return {
-                                       onClick: event => {
-                                           navigate("/DetailIssue/" + record.id)
-                                       },
-                                   };
-                               }}
-                               scroll={{
-                                   y: 240,
-                               }}
-                        />
-                    </div>
-
+        <StatsCard key={"1"} demandes={data}/>
+        <div className='IssueTable'>
+            <div className='tableContainer'>
+                <div className='tableName'>
+                    <h3>Liste demandes</h3>
+                </div>
+                <div className='tableData'>
+                    <Table {...param} columns={columns} dataSource={props.data} className="tableDemandes"
+                        onRow={(record, rowIndex) => {
+                            return {
+                                onClick: event => {
+                                    navigate("/DetailIssue/" + record.id)
+                                },
+                            };
+                        }}
+                        scroll={{
+                            y: 240,
+                        }}
+                    />
                 </div>
 
             </div>
+
+        </div>
         </>
     );
 };

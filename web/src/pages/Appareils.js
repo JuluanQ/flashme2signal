@@ -1,6 +1,6 @@
 import { Table } from 'antd';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import LeftMenu from '../components/LeftMenu';
@@ -14,11 +14,34 @@ import InputText from '../components/InputText';
 const Appareils = () => {
 
     const navigate = useNavigate()
+    const [data, setData] = useState();
+    const [dataDevices, setDataDevices] = useState([]);
+    const [finished, setFinished] = useState(false);
 
     //Get the data from the API
     useEffect(() => {
-        //TODO
+        fetch("http://212.227.3.231:8085/flashme2signal/materiels")
+            .then(res => res.json())
+            .then(data => {
+                setData(data);
+            })
+            .catch(err => console.log(err))
     }, []);
+
+    useEffect(() => {
+        if (data !== undefined && dataDevices.length === 0) {
+            data.forEach(device => {
+                let json = {
+                    id: device.id,
+                    salle: device.salle,
+                    type: device.type,
+                    nbDemande: 0,
+                }
+                dataDevices.push(json);
+            });
+            setFinished(true)
+        }
+    }, [data && !finished]);
 
     const columns = [
         {
@@ -48,37 +71,6 @@ const Appareils = () => {
         },
     ]
 
-    const data = [
-        {
-            key: '1',
-            id: '1',
-            salle: 'Salle 1',
-            type: 'Ordinateur',
-            nbDemande: '10',
-        },
-        {
-            key: '2',
-            id: '2',
-            salle: 'Salle 2',
-            type: 'Ordinateur',
-            nbDemande: '10',
-        },
-        {
-            key: '3',
-            id: '3',
-            salle: 'Salle 3',
-            type: 'Ordinateur',
-            nbDemande: '12',
-        },
-        {
-            key: '4',
-            id: '4',
-            salle: 'Salle 4',
-            type: 'Ordinateur',
-            nbDemande: '9',
-        },
-    ];
-
     const tableParam = {
         columns,
         pagination: false,
@@ -95,8 +87,8 @@ const Appareils = () => {
             <div className='mainAppareilContainer'>
                 <div className='tableAppareilContainer'>
                     {
-                        data ?
-                            <Table {...tableParam} columns={columns} dataSource={data}
+                        finished ?
+                            <Table {...tableParam} columns={columns} dataSource={dataDevices}
                                 onRow={(record, rowIndex) => {
                                     return {
                                         onClick: event => {
