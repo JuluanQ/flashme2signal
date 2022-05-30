@@ -37,9 +37,11 @@ const Home = () => {
                     appareil: issue.idMateriel.id,
                     dateDemande: issue.dateDemande.split('T')[0],
                     demandeur: issue.demandeur,
-                    description: issue.description,
                     type: issue.type,
                     severite: issue.severite,
+                }
+                if (issue.description.length > 50) {
+                    json.description = issue.description.substring(0, 50) + "..."
                 }
                 let now = new Date();
                 if (json.dateDemande === now.toISOString().split('T')[0]) {
