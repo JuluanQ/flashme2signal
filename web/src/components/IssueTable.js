@@ -5,6 +5,7 @@ import { Table, Tag } from 'antd';
 import '../assets/css/Home/IssueTable.css'
 import "antd/dist/antd.css";
 import { Navigate, useNavigate } from 'react-router-dom';
+import StatsCard from "./StatsCard";
 
 const IssueTable = () => {
 
@@ -278,29 +279,32 @@ const IssueTable = () => {
     }
 
     return (
-        <div className='IssueTable'>
-            <div className='tableContainer'>
-                <div className='tableName'>
-                    <h3>Liste demandes</h3>
-                </div>
-                <div className='tableData'>
-                    <Table {...param} columns={columns} dataSource={data} className="tableDemandes"
-                        onRow={(record, rowIndex) => {
-                            return {
-                                onClick: event => {
-                                    navigate("/DetailIssue/" + record.id)
-                                },
-                            };
-                        }}
-                        scroll={{
-                            y: 240,
-                        }}
-                    />
+        <>
+            <StatsCard key={"1"} demandes={data}/>
+            <div className='IssueTable'>
+                <div className='tableContainer'>
+                    <div className='tableName'>
+                        <h3>Liste demandes</h3>
+                    </div>
+                    <div className='tableData'>
+                        <Table {...param} columns={columns} dataSource={data} className="tableDemandes"
+                               onRow={(record, rowIndex) => {
+                                   return {
+                                       onClick: event => {
+                                           navigate("/DetailIssue/" + record.id)
+                                       },
+                                   };
+                               }}
+                               scroll={{
+                                   y: 240,
+                               }}
+                        />
+                    </div>
+
                 </div>
 
             </div>
-
-        </div>
+        </>
     );
 };
 
