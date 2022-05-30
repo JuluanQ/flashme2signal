@@ -12,18 +12,21 @@
     background-color: rgba(0, 188, 79, 0.3);
     color: #00BC4F;
     border: none;
+    margin: 0;
 }
 
 .orange {
     background-color: rgba(240, 145, 73, 0.3);
     color: #F09149;
     border: none;
+    margin: 0;
 }
 
 .red {
     background-color: rgba(240, 73, 73, 0.3);
     color: #F04949;
     border: none;
+    margin: 0;
 }
 
 .tableName h3 {
