@@ -6,13 +6,11 @@ import fr.iut.nantes.flashme2signal.model.Etat;
 import fr.iut.nantes.flashme2signal.web.exceptions.EtatNotFoundException;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
 public class EtatController {
 
     @Autowired

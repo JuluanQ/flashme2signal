@@ -207,7 +207,7 @@ public class MaterielControllerTest {
 
     @Test
     @Order(14)
-    public void BreweryNotFoundException() throws Exception {
+    public void MaterielNotFoundException() throws Exception {
         this.mockMvc.perform(get("/materiel/1500"))
                 .andDo(print())
                 .andExpect(status().isNotFound())
