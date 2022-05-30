@@ -38,7 +38,7 @@ const DetailDevice = () => {
                 .then(data => {
                     data.forEach(issue => {
                         if (issue.idMateriel !== null) {
-                            if (issue.idMateriel.id == param.id) {
+                            if (issue.idMateriel.id === param.id) {
                                 setDataIssues(dataIssues => [...dataIssues, issue])
                                 if (issue.etat === "En cours") {
                                     setNbIssues(nbIssues => nbIssues + 1)
