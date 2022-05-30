@@ -7,7 +7,7 @@ const InputText = (props) => {
         <>
             <div className="inputText">
                 <label htmlFor={props.title}>{props.title} :</label>
-                <input type={props.type} id={props.title} disabled={props.disabled}/>
+                <input type={props.type} id={props.title} />
             </div>
         </>
     );

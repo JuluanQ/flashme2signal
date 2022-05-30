@@ -7,12 +7,12 @@ import { GoFileDirectory, GoIssueOpened } from 'react-icons/go';
 import { RiAlarmWarningFill } from 'react-icons/ri';
 
 
-const StatsCard = ({ demandes }) => {
+const StatsCard = (props) => {
 
     const DemandeFilters = {
-        EnCours: "EN COURS",
-        Nouveau: new Date(),
-        Urgent: "URGENT"
+        open: "EN COURS",
+        new: new Date(),
+        urgent: "URGENT"
     };
 
     function filterData(filter) {
@@ -38,38 +38,39 @@ const StatsCard = ({ demandes }) => {
             }
         }
     }
+const StatsCard = (props) => {
 
     return (
         <>
             <div className='StatsComponents'>
 
-                <div className='CardOpenIssue hvr-grow' onClick={() => filterData(DemandeFilters.EnCours)}>
+                <div className='CardOpenIssue hvr-grow' onClick={() => filterData(DemandeFilters.open)}>
                     <div className='CardSVG'>
                         <GoFileDirectory className='imgStatsComp' />
                     </div>
                     <div className='CardText'>
                         <p className='cardName'>Dossiers ouverts</p>
-                        <p className='nCardOpenIssue cardValue'>{demandes.filter(d => d.statut=="En Cours").length}</p>
+                        <p className='nCardOpenIssue cardValue'>{props.open}</p>
                     </div>
                 </div>
 
-                <div className='CardOpenIssue hvr-grow' onClick={() => filterData(DemandeFilters.Nouveau)}>
+                <div className='CardOpenIssue hvr-grow' onClick={() => filterData(DemandeFilters.new)}>
                     <div className='CardSVG'>
                         <GoIssueOpened className='imgStatsComp' />
                     </div>
                     <div className='CardText'>
                         <p className='cardName'>Nouveaux dossiers</p>
-                        <p className='nCardNewIssue cardValue'>3</p>
+                        <p className='nCardNewIssue cardValue'>{props.new}</p>
                     </div>
                 </div>
 
-                <div className='CardImportantIssue hvr-grow' onClick={() => filterData(DemandeFilters.Urgent)}>
+                <div className='CardImportantIssue hvr-grow' onClick={() => filterData(DemandeFilters.urgent)}>
                     <div className='CardSVG'>
                         <RiAlarmWarningFill className='imgImportantComp' />
                     </div>
                     <div className='CardText'>
                         <p className='cardName'>Dossiers urgents</p>
-                        <p className='nCardImportantIssue cardValue'>{demandes.filter(d => d.severite=="Urgent").length}</p>
+                        <p className='nCardImportantIssue cardValue'>{props.urgent}</p>
                     </div>
                 </div>
 
