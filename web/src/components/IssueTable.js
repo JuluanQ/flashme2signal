@@ -9,8 +9,6 @@ import { Navigate, useNavigate } from 'react-router-dom';
 const IssueTable = (props) => {
 
     const navigate = useNavigate()
-    const [data, setData] = useState();
-
 
     const columns = [
         {
@@ -58,8 +56,8 @@ const IssueTable = (props) => {
         },
         {
             title: 'Sévérité',
-            dataIndex: 'severity',
-            key: 'severity',
+            dataIndex: 'severite',
+            key: 'severite',
             responsive: ['sm'],
             filters: [
                 {
@@ -153,7 +151,6 @@ const IssueTable = (props) => {
         pagination: false,
         size: 'default',
         sticky: true,
-
     }
 
     return (

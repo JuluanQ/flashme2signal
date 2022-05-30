@@ -39,7 +39,7 @@ const Home = () => {
                     demandeur: issue.demandeur,
                     description: issue.description,
                     type: issue.type,
-                    severity: issue.severity,
+                    severite: issue.severite,
                 }
                 let now = new Date();
                 if (json.dateDemande === now.toISOString().split('T')[0]) {
