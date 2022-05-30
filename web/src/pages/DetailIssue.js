@@ -3,8 +3,8 @@ import LeftMenu from '../components/LeftMenu';
 import ButtonInput from '../components/ButtonInput';
 
 // Imports
-import { Tag, Select} from 'antd';
-import { useParams } from 'react-router-dom';
+import { Tag, Select } from 'antd';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import InputText from '../components/InputText';
 
 // CSS
@@ -16,6 +16,7 @@ const { Option } = Select;
 
 const DetailIssue = () => {
     const params = useParams();
+    const navigate = useNavigate();
     return (
         <>
             <LeftMenu />
@@ -44,13 +45,13 @@ const DetailIssue = () => {
                     <div className='ComputerIssue'>
                         <p className='ComputerTitle'>Ordinateur <span id='IdIssue'>#{params.device}</span></p>
                         <div className="Contain">
-                        <div className="TxtInput">
-                            <InputText title="Salle" type="text"/>
-                            <InputText title="Autres problèmes" type="text"/>
-                        </div>
-                        <div className='boutons-descripfion'>
-                            <ButtonInput value="Voir plus" className="BtnVoirPlus"></ButtonInput>
-                        </div>
+                            <div className="TxtInput">
+                                <InputText title="Salle" type="text" />
+                                <InputText title="Autres problèmes" type="text" />
+                            </div>
+                            <div className='boutons-descripfion' onClick={() => navigate('/DetailDevice')}>
+                                <ButtonInput value="Voir plus" className="BtnVoirPlus" ></ButtonInput>
+                            </div>
                         </div>
                     </div>
                 </div>
