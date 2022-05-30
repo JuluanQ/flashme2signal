@@ -22,24 +22,22 @@ const DetailDevice = () => {
     return (
         <>
             <LeftMenu />
-            <div className='mainContainer'>
-                <div className='nameContainer'>
-                    <div className="topNameContainer">
-                        <h3>Appareil #{param.id}</h3>
-                    </div>
+            <div className='ContentIssue'>
+                <p className="IssueTitle">Appareil #{param.id}</p>
+
                     <div className="bottomNameContainer">
                         <Tag color="green">{0} problèmes</Tag>
                     </div>
-                </div>
-                <div className='bodyContainer'>
-                    <div className='leftBodyContainer'>
-                        <h4>Salle : </h4>
+
+                <div className='DetailContentIssue'>
+                    <div className='DescriptionIssue'>
+                        <p className="DescriptionText">Salle : </p>
                     </div>
-                    <div className='rightBodyContainer'>
+                    <div className='ComputerIssue'>
                         <div className="qrCodeContainer">
                             <img src="" alt="" width="10em" height="10em" />
                         </div>
-                        <div className="buttonsContainer">
+                        <div className="boutons-descripfion">
                             <ButtonInput value="Générer" />
                             <DownloadOutlined className='downloadButton' />
                         </div>
