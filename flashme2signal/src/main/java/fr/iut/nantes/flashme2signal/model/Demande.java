@@ -34,14 +34,16 @@ public class Demande {
     @NotNull
     private String type;
 
-    @Column
+
     @NotNull
-    private String etat;
+    @ManyToOne
+    @JoinColumn(name = "id_etat")
+    private Etat etat;
 
     public Demande() {
     }
 
-    public Demande(Materiel idMateriel, String severite, String description, Date dateDemande, String type, String etat) {
+    public Demande(Materiel idMateriel, String severite, String description, Date dateDemande, String type, Etat etat) {
         this.idMateriel = idMateriel;
         this.severite = severite;
         this.description = description;
@@ -98,11 +100,11 @@ public class Demande {
         this.type = type;
     }
 
-    public String getEtat() {
+    public Etat getEtat() {
         return etat;
     }
 
-    public void setEtat(String etat) {
+    public void setEtat(Etat etat) {
         this.etat = etat;
     }
 
