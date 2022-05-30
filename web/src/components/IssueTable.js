@@ -31,6 +31,7 @@ const IssueTable = () => {
             dataIndex: 'date',
             key: 'date',
             responsive: ['sm'],
+            sorter: (a, b) => new Date(a.date) - new Date(b.date),
             width: '10%',
         },
         {
@@ -58,6 +59,21 @@ const IssueTable = () => {
             dataIndex: 'severite',
             key: 'severite',
             responsive: ['sm'],
+            filters: [
+                {
+                    text: 'Urgent',
+                    value: 'Urgent',
+                },
+                {
+                    text: 'Moyen',
+                    value: 'Moyen',
+                },
+                {
+                    text: 'Mineur',
+                    value: 'Mineur',
+                }
+            ],
+            onFilter: (value, record) => record.severite.indexOf(value) === 0,
             width: '10%',
             render: (_, { severite }) => {
                 if (severite === "Moyen") {
@@ -87,6 +103,21 @@ const IssueTable = () => {
             title: 'Statut',
             dataIndex: 'statut',
             key: 'statut',
+            filters: [
+                {
+                    text: 'Terminé',
+                    value: 'Terminé',
+                },
+                {
+                    text: 'En cours',
+                    value: 'En Cours',
+                },
+                {
+                    text: 'Annulé',
+                    value: 'Annulé',
+                }
+            ],
+            onFilter: (value, record) => record.statut.indexOf(value) === 0,
             width: '10%',
             render: (_, { statut }) => {
                 if (statut === "En Cours") {
