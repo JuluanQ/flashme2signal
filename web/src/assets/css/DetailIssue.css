@@ -83,6 +83,7 @@
 #iptDesc {
     width: 90%;
     height: 10vmax;
+    padding: 1em;
     margin-bottom: 10px;
     background-color: #2F2E31;
     border-radius: 4px;
@@ -137,21 +138,29 @@ thead th {
     padding: 2%;
     background-color: #3B3B3F;
 }
+
 .ComputerIssue .boutons-descripfion {
     justify-content: center;
     margin-top: 70px;
     align-items: center;
 }
-.Contain{
+
+.Contain {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 86%;
     justify-content: space-between;
 }
+
 .ComputerTitle {
     font-weight: bold;
     font-size: 20px;
+}
+
+.deviceInfo {
+    background-color: #2F2E31;
+    padding: .5em;
 }
 
 .BtnVoirPlus {
@@ -163,14 +172,18 @@ thead th {
         width: 100%;
         flex-direction: column;
     }
-    .DescriptionIssue, .ComputerIssue {
+
+    .DescriptionIssue,
+    .ComputerIssue {
         width: 100%;
         margin-bottom: 40px;
         padding: 20px;
     }
+
     .ComputerIssue {
         margin-left: 0;
     }
+
     .ContentIssue {
         padding: 40px;
         margin-left: 0;
