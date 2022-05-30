@@ -63,20 +63,11 @@ class DemandeControllerTest {
 
 	@Test
 	@Order(3)
-	public void addDemande1() throws Exception {
+	public void addEtat() throws Exception {
 		String s = "{\"id\":1," +
-				"\"idMateriel\":{" +
-				"\"id\":1," +
-				"\"salle\":\"1\"," +
-				"\"type\":\"tablette\"}," +
-				"\"severite\":\"mineur\"," +
-				"\"description\":\"descri\"," +
-				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
-				"\"type\":\"panne\"," +
-				"\"etat\":\"0\"}";
-
+				"\"libelle\":\"grave\"}";
 		this.mockMvc.perform(
-						post("/demande")
+						post("/etat")
 								.contentType(MediaType.APPLICATION_JSON)
 								.content(s)
 				)
@@ -87,6 +78,33 @@ class DemandeControllerTest {
 
 	@Test
 	@Order(4)
+	public void addDemande1() throws Exception {
+		String s = "{\"id\":1," +
+				"\"idMateriel\":{" +
+				"\"id\":1," +
+				"\"salle\":\"1\"," +
+				"\"type\":\"tablette\"}," +
+				"\"severite\":\"mineur\"," +
+				"\"description\":\"descri\"," +
+				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
+				"\"type\":\"panne\"," +
+				"\"etat\":{" +
+				"\"id\":1," +
+				"\"libelle\":\"grave\"}" +
+				"}";
+
+		this.mockMvc.perform(
+						post("/demande")
+								.contentType(MediaType.APPLICATION_JSON)
+								.content(s)
+				)
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().string(s));
+	}
+
+	@Test
+	@Order(5)
 	public void Demande1() throws Exception {
 		String s = "{\"id\":1," +
 				"\"idMateriel\":{" +
@@ -97,7 +115,10 @@ class DemandeControllerTest {
 				"\"description\":\"descri\"," +
 				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
 				"\"type\":\"panne\"," +
-				"\"etat\":\"0\"}";
+				"\"etat\":{" +
+				"\"id\":1," +
+				"\"libelle\":\"grave\"}" +
+				"}";
 
 		this.mockMvc.perform(get("/demandes"))
 				.andDo(print())
@@ -106,7 +127,7 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(5)
+	@Order(6)
 	public void addDemande2() throws Exception {
 		String s = "{\"id\":1," +
 				"\"idMateriel\":{" +
@@ -117,7 +138,10 @@ class DemandeControllerTest {
 				"\"description\":\"desc\"," +
 				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
 				"\"type\":\"casse\"," +
-				"\"etat\":\"0\"}";
+				"\"etat\":{" +
+				"\"id\":1," +
+				"\"libelle\":\"grave\"}" +
+				"}";
 
 		this.mockMvc.perform(
 						post("/demande")
@@ -130,7 +154,7 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(6)
+	@Order(7)
 	public void Demande2() throws Exception {
 		String s = "{\"id\":1," +
 				"\"idMateriel\":{" +
@@ -141,7 +165,10 @@ class DemandeControllerTest {
 				"\"description\":\"desc\"," +
 				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
 				"\"type\":\"casse\"," +
-				"\"etat\":\"0\"}";
+				"\"etat\":{" +
+				"\"id\":1," +
+				"\"libelle\":\"grave\"}" +
+				"}";
 
 		this.mockMvc.perform(get("/demandes"))
 				.andDo(print())
@@ -150,7 +177,7 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(7)
+	@Order(8)
 	public void addDemande3() throws Exception {
 		String s = "{\"id\":2," +
 				"\"idMateriel\":{" +
@@ -161,7 +188,10 @@ class DemandeControllerTest {
 				"\"description\":\"desc\"," +
 				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
 				"\"type\":\"casse\"," +
-				"\"etat\":\"0\"}";
+				"\"etat\":{" +
+				"\"id\":1," +
+				"\"libelle\":\"grave\"}" +
+				"}";
 
 		this.mockMvc.perform(
 						post("/demande")
@@ -174,7 +204,7 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(8)
+	@Order(9)
 	public void Demande3() throws Exception {
 		String s1 = "{\"id\":1," +
 				"\"idMateriel\":{" +
@@ -185,7 +215,10 @@ class DemandeControllerTest {
 				"\"description\":\"desc\"," +
 				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
 				"\"type\":\"casse\"," +
-				"\"etat\":\"0\"}";
+				"\"etat\":{" +
+				"\"id\":1," +
+				"\"libelle\":\"grave\"}" +
+				"}";
 		String s2 = "{\"id\":2," +
 				"\"idMateriel\":{" +
 				"\"id\":1," +
@@ -195,7 +228,10 @@ class DemandeControllerTest {
 				"\"description\":\"desc\"," +
 				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
 				"\"type\":\"casse\"," +
-				"\"etat\":\"0\"}";
+				"\"etat\":{" +
+				"\"id\":1," +
+				"\"libelle\":\"grave\"}" +
+				"}";
 		this.mockMvc.perform(get("/demandes"))
 				.andDo(print())
 				.andExpect(status().isOk())
@@ -203,7 +239,7 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(9)
+	@Order(10)
 	public void deleteDemande1() throws Exception {
 		this.mockMvc.perform(
 						delete("/demande/1")
@@ -213,7 +249,7 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(10)
+	@Order(11)
 	public void Demande4() throws Exception {
 		String s2 = "{\"id\":2," +
 				"\"idMateriel\":{" +
@@ -224,7 +260,10 @@ class DemandeControllerTest {
 				"\"description\":\"desc\"," +
 				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
 				"\"type\":\"casse\"," +
-				"\"etat\":\"0\"}";
+				"\"etat\":{" +
+				"\"id\":1," +
+				"\"libelle\":\"grave\"}" +
+				"}";
 		this.mockMvc.perform(get("/demandes"))
 				.andDo(print())
 				.andExpect(status().isOk())
@@ -232,7 +271,7 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(11)
+	@Order(12)
 	public void updateDemande() throws Exception {
 		String s = "{\"id\":2," +
 				"\"idMateriel\":{" +
@@ -243,7 +282,10 @@ class DemandeControllerTest {
 				"\"description\":\"description\"," +
 				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
 				"\"type\":\"panne\"," +
-				"\"etat\":\"0\"}";
+				"\"etat\":{" +
+				"\"id\":1," +
+				"\"libelle\":\"grave\"}" +
+				"}";
 		this.mockMvc.perform(
 						put("/demande/2")
 								.contentType(MediaType.APPLICATION_JSON)
@@ -254,7 +296,7 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(12)
+	@Order(13)
 	public void Demande5() throws Exception {
 		String s2 = "{\"id\":2," +
 				"\"idMateriel\":{" +
@@ -265,7 +307,10 @@ class DemandeControllerTest {
 				"\"description\":\"description\"," +
 				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
 				"\"type\":\"panne\"," +
-				"\"etat\":\"0\"}";
+				"\"etat\":{" +
+				"\"id\":1," +
+				"\"libelle\":\"grave\"}" +
+				"}";
 		this.mockMvc.perform(get("/demandes"))
 				.andDo(print())
 				.andExpect(status().isOk())
@@ -273,7 +318,7 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(13)
+	@Order(14)
 	public void deleteDemande2() throws Exception {
 		this.mockMvc.perform(
 						delete("/demande/2")
@@ -284,7 +329,7 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(14)
+	@Order(15)
 	public void Demande6() throws Exception {
 		String s2 = "";
 		this.mockMvc.perform(get("/demandes"))
@@ -294,7 +339,7 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(15)
+	@Order(16)
 	public void DemandeNotFoundException() throws Exception {
 		this.mockMvc.perform(get("/demande/6000"))
 				.andDo(print())
