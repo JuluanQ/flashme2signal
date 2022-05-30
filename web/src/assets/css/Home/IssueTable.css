@@ -68,6 +68,12 @@ tr {
     width: 30% !important;
 }
 
+.ant-table-tbody>tr>td:nth-child(1),
+.ant-table-tbody>tr>td:nth-child(5) {
+    text-align: left;
+    padding-left: 2em !important;
+}
+
 @media only screen and (max-width: 950px) {
 
     .ant-table-thead>tr>th,
