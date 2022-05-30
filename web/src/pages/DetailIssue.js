@@ -43,9 +43,15 @@ const DetailIssue = () => {
                     </div>
                     <div className='ComputerIssue'>
                         <p className='ComputerTitle'>Ordinateur <span id='IdIssue'>#{params.device}</span></p>
-                        <InputText title="Salle" type="text"/>
-                        <InputText title="Autres problèmes" type="text"/>
-                        <ButtonInput value="Voir plus" className="BtnVoirPlus"></ButtonInput>
+                        <div className="Contain">
+                        <div className="TxtInput">
+                            <InputText title="Salle" type="text"/>
+                            <InputText title="Autres problèmes" type="text"/>
+                        </div>
+                        <div className='boutons-descripfion'>
+                            <ButtonInput value="Voir plus" className="BtnVoirPlus"></ButtonInput>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
