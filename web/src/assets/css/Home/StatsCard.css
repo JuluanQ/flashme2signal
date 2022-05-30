@@ -13,7 +13,7 @@
 
     background-color: #3B3B3F;
     width: calc(90%/3);
-    height: 75px;
+    height: 120px;
 
     padding-top: 1em;
     padding: .5em;
@@ -29,7 +29,7 @@
     align-items: center;
     border-radius: 4px;
     width: calc(90%/3);
-    height: 75px;
+    height: 120px;
     padding-top: 1em;
     padding: 0.5em;
 }
@@ -37,16 +37,16 @@
 .imgStatsComp {
     margin-right: auto;
     margin-left: 2em;
-    width: 42px;
-    height: 42px;
+    width: 60px;
+    height: auto;
     color: #3452FF;
 }
 
 .imgImportantComp {
     margin-right: auto;
     margin-left: 2em;
-    width: 42px;
-    height: 42px;
+    width: 60px;
+    height: auto;
     color: #FF3434;
 }
 
@@ -95,12 +95,10 @@
     }
 
     .imgStatsComp {
-        width: 32px;
-        height: 32px;
+        width: 60px;
     }
 
     .imgImportantComp {
-        width: 32px;
-        height: 32px;
+        width: 60px;
     }
 }

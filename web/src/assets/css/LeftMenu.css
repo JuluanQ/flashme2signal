@@ -69,7 +69,7 @@
     text-align: left;
     z-index: 1000;
 
-    height: 4em;
+    height: 5em;
     width: 100vw;
 
     margin-bottom: auto;
@@ -97,19 +97,16 @@
     position: absolute;
 
 
-    margin-top: 5vh;
+    margin-top: 6vh;
     padding-left: 2em;
 
     width: 100vw;
 
-    background-color: #2F2E31;
+    background-color: rgba(47, 46, 49, 0.7);
 }
 
-.dropdown-content a {
-    text-decoration-line: none;
-    text-decoration-color: currentcolor;
+.dropdown-content h3 {
     color: #FFFFFF;
-    cursor: pointer;
 }
 
 .dropdown-content .Deconnexion {
