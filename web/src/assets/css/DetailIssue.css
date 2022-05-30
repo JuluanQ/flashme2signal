@@ -155,3 +155,22 @@ thead th {
 .BtnVoirPlus {
     margin-top: auto;
 }
+
+@media only screen and (max-width: 950px) {
+    .DetailContentIssue {
+        width: 100%;
+        flex-direction: column;
+    }
+    .DescriptionIssue, .ComputerIssue {
+        width: 100%;
+        margin-bottom: 40px;
+        padding: 20px;
+    }
+    .ComputerIssue {
+        margin-left: 0;
+    }
+    .ContentIssue {
+        padding: 40px;
+        margin-left: 0;
+    }
+}
