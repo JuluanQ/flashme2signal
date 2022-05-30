@@ -16,3 +16,10 @@
 .rightBodyContainer {
     background-color: #3B3B3F;
 }
+.buttonsContainer{
+    display: flex;
+    align-items: center;
+}
+.issuesContainer{
+    margin-top: 50px;
+}

@@ -139,6 +139,7 @@ thead th {
 .ComputerIssue .boutons-descripfion {
     justify-content: center;
     margin-top: 70px;
+    align-items: center;
 }
 .Contain{
     display: flex;
