@@ -33,6 +33,7 @@
 
 .tableContainer {
     display: flex;
+    max-width: 100%;
     flex-direction: column;
     padding: 40px;
     margin: auto;
