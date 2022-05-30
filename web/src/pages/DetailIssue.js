@@ -22,8 +22,8 @@ const DetailIssue = () => {
             <div className='ContentIssue'>
                 <p className='IssueTitle'>Demande <span id='IdIssue'>#{params.id}</span></p>
                 <div>
-                    <Tag className="urgent">Urgent</Tag>
-                    <Tag className="encours">En cours</Tag>
+                    <Tag className="red">Urgent</Tag>
+                    <Tag className="green">En cours</Tag>
                 </div>
                 <div className='DetailContentIssue'>
                     <div className='DescriptionIssue'>
