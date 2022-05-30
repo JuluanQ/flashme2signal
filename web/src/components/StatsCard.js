@@ -12,7 +12,7 @@ const StatsCard = (props) => {
     const DemandeFilters = {
         open: "EN COURS",
         urgent: "URGENT",
-        new: new Date()
+        new: new Date().toISOString().split('T')[0]
     };
 
     function filterData(filter) {
@@ -22,10 +22,11 @@ const StatsCard = (props) => {
             var td = null
             if (filter === DemandeFilters.open) {
                 td = trs[i].getElementsByTagName("td")[7];
-            } else if (filter === DemandeFilters.open) {
+            } else if (filter === DemandeFilters.urgent) {
                 td = trs[i].getElementsByTagName("td")[6];
-            } else if (filter === DemandeFilters.new.toISOString().split('T')[0]) {
+            } else if (filter === DemandeFilters.new) {
                 td = trs[i].getElementsByTagName("td")[2];
+                console.log("test")
             }
 
             if (td)

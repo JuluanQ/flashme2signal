@@ -56,8 +56,7 @@ const Home = () => {
                 }
                 dataIssues.push(json);
             });
-            setFinished(true)
-            console.log(dataIssues);
+            setFinished(true);
         }
 
     }, [data && !finished]);
