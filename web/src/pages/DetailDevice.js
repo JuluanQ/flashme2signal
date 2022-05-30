@@ -39,7 +39,7 @@ const DetailDevice = () => {
                         if (issue.idMateriel !== null) {
                             if (issue.idMateriel.id == param.id) {
                                 setIssues(issues => [...issues, issue])
-                                if (issue.etat !== "Terminé") {
+                                if (issue.etat === "En cours") {
                                     setNbIssues(nbIssues => nbIssues + 1)
                                 }
                             }
