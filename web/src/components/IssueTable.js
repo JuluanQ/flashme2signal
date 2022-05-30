@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table, Tag } from 'antd';
 
 
@@ -6,9 +6,11 @@ import '../assets/css/Home/IssueTable.css'
 import "antd/dist/antd.css";
 import { Navigate, useNavigate } from 'react-router-dom';
 
-const IssueTable = () => {
+const IssueTable = (props) => {
 
     const navigate = useNavigate()
+    const [data, setData] = useState();
+
 
     const columns = [
         {
@@ -28,8 +30,8 @@ const IssueTable = () => {
         },
         {
             title: 'Date',
-            dataIndex: 'date',
-            key: 'date',
+            dataIndex: 'dateDemande',
+            key: 'dateDemande',
             responsive: ['sm'],
             sorter: (a, b) => new Date(a.date) - new Date(b.date),
             width: '10%',
@@ -56,8 +58,8 @@ const IssueTable = () => {
         },
         {
             title: 'Sévérité',
-            dataIndex: 'severite',
-            key: 'severite',
+            dataIndex: 'severity',
+            key: 'severity',
             responsive: ['sm'],
             filters: [
                 {
@@ -145,129 +147,6 @@ const IssueTable = () => {
         }
     ];
 
-    const data = [
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Moyen',
-            statut: 'En Cours',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Urgent',
-            statut: 'Annulé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Mineur',
-            statut: 'Terminé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Moyen',
-            statut: 'En Cours',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Urgent',
-            statut: 'Annulé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Mineur',
-            statut: 'Terminé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Moyen',
-            statut: 'En Cours',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Urgent',
-            statut: 'Annulé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Mineur',
-            statut: 'Terminé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Moyen',
-            statut: 'En Cours',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Urgent',
-            statut: 'Annulé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Mineur',
-            statut: 'Terminé',
-        },
-    ];
-
     const param = {
         bordered: true,
         loading: false,
@@ -284,7 +163,7 @@ const IssueTable = () => {
                     <h3>Liste demandes</h3>
                 </div>
                 <div className='tableData'>
-                    <Table {...param} columns={columns} dataSource={data} className="tableDemandes"
+                    <Table {...param} columns={columns} dataSource={props.data} className="tableDemandes"
                         onRow={(record, rowIndex) => {
                             return {
                                 onClick: event => {
