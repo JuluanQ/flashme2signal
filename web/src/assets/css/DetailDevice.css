@@ -1,0 +1,18 @@
+.topNameContainer h3 {
+    color: #fff;
+}
+
+.bodyContainer {
+    display: flex;
+    flex-direction: row;
+
+    width: 90%;
+}
+
+.leftBodyContainer {
+    background-color: #3B3B3F;
+}
+
+.rightBodyContainer {
+    background-color: #3B3B3F;
+}
