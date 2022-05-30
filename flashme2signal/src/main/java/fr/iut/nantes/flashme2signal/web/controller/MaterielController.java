@@ -42,6 +42,7 @@ public class MaterielController {
     public Materiel updateMateriel(@PathVariable("id") int id, @RequestBody Materiel materiel) {
         Materiel materielToUpdate = materielDao.findById(id);
         materielToUpdate.setSalle(materiel.getSalle());
+        materielToUpdate.setType(materiel.getType());
         materielDao.save(materielToUpdate);
         return materielToUpdate;
     }

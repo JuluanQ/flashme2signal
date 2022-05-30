@@ -19,12 +19,25 @@ public class Materiel {
     @NotNull
     private String salle;
 
-    public Materiel(int id, String salle) {
+    @Column
+    @NotNull
+    private String type;
+
+    public Materiel(int id, String salle, String type) {
         this.id = id;
         this.salle = salle;
+        this.type = type;
     }
 
     public Materiel() {}
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public int getId() {
         return id;
@@ -46,12 +59,19 @@ public class Materiel {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Materiel materiel = (Materiel) o;
-        return Objects.equals(id, materiel.id) && Objects.equals(salle, materiel.salle);
+
+        if (id != materiel.id) return false;
+        if (salle != null ? !salle.equals(materiel.salle) : materiel.salle != null) return false;
+        return type != null ? type.equals(materiel.type) : materiel.type == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, salle);
+        int result = id;
+        result = 31 * result + (salle != null ? salle.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        return result;
     }
 }
