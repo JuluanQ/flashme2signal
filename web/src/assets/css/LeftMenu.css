@@ -4,7 +4,7 @@
     text-align: left;
 
     height: 100vh;
-    max-width: 15vw;
+    width: 15vw;
 
     margin-right: auto;
 
@@ -67,6 +67,7 @@
     display: flex;
     justify-content: space-between;
     text-align: left;
+    z-index: 1000;
 
     height: 4em;
     width: 100vw;
