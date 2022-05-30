@@ -1,7 +1,7 @@
 import { Tag } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import ButtonInput from '../components/ButtonInput';
@@ -14,13 +14,18 @@ const DetailDevice = () => {
 
     const param = useParams()
 
+    //Récupération des données
+    useEffect(() => {
+        //TODO
+    }, []);
+
     return (
         <>
             <LeftMenu />
             <div className='mainContainer'>
                 <div className='nameContainer'>
                     <div className="topNameContainer">
-                        <h3>Appareil n°{param.id}</h3>
+                        <h3>Appareil #{param.id}</h3>
                     </div>
                     <div className="bottomNameContainer">
                         <Tag color="green">{0} problèmes</Tag>

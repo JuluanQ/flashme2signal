@@ -148,7 +148,7 @@ const IssueTable = () => {
     const data = [
         {
             id: '123',
-            appareil: '#28',
+            appareil: '28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -158,7 +158,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '#28',
+            appareil: '28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -168,7 +168,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '#28',
+            appareil: '28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -178,7 +178,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '#28',
+            appareil: '28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -188,7 +188,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '#28',
+            appareil: '28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -198,7 +198,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '#28',
+            appareil: '28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -208,7 +208,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '#28',
+            appareil: '28',
             date: '12/03/2022',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -218,7 +218,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '#28',
+            appareil: '28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -228,7 +228,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '#28',
+            appareil: '28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -238,7 +238,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '#28',
+            appareil: '28',
             date: '12/03/2019',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -248,7 +248,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '#28',
+            appareil: '28',
             date: '12/03/2020',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
@@ -258,7 +258,7 @@ const IssueTable = () => {
         },
         {
             id: '123',
-            appareil: '#28',
+            appareil: '28',
             date: '12/03/2021',
             demandeur: 'E183247G',
             description: 'L’ordinateur ne démarre pas quand...',
