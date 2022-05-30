@@ -15,6 +15,7 @@ const DetailDevice = () => {
     const param = useParams()
     const [device, setDevice] = useState()
 
+    const [dataIssues, setDataIssues] = useState([]);
     const [issues, setIssues] = useState([])
     const [data, setData] = useState()
 
@@ -38,7 +39,7 @@ const DetailDevice = () => {
                     data.forEach(issue => {
                         if (issue.idMateriel !== null) {
                             if (issue.idMateriel.id == param.id) {
-                                setIssues(issues => [...issues, issue])
+                                setDataIssues(dataIssues => [...dataIssues, issue])
                                 if (issue.etat === "En cours") {
                                     setNbIssues(nbIssues => nbIssues + 1)
                                 }
@@ -55,6 +56,28 @@ const DetailDevice = () => {
             setDevice(json)
         }
     }, [data]);
+
+    useEffect(() => {
+        if (dataIssues !== undefined) {
+            dataIssues.forEach(issue => {
+                let json = {
+                    "id": issue.id,
+                    "appareil": issue.idMateriel.id,
+                    "dateDemande": issue.dateDemande.split('T')[0],
+                    "demandeur": issue.demandeur,
+                    "type": issue.type,
+                    "severite": issue.severite,
+                }
+                if (issue.description.length > 50) {
+                    json.description = issue.description.substring(0, 50) + "..."
+                }
+                if (issue.etat !== null) {
+                    json.statut = issue.etat.libelle;
+                }
+                setIssues(issues => [...issues, json])
+            });
+        }
+    }, [dataIssues]);
 
     return (
         <>
