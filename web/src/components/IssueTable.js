@@ -62,21 +62,21 @@ const IssueTable = () => {
             render: (_, { severite }) => {
                 if (severite === "Moyen") {
                     return (
-                        <Tag color="volcano" key={severite}>
+                        <Tag className="orange" key={severite}>
                             {severite.toUpperCase()}
                         </Tag>
                     )
                 }
                 if (severite === "Urgent") {
                     return (
-                        <Tag color="red" key={severite}>
+                        <Tag className="red" key={severite}>
                             {severite.toUpperCase()}
                         </Tag>
                     )
                 }
                 if (severite === "Mineur") {
                     return (
-                        <Tag color="green" key={severite}>
+                        <Tag className="green" key={severite}>
                             {severite.toUpperCase()}
                         </Tag>
                     )
@@ -91,21 +91,21 @@ const IssueTable = () => {
             render: (_, { statut }) => {
                 if (statut === "En Cours") {
                     return (
-                        <Tag color="volcano" key={statut}>
+                        <Tag className="orange" key={statut}>
                             {statut.toUpperCase()}
                         </Tag>
                     )
                 }
                 if (statut === "Annulé") {
                     return (
-                        <Tag color="red" key={statut}>
+                        <Tag className="red" key={statut}>
                             {statut.toUpperCase()}
                         </Tag>
                     )
                 }
                 if (statut === "Terminé") {
                     return (
-                        <Tag color="green" key={statut}>
+                        <Tag className="green" key={statut}>
                             {statut.toUpperCase()}
                         </Tag>
                     )
