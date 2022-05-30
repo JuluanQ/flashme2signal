@@ -4,8 +4,7 @@ import ButtonInput from '../components/ButtonInput';
 
 // Imports
 import { Tag, Select } from 'antd';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import InputText from '../components/InputText';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 // CSS
 import '../assets/css/DetailIssue.css';
@@ -17,6 +16,7 @@ const { Option } = Select;
 const DetailIssue = () => {
     const params = useParams();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [data, setData] = useState();
     const [dataIssues, setDataIssues] = useState();
@@ -47,10 +47,13 @@ const DetailIssue = () => {
     }
 
     useEffect(() => {
+        //Reset des states
+        setData(undefined);
+        setDataIssues(undefined);
+        setAllIssues([]);
+        setDataDevice(undefined);
+        setDateDifference(undefined);
 
-    }, []);
-
-    useEffect(() => {
         fetch("http://212.227.3.231:8085/flashme2signal/demande/" + params.id)
             .then(res => res.json())
             .then(data => {
@@ -58,24 +61,7 @@ const DetailIssue = () => {
             })
             .catch(err => console.log(err))
 
-    }, []);
-
-    useEffect(() => {
-        if (dataDevice !== undefined && allIssues.length === 0) {
-            fetch("http://212.227.3.231:8085/flashme2signal/demandes/")
-                .then(res => res.json())
-                .then(data => {
-                    data.forEach(issue => {
-                        if (issue.idMateriel !== null && issue.severite === "En cours") {
-                            if (issue.idMateriel.id === dataDevice.id) {
-                                allIssues.push(issue);
-                            }
-                        }
-                    });
-                })
-                .catch(err => console.log(err))
-        }
-    }, [dataDevice]);
+    }, [location]);
 
     useEffect(() => {
         if (data !== undefined && dataIssues === undefined) {
@@ -112,19 +98,36 @@ const DetailIssue = () => {
         }
     }, [data]);
 
+    useEffect(() => {
+        if (dataDevice !== undefined && allIssues.length === 0) {
+            fetch("http://212.227.3.231:8085/flashme2signal/demandes/")
+                .then(res => res.json())
+                .then(data => {
+                    data.forEach(issue => {
+                        if (issue.idMateriel !== null) {
+                            if (issue.idMateriel.id === dataDevice.id) {
+                                allIssues.push(issue);
+                            }
+                        }
+                    });
+                    console.log(allIssues)
+                })
+                .catch(err => console.log(err))
+        }
+    }, [dataDevice]);
+
     return (
         <>
             <LeftMenu />
             <div className='ContentIssue'>
                 <p className='IssueTitle'>Demande <span id='IdIssue'>#{params.id}</span></p>
                 <div>
-                    {
-                        dataIssues !== undefined ?
-                            <>
-                                <Tag className={severiteColors(dataIssues.severite)}>{dataIssues.severite}</Tag>
-                                <Tag className={etatColors(dataIssues.etat)}>{dataIssues.etat}</Tag>
-                            </>
-                            : <></>
+                    {dataIssues !== undefined ?
+                        <>
+                            <Tag className={severiteColors(dataIssues.severite)}>{dataIssues.severite}</Tag>
+                            <Tag className={etatColors(dataIssues.etat)}>{dataIssues.etat}</Tag>
+                        </>
+                        : <></>
                     }
 
                 </div>
@@ -157,12 +160,16 @@ const DetailIssue = () => {
                                     {dataDevice !== undefined ? <p className="deviceInfo">{dataDevice.type}</p> : <p className="deviceInfo">...</p>}
                                 </div>
                                 <div className='deviceInfos'>
-                                    <p>Autres Problemes :</p>
+                                    <p>Autres Problemes en cours :</p>
                                     {allIssues.length > 0 ?
                                         <div className="deviceInfo">
-                                            {allIssues.map(issue => (<Tag className={severiteColors(issue.severite)}>{issue.id}</Tag>))}
+                                            {allIssues.map(issue => (
+                                                <Tag className={severiteColors(issue.severite)}
+                                                    onClick={() => navigate("/DetailIssue/" + issue.id)}>{issue.id}</Tag>
+                                            ))}
                                         </div>
-                                        : <p className="deviceInfo">...</p>}
+                                        : <p className="deviceInfo">...</p>
+                                    }
                                 </div>
                             </div>
                             {
