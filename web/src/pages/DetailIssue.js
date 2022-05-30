@@ -46,8 +46,8 @@ const DetailIssue = () => {
                         <p className='ComputerTitle'>Ordinateur <span id='IdIssue'>#{params.device}</span></p>
                         <div className="Contain">
                             <div className="TxtInput">
-                                <InputText title="Salle" type="text" />
-                                <InputText title="Autres problèmes" type="text" />
+                                <InputText title="Salle" type="text" disabled="true" />
+                                <InputText title="Autres problèmes" type="text" disabled="true" />
                             </div>
                             <div className='boutons-descripfion' onClick={() => navigate('/DetailDevice')}>
                                 <ButtonInput value="Voir plus" className="BtnVoirPlus" ></ButtonInput>
