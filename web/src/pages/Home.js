@@ -19,7 +19,6 @@ const Home = () => {
 
     return (
         <>
-            <LeftMenu />
             <div className='Home'>
                 <StatsCard />
                 <IssueTable />
