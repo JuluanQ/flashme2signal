@@ -54,7 +54,7 @@ const DetailIssue = () => {
         setDataDevice(undefined);
         setDateDifference(undefined);
 
-        fetch("http://212.227.3.231:8085/flashme2signal/demande/" + params.id)
+        fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/demande/" + params.id)
             .then(res => res.json())
             .then(data => {
                 setData(data);
@@ -73,7 +73,7 @@ const DetailIssue = () => {
                 "severite": data.severite,
             }
             if (data.idMateriel !== null) {
-                fetch("http://212.227.3.231:8085/flashme2signal/materiel/" + data.idMateriel.id)
+                fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/materiel/" + data.idMateriel.id)
                     .then(res => res.json())
                     .then(data => {
                         let json = {
@@ -100,7 +100,7 @@ const DetailIssue = () => {
 
     useEffect(() => {
         if (dataDevice !== undefined && allIssues.length === 0) {
-            fetch("http://212.227.3.231:8085/flashme2signal/demandes/")
+            fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/demandes/")
                 .then(res => res.json())
                 .then(data => {
                     data.forEach(issue => {

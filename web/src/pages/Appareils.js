@@ -21,13 +21,13 @@ const Appareils = () => {
 
     //Get the data from the API
     useEffect(() => {
-        fetch("http://212.227.3.231:8085/flashme2signal/materiels")
+        fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/materiels")
             .then(res => res.json())
             .then(data => {
                 setData(data);
             })
             .catch(err => console.log(err))
-        fetch("http://212.227.3.231:8085/flashme2signal/demandes/")
+        fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/demandes/")
             .then(res => res.json())
             .then(data => {
                 data.forEach(issue => {
