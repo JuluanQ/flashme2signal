@@ -121,7 +121,7 @@ const DetailIssue = () => {
             <LeftMenu />
             <div className='ContentIssue'>
                 <p className='IssueTitle'>Demande <span id='IdIssue'>#{params.id}</span></p>
-                <div>
+                <div className="tag">
                     {dataIssues !== undefined ?
                         <>
                             <Tag className={severiteColors(dataIssues.severite)}>{dataIssues.severite}</Tag>

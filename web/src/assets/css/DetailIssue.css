@@ -182,7 +182,7 @@ thead th {
 .Btn-etat{
     display: flex;
     justify-content: flex-end;
-    margin-top: 1%;
+    margin-top: 2%;
 }
 
 .Btn-etat input{
@@ -193,6 +193,9 @@ thead th {
 }
 .Btn-etat input:first-child{
    margin-right: 10px;
+}
+.tag .ant-tag:first-child{
+    margin-right: 1%;
 }
 
 @media only screen and (max-width: 950px) {
