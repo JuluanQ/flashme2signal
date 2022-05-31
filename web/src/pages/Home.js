@@ -21,7 +21,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch("http://212.227.3.231:8085/flashme2signal/demandes")
+        fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/demandes")
             .then(res => res.json())
             .then(data => {
                 setData(data);
