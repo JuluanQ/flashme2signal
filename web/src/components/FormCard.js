@@ -16,7 +16,7 @@ const FormCard = () => {
                 <DropDown label="Type" options={optionsType}/>
                 <InputText title="Identifiant" type="text" />
                 <p className='label'>Description :</p>
-                <textarea className='textArea' type="textarea"></textarea>
+                <textarea id="description" className='textArea' type="textarea"></textarea>
             </div>
         </>
     );

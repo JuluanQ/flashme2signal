@@ -10,7 +10,7 @@ const InputText = (props) => {
         <>
             <div className="containerDropDown">
                 <p className='label'>{props.label} :</p>
-                <Select className='selectDrop' size="small">
+                <Select id={props.label} className='selectDrop' size="small">
                     {props.options.map((element, i) => {
                         return (
                             <Option value={element}>{element}</Option>
