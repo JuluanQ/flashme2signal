@@ -21,6 +21,9 @@
     flex-direction: column;
     margin-top: 20px;
 }
+.username .ant-input{
+    height: 34px;
+}
 
 .ant-input, .ant-input-affix-wrapper {
     color: #FFFFFF;
@@ -41,6 +44,8 @@
 
 .submitConnexion {
     margin-top: 30px;
+    border-radius: 4px;
+    width: 130px;
 }
 
 .submitConnexion input[type=submit]{
@@ -49,6 +54,8 @@
 }
 
 .submitConnexion:hover{
+    font-weight: bold;
+    border: none;
     color: #3452FF;
     background-color: white !important;
     transition: 0.3s linear;
