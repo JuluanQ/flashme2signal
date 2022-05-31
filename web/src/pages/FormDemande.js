@@ -1,9 +1,14 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
+
+// Components
 import FormCard from '../components/FormCard';
 
+// CSS
 import '../assets/css/FormDemande.css'
 
 const FormDemande = () => {
+    const params = useParams();
     return (
         <>
             <div className='FormContainer'>
@@ -20,13 +25,12 @@ const FormDemande = () => {
     function handleSubmit() {
         console.log("submit");
         const data = {
-            severite: document.getElementById('Sévérité').value,
-            type: document.getElementById('Type').value,
+            idAppareil: params.idApp,
+            severite: document.getElementById('Sévérité').parentElement.parentElement.textContent,
+            type: document.getElementById('Type').parentElement.parentElement.textContent,
             identifiant: document.getElementById('Identifiant').value,
             description: document.getElementById('description').value
         };
-
-        console.log(document.getElementById('Sévérité'));
 
         console.log(data);
 

@@ -6,7 +6,7 @@ import DropDown from "./DropDown";
 
 const FormCard = () => {
 
-    const optionsSeverite = ["Urgent", "Moyen", "Mineur"];
+    const optionsSeverite = ["Majeur", "Moyen", "Mineur"];
     const optionsType = ["Matériel détérioré", "Matériel manquant", "Panne"];
 
     return (
