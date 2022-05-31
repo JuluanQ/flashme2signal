@@ -131,6 +131,7 @@ const DetailIssue = () => {
                     }
 
                 </div>
+
                 <div className='DetailContentIssue'>
                     <div className='DescriptionIssue'>
                         <p className='DescriptionText'>Description :</p>
@@ -143,8 +144,7 @@ const DetailIssue = () => {
                             <Option value="Mineur">Mineur</Option>
                         </Select>
                         <div className='boutons-descripfion'>
-                            <ButtonInput value="Terminé"></ButtonInput>
-                            <ButtonInput value="Annuler" color="Red"></ButtonInput>
+                            <ButtonInput value="Sauvegarder"></ButtonInput>
                         </div>
                     </div>
                     <div className='ComputerIssue'>
@@ -181,6 +181,10 @@ const DetailIssue = () => {
 
                         </div>
                     </div>
+                </div>
+                <div className='Btn-etat'>
+                    <ButtonInput value="Terminé"></ButtonInput>
+                    <ButtonInput value="Annuler" color="Red"></ButtonInput>
                 </div>
             </div>
         </>
