@@ -8,8 +8,10 @@ import '../assets/css/Home/Home.css'
 import StatsCard from '../components/StatsCard';
 import LeftMenu from '../components/LeftMenu';
 import IssueTable from '../components/IssueTable';
+import ButtonInput from "../components/ButtonInput";
 
 const Home = () => {
+
 
     const [data, setData] = useState();
     const [dataIssues, setDataIssues] = useState([]);
@@ -63,10 +65,12 @@ const Home = () => {
                 if (json.dateDemande === now.toISOString().split('T')[0]) {
                     setNbNewIssues(nbNewIssues => nbNewIssues + 1);
                 }
-                if (issue.severity === "Majeur") {
+                let str = issue.severite.toLowerCase();
+                if (str === "majeur") {
                     setNbUrgentIssues(nbUrgentIssues => nbUrgentIssues + 1)
                 }
-                if (issue.etat.libelle === "En cours") {
+                str = issue.etat.libelle.toLowerCase();
+                if (str === "en cours") {
                     setNbOpenIssues(nbOpenIssues => nbOpenIssues + 1);
                 }
                 dataIssues.push(json);
@@ -83,6 +87,7 @@ const Home = () => {
             <div className='Home'>
                 <StatsCard open={nbOpenIssues} new={nbNewIssues} urgent={nbUrgentIssues} />
                 {finished ? <IssueTable data={dataIssues} /> : <></>}
+
             </div>
         </>
     );

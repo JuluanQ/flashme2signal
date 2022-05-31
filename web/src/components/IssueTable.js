@@ -5,8 +5,45 @@ import { Table, Tag } from 'antd';
 import '../assets/css/Home/IssueTable.css'
 import "antd/dist/antd.css";
 import { Navigate, useNavigate } from 'react-router-dom';
+import ButtonInput from "./ButtonInput";
 
 const IssueTable = (props) => {
+
+    const DemandeFilters = {
+        open: "EN COURS",
+        urgent: "MAJEUR",
+        new: new Date().toISOString().split('T')[0],
+        none: ""
+    };
+
+    function filterData(filter) {
+        var trs = document.querySelectorAll('tbody tr');
+        for (var i = 1; i < trs.length; i++) {
+            var td = null
+            if (filter === DemandeFilters.open) {
+                td = trs[i].getElementsByTagName("td")[7];
+            } else if (filter === DemandeFilters.urgent) {
+                td = trs[i].getElementsByTagName("td")[6];
+            } else if (filter === DemandeFilters.new) {
+                td = trs[i].getElementsByTagName("td")[2];
+            }
+            else if (filter === DemandeFilters.none) {
+                trs[i].style.display = "";
+                document.body.getElementsByClassName('buttonReset')[0].style.display = "none";
+            }
+
+            if (td && filter !== DemandeFilters.none) {
+                var txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    trs[i].style.display = "";
+                } else {
+                    trs[i].style.display = "none";
+                }
+                document.body.getElementsByClassName('buttonReset')[0].style.display = "";
+            }
+        }
+    }
+
 
     const navigate = useNavigate()
 
@@ -157,6 +194,9 @@ const IssueTable = (props) => {
 
     return (
         <div className='IssueTable'>
+            <div className="buttonReset" onClick={() => filterData(DemandeFilters.none)} style={{ display: "none" }}>
+                <ButtonInput value="Reset" />
+            </div>
             <div className='tableContainer'>
                 <div className='tableName'>
                     <h3>Liste demandes</h3>
