@@ -84,15 +84,18 @@
     margin-bottom: 0;
 }
 
-.ant-select-selection-placeholder{
+.ant-select-selection-placeholder {
     color: black;
 }
-.anticon.anticon-down.ant-select-suffix{
+
+.anticon.anticon-down.ant-select-suffix {
     fill: black;
 }
+
 .DescriptionIssue .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
     border-color: #908F98;
 }
+
 #iptDesc {
     width: 90%;
     height: 10vmax;
@@ -125,14 +128,16 @@
     margin-right: 10px;
 }
 
-.boutons-descripfion input:hover, .Btn-etat input:first-child:hover{
+.boutons-descripfion input:hover,
+.Btn-etat input:first-child:hover {
     font-weight: bold;
     color: red;
     background-color: white !important;
     transition: 0.3s linear;
 }
 
-.boutons-descripfion input:first-child:hover, .Btn-etat input:hover {
+.boutons-descripfion input:first-child:hover,
+.Btn-etat input:hover {
     font-weight: bold;
     color: #3452FF;
     background-color: white;
@@ -179,32 +184,40 @@ thead th {
     margin-top: auto;
 }
 
-.Btn-etat{
+.Btn-etat {
     display: flex;
     justify-content: flex-end;
 }
-.tag{
+
+.tag {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.tagColor{
+.tagColor {
     display: flex;
     height: 28px;
 }
 
-.Btn-etat input{
+.Btn-etat input {
     margin: 0;
     text-align: center;
     width: 130px;
     justify-content: center;
 }
-.Btn-etat input:first-child{
-   margin-right: 10px;
+
+.Btn-etat input:first-child {
+    margin-right: 10px;
 }
-.tag .ant-tag:first-child{
+
+.tag .ant-tag:first-child {
     margin-right: 1%;
+}
+
+.deviceInfo .ant-tag {
+    margin-right: 1%;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 950px) {
