@@ -36,7 +36,7 @@ class DemandeControllerTest {
 
 	@Test
 	@Order(1)
-	public void emptyAll() throws Exception {
+	public void emptyDemande() throws Exception {
 		demandeDao.deleteAll();
 		materielDao.deleteAll();
 		this.mockMvc.perform(get("/demandes"))
@@ -65,7 +65,7 @@ class DemandeControllerTest {
 	@Order(3)
 	public void addEtat() throws Exception {
 		String s = "{\"id\":1," +
-				"\"libelle\":\"grave\"}";
+				"\"libelle\":\"en cours\"}";
 		this.mockMvc.perform(
 						post("/etat")
 								.contentType(MediaType.APPLICATION_JSON)
@@ -79,18 +79,19 @@ class DemandeControllerTest {
 	@Test
 	@Order(4)
 	public void addDemande1() throws Exception {
-		String s = "{\"id\":1," +
-				"\"idMateriel\":{" +
-				"\"id\":1," +
-				"\"salle\":\"1\"," +
-				"\"type\":\"tablette\"}," +
-				"\"severite\":\"mineur\"," +
-				"\"description\":\"descri\"," +
-				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
-				"\"type\":\"panne\"," +
-				"\"etat\":{" +
-				"\"id\":1," +
-				"\"libelle\":\"grave\"}" +
+		String s = "{\"id\": 1," +
+				"\"idMateriel\": {" +
+				"\"id\": 1," +
+				"\"salle\": \"1\"," +
+				"\"type\": \"tablette\"}," +
+				"\"severite\": \"grave\"," +
+				"\"description\": \"desc\"," +
+				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
+				"\"type\": \"panne\"," +
+				"\"etat\": {" +
+				"\"id\": 1," +
+				"\"libelle\": \"en cours\"" +
+				"}" +
 				"}";
 
 		this.mockMvc.perform(
@@ -106,18 +107,19 @@ class DemandeControllerTest {
 	@Test
 	@Order(5)
 	public void Demande1() throws Exception {
-		String s = "{\"id\":1," +
-				"\"idMateriel\":{" +
-				"\"id\":1," +
-				"\"salle\":\"1\"," +
-				"\"type\":\"tablette\"}," +
-				"\"severite\":\"mineur\"," +
-				"\"description\":\"descri\"," +
-				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
-				"\"type\":\"panne\"," +
-				"\"etat\":{" +
-				"\"id\":1," +
-				"\"libelle\":\"grave\"}" +
+		String s = "{\"id\": 1," +
+				"\"idMateriel\": {" +
+				"\"id\": 1," +
+				"\"salle\": \"1\"," +
+				"\"type\": \"tablette\"}," +
+				"\"severite\": \"grave\"," +
+				"\"description\": \"desc\"," +
+				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
+				"\"type\": \"panne\"," +
+				"\"etat\": {" +
+				"\"id\": 1," +
+				"\"libelle\": \"en cours\"" +
+				"}" +
 				"}";
 
 		this.mockMvc.perform(get("/demandes"))
@@ -129,18 +131,19 @@ class DemandeControllerTest {
 	@Test
 	@Order(6)
 	public void addDemande2() throws Exception {
-		String s = "{\"id\":1," +
-				"\"idMateriel\":{" +
-				"\"id\":1," +
-				"\"salle\":\"1\"," +
-				"\"type\":\"tablette\"}," +
-				"\"severite\":\"majeur\"," +
-				"\"description\":\"desc\"," +
-				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
-				"\"type\":\"casse\"," +
-				"\"etat\":{" +
-				"\"id\":1," +
-				"\"libelle\":\"grave\"}" +
+		String s = "{\"id\": 1," +
+				"\"idMateriel\": {" +
+				"\"id\": 1," +
+				"\"salle\": \"1\"," +
+				"\"type\": \"tablette\"}," +
+				"\"severite\": \"pas grave\"," +
+				"\"description\": \"description\"," +
+				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
+				"\"type\": \"tablette\"," +
+				"\"etat\": {" +
+				"\"id\": 1," +
+				"\"libelle\": \"en cours\"" +
+				"}" +
 				"}";
 
 		this.mockMvc.perform(
@@ -156,18 +159,19 @@ class DemandeControllerTest {
 	@Test
 	@Order(7)
 	public void Demande2() throws Exception {
-		String s = "{\"id\":1," +
-				"\"idMateriel\":{" +
-				"\"id\":1," +
-				"\"salle\":\"1\"," +
-				"\"type\":\"tablette\"}," +
-				"\"severite\":\"majeur\"," +
-				"\"description\":\"desc\"," +
-				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
-				"\"type\":\"casse\"," +
-				"\"etat\":{" +
-				"\"id\":1," +
-				"\"libelle\":\"grave\"}" +
+		String s = "{\"id\": 1," +
+				"\"idMateriel\": {" +
+				"\"id\": 1," +
+				"\"salle\": \"1\"," +
+				"\"type\": \"tablette\"}," +
+				"\"severite\": \"grave\"," +
+				"\"description\": \"desc\"," +
+				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
+				"\"type\": \"panne\"," +
+				"\"etat\": {" +
+				"\"id\": 1," +
+				"\"libelle\": \"en cours\"" +
+				"}" +
 				"}";
 
 		this.mockMvc.perform(get("/demandes"))
@@ -179,18 +183,19 @@ class DemandeControllerTest {
 	@Test
 	@Order(8)
 	public void addDemande3() throws Exception {
-		String s = "{\"id\":2," +
-				"\"idMateriel\":{" +
-				"\"id\":1," +
-				"\"salle\":\"1\"," +
-				"\"type\":\"tablette\"}," +
-				"\"severite\":\"mineur\"," +
-				"\"description\":\"desc\"," +
-				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
-				"\"type\":\"casse\"," +
-				"\"etat\":{" +
-				"\"id\":1," +
-				"\"libelle\":\"grave\"}" +
+		String s = "{\"id\": 2," +
+				"\"idMateriel\": {" +
+				"\"id\": 1," +
+				"\"salle\": \"1\"," +
+				"\"type\": \"tablette\"}," +
+				"\"severite\": \"grave\"," +
+				"\"description\": \"desc\"," +
+				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
+				"\"type\": \"panne\"," +
+				"\"etat\": {" +
+				"\"id\": 1," +
+				"\"libelle\": \"en cours\"" +
+				"}" +
 				"}";
 
 		this.mockMvc.perform(
@@ -206,31 +211,33 @@ class DemandeControllerTest {
 	@Test
 	@Order(9)
 	public void Demande3() throws Exception {
-		String s1 = "{\"id\":1," +
-				"\"idMateriel\":{" +
-				"\"id\":1," +
-				"\"salle\":\"1\"," +
-				"\"type\":\"tablette\"}," +
-				"\"severite\":\"majeur\"," +
-				"\"description\":\"desc\"," +
-				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
-				"\"type\":\"casse\"," +
-				"\"etat\":{" +
-				"\"id\":1," +
-				"\"libelle\":\"grave\"}" +
+		String s1 = "{\"id\": 1," +
+				"\"idMateriel\": {" +
+				"\"id\": 1," +
+				"\"salle\": \"1\"," +
+				"\"type\": \"tablette\"}," +
+				"\"severite\": \"grave\"," +
+				"\"description\": \"desc\"," +
+				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
+				"\"type\": \"panne\"," +
+				"\"etat\": {" +
+				"\"id\": 1," +
+				"\"libelle\": \"en cours\"" +
+				"}" +
 				"}";
-		String s2 = "{\"id\":2," +
-				"\"idMateriel\":{" +
-				"\"id\":1," +
-				"\"salle\":\"1\"," +
-				"\"type\":\"tablette\"}," +
-				"\"severite\":\"mineur\"," +
-				"\"description\":\"desc\"," +
-				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
-				"\"type\":\"casse\"," +
-				"\"etat\":{" +
-				"\"id\":1," +
-				"\"libelle\":\"grave\"}" +
+		String s2 = "{\"id\": 2," +
+				"\"idMateriel\": {" +
+				"\"id\": 1," +
+				"\"salle\": \"1\"," +
+				"\"type\": \"tablette\"}," +
+				"\"severite\": \"grave\"," +
+				"\"description\": \"desc\"," +
+				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
+				"\"type\": \"panne\"," +
+				"\"etat\": {" +
+				"\"id\": 1," +
+				"\"libelle\": \"en cours\"" +
+				"}" +
 				"}";
 		this.mockMvc.perform(get("/demandes"))
 				.andDo(print())
@@ -251,18 +258,19 @@ class DemandeControllerTest {
 	@Test
 	@Order(11)
 	public void Demande4() throws Exception {
-		String s2 = "{\"id\":2," +
-				"\"idMateriel\":{" +
-				"\"id\":1," +
-				"\"salle\":\"1\"," +
-				"\"type\":\"tablette\"}," +
-				"\"severite\":\"mineur\"," +
-				"\"description\":\"desc\"," +
-				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
-				"\"type\":\"casse\"," +
-				"\"etat\":{" +
-				"\"id\":1," +
-				"\"libelle\":\"grave\"}" +
+		String s2 = "{\"id\": 2," +
+				"\"idMateriel\": {" +
+				"\"id\": 1," +
+				"\"salle\": \"1\"," +
+				"\"type\": \"tablette\"}," +
+				"\"severite\": \"grave\"," +
+				"\"description\": \"desc\"," +
+				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
+				"\"type\": \"panne\"," +
+				"\"etat\": {" +
+				"\"id\": 1," +
+				"\"libelle\": \"en cours\"" +
+				"}" +
 				"}";
 		this.mockMvc.perform(get("/demandes"))
 				.andDo(print())
@@ -273,18 +281,19 @@ class DemandeControllerTest {
 	@Test
 	@Order(12)
 	public void updateDemande() throws Exception {
-		String s = "{\"id\":2," +
-				"\"idMateriel\":{" +
-				"\"id\":1," +
-				"\"salle\":\"1\"," +
-				"\"type\":\"tablette\"}," +
-				"\"severite\":\"majeur\"," +
-				"\"description\":\"description\"," +
-				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
-				"\"type\":\"panne\"," +
-				"\"etat\":{" +
-				"\"id\":1," +
-				"\"libelle\":\"grave\"}" +
+		String s = "{\"id\": 2," +
+				"\"idMateriel\": {" +
+				"\"id\": 1," +
+				"\"salle\": \"1\"," +
+				"\"type\": \"tablette\"}," +
+				"\"severite\": \"tres grave\"," +
+				"\"description\": \"desc\"," +
+				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
+				"\"type\": \"panne\"," +
+				"\"etat\": {" +
+				"\"id\": 1," +
+				"\"libelle\": \"en cours\"" +
+				"}" +
 				"}";
 		this.mockMvc.perform(
 						put("/demande/2")
@@ -298,18 +307,19 @@ class DemandeControllerTest {
 	@Test
 	@Order(13)
 	public void Demande5() throws Exception {
-		String s2 = "{\"id\":2," +
-				"\"idMateriel\":{" +
-				"\"id\":1," +
-				"\"salle\":\"1\"," +
-				"\"type\":\"tablette\"}," +
-				"\"severite\":\"majeur\"," +
-				"\"description\":\"description\"," +
-				"\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\"," +
-				"\"type\":\"panne\"," +
-				"\"etat\":{" +
-				"\"id\":1," +
-				"\"libelle\":\"grave\"}" +
+		String s2 = "{\"id\": 2," +
+				"\"idMateriel\": {" +
+				"\"id\": 1," +
+				"\"salle\": \"1\"," +
+				"\"type\": \"tablette\"}," +
+				"\"severite\": \"tres grave\"," +
+				"\"description\": \"desc\"," +
+				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
+				"\"type\": \"panne\"," +
+				"\"etat\": {" +
+				"\"id\": 1," +
+				"\"libelle\": \"en cours\"" +
+				"}" +
 				"}";
 		this.mockMvc.perform(get("/demandes"))
 				.andDo(print())
