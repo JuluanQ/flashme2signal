@@ -26,7 +26,7 @@ const DetailIssue = () => {
 
     const severiteColors = (severite) => {
         severite = severite.toLowerCase();
-        if (severite === "urgent") {
+        if (severite === "majeur") {
             return "red"
         } else if (severite === "moyen") {
             return "orange"
@@ -138,7 +138,7 @@ const DetailIssue = () => {
                         <p >Cette demande a été créée il y'a <span id="nCreation">{dateDifference} jours</span></p>
                         <p className='DescriptionText'>Sévérité :</p>
                         <Select className='SelectSeverity' size="small" placeholder={dataIssues ? dataIssues.severite : "..."}>
-                            <Option value="Majeur">Urgent</Option>
+                            <Option value="Majeur">Majeur</Option>
                             <Option value="Moyen">Moyen</Option>
                             <Option value="Mineur">Mineur</Option>
                         </Select>

@@ -55,7 +55,7 @@ const Home = () => {
                 if (json.dateDemande === now.toISOString().split('T')[0]) {
                     setNbNewIssues(nbNewIssues => nbNewIssues + 1);
                 }
-                if (issue.severity === "Urgent") {
+                if (issue.severity === "Majeur") {
                     setNbUrgentIssues(nbUrgentIssues => nbUrgentIssues + 1)
                 }
                 if (issue.etat != null) {
