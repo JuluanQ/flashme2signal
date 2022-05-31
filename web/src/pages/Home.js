@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Modal } from 'antd';
 
 // CSS
 import '../assets/css/Home/Home.css'
@@ -25,7 +26,13 @@ const Home = () => {
             .then(data => {
                 setData(data);
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err);
+                Modal.error({
+                    title: 'Erreur !',
+                    content: "L'accès à la base de données est impossible.",
+                });
+            })
     }, []);
 
     useEffect(() => {
