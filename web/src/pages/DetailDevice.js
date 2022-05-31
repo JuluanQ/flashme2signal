@@ -16,9 +16,10 @@ const DetailDevice = () => {
     const [device, setDevice] = useState()
 
     const [dataIssues, setDataIssues] = useState([]);
-    const [issues, setIssues] = useState([])
+    const [issues, setIssues] = useState()
     const [data, setData] = useState()
 
+    const [finished, setFinished] = useState(false);
     const [nbIssues, setNbIssues] = useState(0)
 
     //Récupération des données
@@ -27,38 +28,38 @@ const DetailDevice = () => {
             .then(res => res.json())
             .then(data => {
                 setData(data);
+                let json = {
+                    "id": data.id,
+                    "salle": data.salle,
+                    "type": data.type,
+                }
+                setDevice(json)
             })
             .catch(err => console.log(err))
     }, [param.id]);
 
     useEffect(() => {
-        if (data !== undefined && device === undefined) {
+        if (data !== undefined && dataIssues.length === 0) {
             fetch("http://212.227.3.231:8085/flashme2signal/demandes/")
                 .then(res => res.json())
                 .then(data => {
                     data.forEach(issue => {
-                        if (issue.idMateriel !== null) {
-                            if (issue.idMateriel.id === param.id) {
-                                setDataIssues(dataIssues => [...dataIssues, issue])
-                                if (issue.etat === "En cours") {
-                                    setNbIssues(nbIssues => nbIssues + 1)
-                                }
+                        if (issue.idMateriel.id === parseInt(param.id)) {
+                            dataIssues.push(issue)
+                            if (issue.etat === "En cours") {
+                                setNbIssues(nbIssues => nbIssues + 1)
                             }
                         }
                     });
+                    setFinished(true)
                 })
                 .catch(err => console.log(err))
-            let json = {
-                "id": data.id,
-                "salle": data.salle,
-                "type": data.type,
-            }
-            setDevice(json)
         }
     }, [data]);
 
     useEffect(() => {
-        if (dataIssues !== undefined) {
+        if (dataIssues.length > 0) {
+            setIssues([])
             dataIssues.forEach(issue => {
                 let json = {
                     "id": issue.id,
@@ -78,7 +79,7 @@ const DetailDevice = () => {
                 setIssues(issues => [...issues, json])
             });
         }
-    }, [dataIssues]);
+    }, [finished]);
 
     return (
         <>
