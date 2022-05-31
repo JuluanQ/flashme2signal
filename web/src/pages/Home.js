@@ -27,7 +27,7 @@ const Home = () => {
     });
 
     useEffect(() => {
-        fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/demandes")
+        fetch("http://212.227.3.231:8085/flashme2signal/demandes")
             .then(res => res.json())
             .then(data => {
                 setData(data);
@@ -54,6 +54,7 @@ const Home = () => {
                     description: issue.description,
                     type: issue.type,
                     severite: issue.severite,
+                    statut: issue.etat.libelle,
                 }
                 if (issue.description.length > 50) {
                     json.description = issue.description.substring(0, 50) + "..."
@@ -65,15 +66,13 @@ const Home = () => {
                 if (issue.severity === "Majeur") {
                     setNbUrgentIssues(nbUrgentIssues => nbUrgentIssues + 1)
                 }
-                if (issue.etat != null) {
-                    json.statut = issue.etat.libelle;
-                    if (issue.etat.libelle === "En cours") {
-                        setNbOpenIssues(nbOpenIssues => nbOpenIssues + 1);
-                    }
+                if (issue.etat.libelle === "En cours") {
+                    setNbOpenIssues(nbOpenIssues => nbOpenIssues + 1);
                 }
                 dataIssues.push(json);
             });
             setFinished(true);
+            console.log(dataIssues);
         }
 
     }, [data && !finished]);

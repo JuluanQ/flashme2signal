@@ -54,7 +54,7 @@ const DetailIssue = () => {
         setDataDevice(undefined);
         setDateDifference(undefined);
 
-        fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/demande/" + params.id)
+        fetch("http://212.227.3.231:8085/flashme2signal/demande/" + params.id)
             .then(res => res.json())
             .then(data => {
                 setData(data);
@@ -73,7 +73,7 @@ const DetailIssue = () => {
                 "severite": data.severite,
             }
             if (data.idMateriel !== null) {
-                fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/materiel/" + data.idMateriel.id)
+                fetch("http://212.227.3.231:8085/flashme2signal/materiel/" + data.idMateriel.id)
                     .then(res => res.json())
                     .then(data => {
                         let json = {
@@ -100,7 +100,7 @@ const DetailIssue = () => {
 
     useEffect(() => {
         if (dataDevice !== undefined && allIssues.length === 0) {
-            fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/demandes/")
+            fetch("http://212.227.3.231:8085/flashme2signal/demandes/")
                 .then(res => res.json())
                 .then(data => {
                     data.forEach(issue => {
@@ -131,6 +131,7 @@ const DetailIssue = () => {
                     }
 
                 </div>
+
                 <div className='DetailContentIssue'>
                     <div className='DescriptionIssue'>
                         <p className='DescriptionText'>Description :</p>
@@ -143,8 +144,7 @@ const DetailIssue = () => {
                             <Option value="Mineur">Mineur</Option>
                         </Select>
                         <div className='boutons-descripfion'>
-                            <ButtonInput value="Terminé"></ButtonInput>
-                            <ButtonInput value="Annuler" color="Red"></ButtonInput>
+                            <ButtonInput value="Sauvegarder"></ButtonInput>
                         </div>
                     </div>
                     <div className='ComputerIssue'>
@@ -181,6 +181,10 @@ const DetailIssue = () => {
 
                         </div>
                     </div>
+                </div>
+                <div className='Btn-etat'>
+                    <ButtonInput value="Terminé"></ButtonInput>
+                    <ButtonInput value="Annuler" color="Red"></ButtonInput>
                 </div>
             </div>
         </>
