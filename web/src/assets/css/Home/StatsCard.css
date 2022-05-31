@@ -78,8 +78,21 @@
     font-size: large;
 }
 
+
 .buttonReset {
-    width: 10%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.buttonReset input[type=submit]:hover{
+    font-weight: bold;
+    color: #3452FF;
+    background-color: white !important;
+    transition: 0.3s linear;
+}
+.buttonReset input[type=submit] {
+    width: auto;
+    padding: 10px;
 }
 
 @media only screen and (max-width: 950px) {
