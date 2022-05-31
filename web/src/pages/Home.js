@@ -8,8 +8,10 @@ import '../assets/css/Home/Home.css'
 import StatsCard from '../components/StatsCard';
 import LeftMenu from '../components/LeftMenu';
 import IssueTable from '../components/IssueTable';
+import ButtonInput from "../components/ButtonInput";
 
 const Home = () => {
+
 
     const [data, setData] = useState();
     const [dataIssues, setDataIssues] = useState([]);
@@ -83,6 +85,7 @@ const Home = () => {
             <div className='Home'>
                 <StatsCard open={nbOpenIssues} new={nbNewIssues} urgent={nbUrgentIssues} />
                 {finished ? <IssueTable data={dataIssues} /> : <></>}
+
             </div>
         </>
     );

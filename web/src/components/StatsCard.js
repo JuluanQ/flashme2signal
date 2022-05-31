@@ -45,6 +45,7 @@ const StatsCard = (props) => {
         }
     }
 
+
     return (
         <>
 
@@ -82,9 +83,7 @@ const StatsCard = (props) => {
                     </div>
 
                 </div>
-                <div className="buttonReset" onClick={() => filterData(DemandeFilters.none)} style={{ display: "none" }}>
-                    <ButtonInput value="Reset" />
-                </div>
+
             </div>
         </>
     );
