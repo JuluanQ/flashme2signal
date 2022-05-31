@@ -122,6 +122,7 @@ const DetailIssue = () => {
             <div className='ContentIssue'>
                 <p className='IssueTitle'>Demande <span id='IdIssue'>#{params.id}</span></p>
                 <div className="tag">
+                    <div className="tagColor">
                     {dataIssues !== undefined ?
                         <>
                             <Tag className={severiteColors(dataIssues.severite)}>{dataIssues.severite}</Tag>
@@ -129,6 +130,11 @@ const DetailIssue = () => {
                         </>
                         : <></>
                     }
+                    </div>
+                    <div className='Btn-etat'>
+                        <ButtonInput value="Annuler" color="Red"></ButtonInput>
+                        <ButtonInput value="Terminé"></ButtonInput>
+                    </div>
 
                 </div>
 
@@ -181,10 +187,6 @@ const DetailIssue = () => {
 
                         </div>
                     </div>
-                </div>
-                <div className='Btn-etat'>
-                    <ButtonInput value="Terminé"></ButtonInput>
-                    <ButtonInput value="Annuler" color="Red"></ButtonInput>
                 </div>
             </div>
         </>

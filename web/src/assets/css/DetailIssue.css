@@ -125,14 +125,14 @@
     margin-right: 10px;
 }
 
-.boutons-descripfion input:hover {
+.boutons-descripfion input:hover, .Btn-etat input:first-child:hover{
     font-weight: bold;
     color: red;
     background-color: white !important;
     transition: 0.3s linear;
 }
 
-.boutons-descripfion input:first-child:hover {
+.boutons-descripfion input:first-child:hover, .Btn-etat input:hover {
     font-weight: bold;
     color: #3452FF;
     background-color: white;
@@ -182,7 +182,16 @@ thead th {
 .Btn-etat{
     display: flex;
     justify-content: flex-end;
-    margin-top: 2%;
+}
+.tag{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tagColor{
+    display: flex;
+    height: 28px;
 }
 
 .Btn-etat input{
