@@ -79,9 +79,14 @@
     border-radius: 4px;
 }
 
+.comboboxSeverite {
+    display: flex;
+    flex-direction: column;
+}
+
 .DescriptionText {
     color: #908F98;
-    margin-bottom: 0;
+    margin-bottom: .1em;
 }
 
 .ant-select-selection-placeholder {

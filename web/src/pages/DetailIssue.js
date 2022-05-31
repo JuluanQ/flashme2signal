@@ -24,6 +24,8 @@ const DetailIssue = () => {
     const [dataDevice, setDataDevice] = useState();
     const [dateDifference, setDateDifference] = useState(0);
 
+    const [severite, setSeverite] = useState();
+
     const severiteColors = (severite) => {
         severite = severite.toLowerCase();
         if (severite === "majeur") {
@@ -53,6 +55,7 @@ const DetailIssue = () => {
         setAllIssues(undefined);
         setDataDevice(undefined);
         setDateDifference(undefined);
+        setSeverite(undefined);
 
         fetch("http://212.227.3.231:8085/flashme2signal/demande/" + params.id)
             .then(res => res.json())
@@ -72,6 +75,12 @@ const DetailIssue = () => {
                 "description": data.description,
                 "severite": data.severite,
             }
+            //mettre la première lettre en majuscule
+            setSeverite("")
+            let str = data.severite.toLowerCase();
+            str = str.charAt(0).toUpperCase() + str.slice(1);
+            setSeverite(str);
+
             if (data.idMateriel !== null) {
                 fetch("http://212.227.3.231:8085/flashme2signal/materiel/" + data.idMateriel.id)
                     .then(res => res.json())
@@ -88,6 +97,7 @@ const DetailIssue = () => {
             if (data.etat != null) {
                 json.etat = data.etat.libelle;
             }
+            setDataIssues(json);
 
             if (allIssues === undefined) {
                 fetch("http://212.227.3.231:8085/flashme2signal/demandes/")
@@ -110,13 +120,10 @@ const DetailIssue = () => {
                     .catch(err => console.log(err))
             }
 
-
             let now = new Date();
             let date = new Date(data.dateDemande);
             let diff = dateDiff(date, now);
             setDateDifference(diff.day);
-
-            setDataIssues(json);
         }
     }, [data]);
 
@@ -144,16 +151,19 @@ const DetailIssue = () => {
 
                 <div className='DetailContentIssue'>
                     <div className='DescriptionIssue'>
-                        <p className='DescriptionText'>Description :</p>
-                        <p id="iptDesc">{dataIssues !== undefined ? dataIssues.description : "..."}</p>
+                        <label className='DescriptionText'>Description :</label>
+                        <textarea id="iptDesc" name="descriptionDemande" defaultValue={dataIssues !== undefined ? dataIssues.description : "..."}></textarea>
                         <p >Cette demande a été créée il y'a <span id="nCreation">{dateDifference} jours</span></p>
-                        <p className='DescriptionText'>Sévérité :</p>
-                        <Select className='SelectSeverity' size="small" placeholder={dataIssues ? dataIssues.severite : "..."}>
-                            <Option value="Majeur">Majeur</Option>
-                            <Option value="Moyen">Moyen</Option>
-                            <Option value="Mineur">Mineur</Option>
-                        </Select>
-                        <div className='boutons-descripfion'>
+                        <div className="comboboxSeverite">
+                            <label className='DescriptionText'>Sévérité :</label>
+                            <Select className='SelectSeverity' size="small" value={severite ? severite : "..."} onChange={(value) => setSeverite(value)}>
+                                <Option value="Majeur">Majeur</Option>
+                                <Option value="Moyen">Moyen</Option>
+                                <Option value="Mineur">Mineur</Option>
+                            </Select>
+                        </div>
+
+                        <div className='boutons-descripfion' onClick={() => handleSauvegarder(data)}>
                             <ButtonInput value="Sauvegarder"></ButtonInput>
                         </div>
                     </div>
@@ -216,4 +226,21 @@ function dateDiff(date1, date2) {
     diff.day = tmp;
 
     return diff;
+}
+
+function handleSauvegarder(data) {
+    let description = document.getElementById("iptDesc").value;
+    let severite = document.getElementsByClassName("SelectSeverity")[0].textContent;
+    data.description = description;
+    data.severite = severite;
+
+    fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/demande/" + data.id, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "*"
+        },
+        body: JSON.stringify(data),
+    })
 }
