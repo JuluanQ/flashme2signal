@@ -12,7 +12,7 @@ const StatsCard = (props) => {
 
     const DemandeFilters = {
         open: "EN COURS",
-        urgent: "URGENT",
+        urgent: "MAJEUR",
         new: new Date().toISOString().split('T')[0],
         none: ""
     };

@@ -76,21 +76,22 @@ const IssueTable = (props) => {
             onFilter: (value, record) => record.severite.indexOf(value) === 0,
             width: '10%',
             render: (_, { severite }) => {
-                if (severite === "Moyen") {
+                severite = severite.toLowerCase()
+                if (severite === "moyen") {
                     return (
                         <Tag className="orange" key={severite}>
                             {severite.toUpperCase()}
                         </Tag>
                     )
                 }
-                if (severite === "Majeur") {
+                if (severite === "majeur") {
                     return (
                         <Tag className="red" key={severite}>
                             {severite.toUpperCase()}
                         </Tag>
                     )
                 }
-                if (severite === "Mineur") {
+                if (severite === "mineur") {
                     return (
                         <Tag className="green" key={severite}>
                             {severite.toUpperCase()}
@@ -110,7 +111,7 @@ const IssueTable = (props) => {
                 },
                 {
                     text: 'En cours',
-                    value: 'En Cours',
+                    value: 'En cours',
                 },
                 {
                     text: 'Annulé',
@@ -120,21 +121,22 @@ const IssueTable = (props) => {
             onFilter: (value, record) => record.statut.indexOf(value) === 0,
             width: '10%',
             render: (_, { statut }) => {
-                if (statut === "En Cours") {
+                statut = statut.toLowerCase()
+                if (statut === "en cours") {
                     return (
                         <Tag className="orange" key={statut}>
                             {statut.toUpperCase()}
                         </Tag>
                     )
                 }
-                if (statut === "Annulé") {
+                if (statut === "annulé") {
                     return (
                         <Tag className="red" key={statut}>
                             {statut.toUpperCase()}
                         </Tag>
                     )
                 }
-                if (statut === "Terminé") {
+                if (statut === "terminé") {
                     return (
                         <Tag className="green" key={statut}>
                             {statut.toUpperCase()}

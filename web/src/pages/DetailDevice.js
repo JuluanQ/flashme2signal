@@ -24,7 +24,7 @@ const DetailDevice = () => {
 
     //Récupération des données
     useEffect(() => {
-        fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/materiel/" + param.id)
+        fetch("http://212.227.3.231:8085/flashme2signal/materiel/" + param.id)
             .then(res => res.json())
             .then(data => {
                 setData(data);
@@ -40,7 +40,7 @@ const DetailDevice = () => {
 
     useEffect(() => {
         if (data !== undefined && dataIssues.length === 0) {
-            fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/demandes/")
+            fetch("http://212.227.3.231:8085/flashme2signal/demandes/")
                 .then(res => res.json())
                 .then(data => {
                     data.forEach(issue => {
