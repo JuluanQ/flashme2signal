@@ -24,6 +24,14 @@ const DetailDevice = () => {
 
     //Récupération des données
     useEffect(() => {
+        //Reset des states
+        setDevice(undefined);
+        setDataIssues([]);
+        setIssues(undefined);
+        setData(undefined);
+        setFinished(false);
+        setNbIssues(0)
+
         fetch("http://212.227.3.231:8085/flashme2signal/materiel/" + param.id)
             .then(res => res.json())
             .then(data => {
@@ -46,9 +54,6 @@ const DetailDevice = () => {
                     data.forEach(issue => {
                         if (issue.idMateriel.id === parseInt(param.id)) {
                             dataIssues.push(issue)
-                            if (issue.etat === "En cours") {
-                                setNbIssues(nbIssues => nbIssues + 1)
-                            }
                         }
                     });
                     setFinished(true)
@@ -69,12 +74,13 @@ const DetailDevice = () => {
                     "description": issue.description,
                     "type": issue.type,
                     "severite": issue.severite,
+                    "statut": issue.etat.libelle,
                 }
                 if (issue.description.length > 50) {
                     json.description = issue.description.substring(0, 50) + "..."
                 }
-                if (issue.etat !== null) {
-                    json.statut = issue.etat.libelle;
+                if (issue.etat.libelle === "En cours") {
+                    setNbIssues(nbIssues => nbIssues + 1)
                 }
                 setIssues(issues => [...issues, json])
             });
