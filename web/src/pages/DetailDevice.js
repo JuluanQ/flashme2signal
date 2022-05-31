@@ -86,7 +86,7 @@ const DetailDevice = () => {
             <div className='ContentIssue'>
                 <div className="TopAppareil">
                     <p className="IssueTitle">Appareil #{param.id}</p>
-                    <p className="DescriptionText">Salle :{device !== undefined ? device.salle : "..."}</p>
+                    <p className="DescriptionText">Salle : {device !== undefined ? device.salle : "..."}</p>
                 </div>
                 <div className="bottomNameContainer">
                     <Tag color="green">{nbIssues} problèmes</Tag>
