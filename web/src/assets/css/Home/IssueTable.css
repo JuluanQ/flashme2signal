@@ -4,7 +4,6 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     border-radius: 4px;
 }
 
@@ -68,6 +67,12 @@ tr {
     width: 30% !important;
 }
 
+.ant-table-tbody>tr>td:nth-child(1),
+.ant-table-tbody>tr>td:nth-child(5) {
+    text-align: left;
+    padding-left: 2em !important;
+}
+
 @media only screen and (max-width: 950px) {
 
     .ant-table-thead>tr>th,
@@ -79,4 +84,46 @@ tr {
 .ant-table-tbody>tr:hover>td {
     background: #2F2E31 !important;
     cursor: pointer;
+}
+
+.ant-table-filter-trigger:hover {
+    color: #3452FF !important;
+}
+
+.ant-table-filter-dropdown {
+    color: white !important;
+    background-color: #3B3B3F !important;
+}
+
+.ant-btn-link[disabled] {
+    color: white !important;
+}
+
+.ant-table-filter-dropdown-btns {
+    border-top-color: #3452FF !important;
+}
+
+.ant-dropdown-menu {
+    background-color: #3B3B3F !important;
+}
+
+.ant-dropdown-menu-item {
+    color: white !important;
+}
+
+.ant-dropdown-menu-item:hover {
+    background-color: rgba(52, 82, 255, 0.5) !important;
+}
+
+.ant-checkbox-inner {
+    background-color: rgba(59, 59, 63, 0.5) !important;
+}
+
+.ant-dropdown-menu-item-selected {
+    background-color: #3452FF !important;
+}
+
+.ant-btn-primary {
+    border-color: #3452FF !important;
+    background: #3452FF !important;
 }

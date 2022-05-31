@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import '../assets/css/LeftMenu.css'
 
 import { NavLink } from 'react-router-dom';
+import {UserContext} from "../context/UserContext";
 
 const LeftMenu = () => {
+    const { setUser } = useState(UserContext);
 
     return (
         <>
@@ -14,8 +16,7 @@ const LeftMenu = () => {
                     <div id="myDropdown" className="dropdown-content">
                         <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Demandes</h3></NavLink>
                         <NavLink to="/Appareils" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Appareils</h3></NavLink>
-                        {/* TODO Deconnexion */}
-                        <h3 className='Deconnexion'>Se Déconnecter</h3>
+                        <NavLink to="/co"><h3 className='Deconnexion'>Se Déconnecter</h3></NavLink>
                     </div>
                     <div className='LogoContainer'>
                         <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
@@ -35,8 +36,9 @@ const LeftMenu = () => {
                     <div className='MenusContainer'>
                         <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Demandes</h3></NavLink>
                         <NavLink to="/Appareils" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Appareils</h3></NavLink>
-                        {/* TODO Deconnexion */}
-                        <h3 className='Deconnexion'>Se Déconnecter</h3>
+                        <NavLink to="/co" onClick={() => {
+                            setUser(null);
+                        }}><h3 className='Deconnexion'>Se Déconnecter</h3></NavLink>
                     </div>
                 </div>
             </div>

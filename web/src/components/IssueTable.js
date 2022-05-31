@@ -1,12 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table, Tag } from 'antd';
 
 
 import '../assets/css/Home/IssueTable.css'
 import "antd/dist/antd.css";
 import { Navigate, useNavigate } from 'react-router-dom';
+import ButtonInput from "./ButtonInput";
 
-const IssueTable = () => {
+const IssueTable = (props) => {
+
+    const DemandeFilters = {
+        open: "EN COURS",
+        urgent: "MAJEUR",
+        new: new Date().toISOString().split('T')[0],
+        none: ""
+    };
+
+    function filterData(filter) {
+        var trs = document.querySelectorAll('tbody tr');
+        for (var i = 1; i < trs.length; i++) {
+            var td = null
+            if (filter === DemandeFilters.open) {
+                td = trs[i].getElementsByTagName("td")[7];
+            } else if (filter === DemandeFilters.urgent) {
+                td = trs[i].getElementsByTagName("td")[6];
+            } else if (filter === DemandeFilters.new) {
+                td = trs[i].getElementsByTagName("td")[2];
+            }
+            else if (filter === DemandeFilters.none) {
+                trs[i].style.display = "";
+                document.body.getElementsByClassName('buttonReset')[0].style.display = "none";
+            }
+
+            if (td && filter !== DemandeFilters.none) {
+                var txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    trs[i].style.display = "";
+                } else {
+                    trs[i].style.display = "none";
+                }
+                document.body.getElementsByClassName('buttonReset')[0].style.display = "";
+            }
+        }
+    }
+
 
     const navigate = useNavigate()
 
@@ -28,10 +65,10 @@ const IssueTable = () => {
         },
         {
             title: 'Date',
-            dataIndex: 'date',
-            sorter: (a, b) => new Date(a.date) - new Date(b.date),
-            key: 'date',
+            dataIndex: 'dateDemande',
+            key: 'dateDemande',
             responsive: ['sm'],
+            sorter: (a, b) => new Date(a.date) - new Date(b.date),
             width: '10%',
         },
         {
@@ -57,10 +94,12 @@ const IssueTable = () => {
         {
             title: 'Sévérité',
             dataIndex: 'severite',
+            key: 'severite',
+            responsive: ['sm'],
             filters: [
                 {
-                    text: 'Urgent',
-                    value: 'Urgent',
+                    text: 'Majeur',
+                    value: 'Majeur',
                 },
                 {
                     text: 'Moyen',
@@ -72,25 +111,24 @@ const IssueTable = () => {
                 }
             ],
             onFilter: (value, record) => record.severite.indexOf(value) === 0,
-            key: 'severite',
-            responsive: ['sm'],
             width: '10%',
             render: (_, { severite }) => {
-                if (severite === "Moyen") {
+                severite = severite.toLowerCase()
+                if (severite === "moyen") {
                     return (
                         <Tag className="orange" key={severite}>
                             {severite.toUpperCase()}
                         </Tag>
                     )
                 }
-                if (severite === "Urgent") {
+                if (severite === "majeur") {
                     return (
                         <Tag className="red" key={severite}>
                             {severite.toUpperCase()}
                         </Tag>
                     )
                 }
-                if (severite === "Mineur") {
+                if (severite === "mineur") {
                     return (
                         <Tag className="green" key={severite}>
                             {severite.toUpperCase()}
@@ -102,6 +140,7 @@ const IssueTable = () => {
         {
             title: 'Statut',
             dataIndex: 'statut',
+            key: 'statut',
             filters: [
                 {
                     text: 'Terminé',
@@ -109,7 +148,7 @@ const IssueTable = () => {
                 },
                 {
                     text: 'En cours',
-                    value: 'En Cours',
+                    value: 'En cours',
                 },
                 {
                     text: 'Annulé',
@@ -117,24 +156,24 @@ const IssueTable = () => {
                 }
             ],
             onFilter: (value, record) => record.statut.indexOf(value) === 0,
-            key: 'statut',
             width: '10%',
             render: (_, { statut }) => {
-                if (statut === "En Cours") {
+                statut = statut.toLowerCase()
+                if (statut === "en cours") {
                     return (
                         <Tag className="orange" key={statut}>
                             {statut.toUpperCase()}
                         </Tag>
                     )
                 }
-                if (statut === "Annulé") {
+                if (statut === "annulé") {
                     return (
                         <Tag className="red" key={statut}>
                             {statut.toUpperCase()}
                         </Tag>
                     )
                 }
-                if (statut === "Terminé") {
+                if (statut === "terminé") {
                     return (
                         <Tag className="green" key={statut}>
                             {statut.toUpperCase()}
@@ -145,146 +184,25 @@ const IssueTable = () => {
         }
     ];
 
-    const data = [
-        {
-            id: '123',
-            appareil: '28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Moyen',
-            statut: 'En Cours',
-        },
-        {
-            id: '123',
-            appareil: '28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Urgent',
-            statut: 'Annulé',
-        },
-        {
-            id: '123',
-            appareil: '28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Mineur',
-            statut: 'Terminé',
-        },
-        {
-            id: '123',
-            appareil: '28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Moyen',
-            statut: 'En Cours',
-        },
-        {
-            id: '123',
-            appareil: '28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Urgent',
-            statut: 'Annulé',
-        },
-        {
-            id: '123',
-            appareil: '28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Mineur',
-            statut: 'Terminé',
-        },
-        {
-            id: '123',
-            appareil: '28',
-            date: '12/03/2022',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Moyen',
-            statut: 'En Cours',
-        },
-        {
-            id: '123',
-            appareil: '28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Urgent',
-            statut: 'Annulé',
-        },
-        {
-            id: '123',
-            appareil: '28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Mineur',
-            statut: 'Terminé',
-        },
-        {
-            id: '123',
-            appareil: '28',
-            date: '12/03/2019',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Moyen',
-            statut: 'En Cours',
-        },
-        {
-            id: '123',
-            appareil: '28',
-            date: '12/03/2020',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Urgent',
-            statut: 'Annulé',
-        },
-        {
-            id: '123',
-            appareil: '28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Mineur',
-            statut: 'Terminé',
-        },
-    ];
-
     const param = {
         bordered: true,
         loading: false,
         pagination: false,
         size: 'default',
         sticky: true,
-
     }
 
     return (
         <div className='IssueTable'>
+            <div className="buttonReset" onClick={() => filterData(DemandeFilters.none)} style={{ display: "none" }}>
+                <ButtonInput value="Reset" />
+            </div>
             <div className='tableContainer'>
                 <div className='tableName'>
                     <h3>Liste demandes</h3>
                 </div>
                 <div className='tableData'>
-                    <Table {...param} columns={columns} dataSource={data} className="tableDemandes"
+                    <Table {...param} columns={columns} dataSource={props.data} className="tableDemandes"
                         onRow={(record, rowIndex) => {
                             return {
                                 onClick: event => {
