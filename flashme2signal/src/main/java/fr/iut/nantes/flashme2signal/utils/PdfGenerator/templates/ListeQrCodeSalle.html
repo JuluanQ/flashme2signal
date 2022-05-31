@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <style>
+    h1{
+      color: brown;
+    }
+  </style>
+</head>
+<body>
+<h1>Liste des QR Codes de la salle  <span th:text="${salle}"></span> </h1>
+<br />
+
+<div th:each="item, iterStat: ${materiels}" class="qrcode">
+    <h2 th:text="${materiel.id}"></h2>
+</div>
+
+</body>
+</html>
