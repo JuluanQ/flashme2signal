@@ -14,8 +14,7 @@ const LeftMenu = () => {
                     <div id="myDropdown" className="dropdown-content">
                         <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Demandes</h3></NavLink>
                         <NavLink to="/Appareils" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Appareils</h3></NavLink>
-                        {/* TODO Deconnexion */}
-                        <h3 className='Deconnexion'>Se Déconnecter</h3>
+                        <NavLink to="/co"><h3 className='Deconnexion'>Se Déconnecter</h3></NavLink>
                     </div>
                     <div className='LogoContainer'>
                         <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
@@ -35,8 +34,7 @@ const LeftMenu = () => {
                     <div className='MenusContainer'>
                         <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Demandes</h3></NavLink>
                         <NavLink to="/Appareils" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Appareils</h3></NavLink>
-                        {/* TODO Deconnexion */}
-                        <h3 className='Deconnexion'>Se Déconnecter</h3>
+                        <NavLink to="/co"><h3 className='Deconnexion'>Se Déconnecter</h3></NavLink>
                     </div>
                 </div>
             </div>

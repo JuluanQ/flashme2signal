@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal } from 'antd';
+import {message, notification} from 'antd';
 
 // CSS
 import '../assets/css/Home/Home.css'
@@ -19,6 +19,12 @@ const Home = () => {
     const [nbNewIssues, setNbNewIssues] = useState(0);
     const [nbUrgentIssues, setNbUrgentIssues] = useState(0);
 
+    notification.config({
+        placement: 'bottom',
+        maxCount: 1,
+        duration: 3,
+        rtl: true,
+    });
 
     useEffect(() => {
         fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/demandes")
@@ -28,9 +34,10 @@ const Home = () => {
             })
             .catch(err => {
                 console.log(err);
-                Modal.error({
-                    title: 'Erreur !',
-                    content: "L'accès à la base de données est impossible.",
+                notification["error"]({
+                    message: "Database error",
+                    description:
+                        "L'accès à la base de données est impossible",
                 });
             })
     }, []);

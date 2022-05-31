@@ -10,21 +10,19 @@ const ConnectionCard = () => {
     let navigate = useNavigate();
     const { setUser } = useContext(UserContext);
 
-    const success = () => {
-        message.success('Connexion réussie');
-    };
-
-    const error = () => {
-        message.error('Utilisateur inconnu');
-    };
+    message.config({
+        duration: 2,
+        maxCount: 2,
+        rtl: true,
+    });
 
     const onFinish = () => {
         if (document.querySelector("input[type=text]").value === "admin" && document.querySelector("input[type=password]").value === "admin") {
             setUser("admin");
             navigate("/");
-            success();
+            message.success('Connexion réussie');
         } else {
-            error();
+            message.error('Utilisateur inconnu');
         }
     };
 
