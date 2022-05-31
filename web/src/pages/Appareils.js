@@ -16,6 +16,7 @@ const Appareils = () => {
     const navigate = useNavigate()
     const [data, setData] = useState();
     const [dataDevices, setDataDevices] = useState([]);
+    const [dataDemandes, setDataDemandes] = useState([]);
     const [finished, setFinished] = useState(false);
 
     //Get the data from the API
@@ -26,22 +27,42 @@ const Appareils = () => {
                 setData(data);
             })
             .catch(err => console.log(err))
+        fetch("http://212.227.3.231:8085/flashme2signal/demandes/")
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(issue => {
+                    if (issue.idMateriel !== null) {
+                        dataDemandes.push(issue)
+                    }
+                });
+            })
+            .catch(err => console.log(err))
     }, []);
 
     useEffect(() => {
-        if (data !== undefined && dataDevices.length === 0) {
+        if (data !== undefined && dataDemandes !== undefined && dataDevices.length === 0) {
+
             data.forEach(device => {
                 let json = {
                     id: device.id,
                     salle: device.salle,
                     type: device.type,
-                    nbDemande: 0,
                 }
+                let nbD = 0;
+                json.nbDemande = nbD;
+                dataDemandes.forEach(issue => {
+                    if (issue.idMateriel.id === device.id) {
+                        if (issue.etat.libelle === "En cours") {
+                            json.nbDemande = nbD;
+                        }
+                    }
+                    nbD++;
+                });
                 dataDevices.push(json);
             });
             setFinished(true)
         }
-    }, [data && !finished]);
+    }, [data && dataDemandes && !finished]);
 
     const columns = [
         {
@@ -63,7 +84,7 @@ const Appareils = () => {
             responsive: ['sm'],
         },
         {
-            title: 'Nb demandes',
+            title: 'Nb demandes en cours',
             dataIndex: 'nbDemande',
             key: 'nbDemande',
             //sort this column
