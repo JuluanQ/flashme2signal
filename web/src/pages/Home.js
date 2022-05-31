@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal } from 'antd';
+import {message, notification} from 'antd';
 
 // CSS
 import '../assets/css/Home/Home.css'
@@ -8,8 +8,10 @@ import '../assets/css/Home/Home.css'
 import StatsCard from '../components/StatsCard';
 import LeftMenu from '../components/LeftMenu';
 import IssueTable from '../components/IssueTable';
+import ButtonInput from "../components/ButtonInput";
 
 const Home = () => {
+
 
     const [data, setData] = useState();
     const [dataIssues, setDataIssues] = useState([]);
@@ -19,6 +21,12 @@ const Home = () => {
     const [nbNewIssues, setNbNewIssues] = useState(0);
     const [nbUrgentIssues, setNbUrgentIssues] = useState(0);
 
+    notification.config({
+        placement: 'bottom',
+        maxCount: 1,
+        duration: 3,
+        rtl: true,
+    });
 
     useEffect(() => {
         fetch("http://212.227.3.231:8085/flashme2signal/demandes")
@@ -28,9 +36,10 @@ const Home = () => {
             })
             .catch(err => {
                 console.log(err);
-                Modal.error({
-                    title: 'Erreur !',
-                    content: "L'accès à la base de données est impossible.",
+                notification["error"]({
+                    message: "Database error",
+                    description:
+                        "L'accès à la base de données est impossible",
                 });
             })
     }, []);
@@ -78,6 +87,7 @@ const Home = () => {
             <div className='Home'>
                 <StatsCard open={nbOpenIssues} new={nbNewIssues} urgent={nbUrgentIssues} />
                 {finished ? <IssueTable data={dataIssues} /> : <></>}
+
             </div>
         </>
     );

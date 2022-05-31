@@ -80,9 +80,8 @@
 
 
 .buttonReset {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    position: absolute;
+    right: 5%;
 }
 .buttonReset input[type=submit]:hover{
     font-weight: bold;
@@ -91,8 +90,9 @@
     transition: 0.3s linear;
 }
 .buttonReset input[type=submit] {
-    width: auto;
+    width: 130px;
     padding: 10px;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 950px) {
