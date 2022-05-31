@@ -6,8 +6,7 @@
 }
 
 .formContainer {
-    text-align: left;
-    padding: 0px 10%;
+    margin-left: 10%;
     margin-bottom: auto;
 }
 
@@ -17,42 +16,59 @@
     color: #FFFFFF;
 }
 
-.inputIdentifiant {
+.username {
     display: flex;
     flex-direction: column;
-
-    margin: auto;
-    width: 90%;
-}
-
-.inputMotDePasse {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 90%;
-}
-
-.submitConnexion {
-    display: flex;
-    justify-content: center;
+    width: 100%;
     margin-top: 20px;
 }
 
-.submitConnexion input[type=submit]{
-    width: auto;
-    padding: 10px;
+.ant-input, .ant-input-affix-wrapper {
+    color: #FFFFFF;
+    border-radius: 4px !important;
+    background-color: #2F2E31 !important;
+    border: none !important;
 }
 
+.ant-input-password-icon.anticon {
+    color: white !important;
+}
 
-.submitConnexion input[type=submit]:hover{
-    font-weight: bold;
+.password {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.submitConnexion {
+    margin-top: 30px;
+}
+
+.submitConnexion input[type=submit]{
+    width: auto !important;
+    padding: 10px !important;
+}
+
+.submitConnexion:hover{
     color: #3452FF;
-    background-color: white;
+    background-color: white !important;
     transition: 0.3s linear;
 }
 
-label {
+.ant-col-16 {
+    max-width: none !important;
+    margin-right: 10% !important;
+}
+
+.ant-form-item-label {
     font-size: 14px;
     text-align: left;
+}
+
+.ant-form-item-label > label {
     color: #908F98;
+}
+
+.ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+    color: white !important;
 }
