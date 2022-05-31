@@ -83,7 +83,6 @@ const Home = () => {
 
     return (
         <>
-            <LeftMenu />
             <div className='Home'>
                 <StatsCard open={nbOpenIssues} new={nbNewIssues} urgent={nbUrgentIssues} />
                 {finished ? <IssueTable data={dataIssues} /> : <></>}
