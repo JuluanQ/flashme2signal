@@ -96,12 +96,41 @@
 }
 @media only screen and (max-width: 950px) {
     .tableAppareilContainer {
-        width: 100%;
+        width: 90%;
         height: 100%;
     }
-
     .addDeviceContainer {
-        width: 100%;
+        width: 90%;
         height: 100%;
+        margin-bottom: 7em;
     }
+    .addDeviceContainer form .inputText {
+        width: 100% !important;
+    }
+    .addDeviceContainer form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+    }
+    .addDeviceContainer form input[type="submit"] {
+        width: 40% !important;
+        margin-top: 20px;
+    }
+    .DetailContentIssueAppareil{
+        flex-direction: column;
+    }
+    .DescriptionIssueAppareil {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .DetailContentIssueAppareil .ComputerIssue{
+        width: 50%;
+        margin: auto;
+    }
+    /*.App {*/
+    /*    height: auto !important;*/
+    /*}*/
 }

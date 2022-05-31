@@ -80,9 +80,17 @@
 .DescriptionText {
     color: #908F98;
     margin-bottom: 0;
-    margin-left: 1%;
+    /*margin-left: 1%;*/
 }
-
+.ant-select-selection-placeholder{
+    color: black;
+}
+.anticon.anticon-down.ant-select-suffix{
+    fill: black;
+}
+.DescriptionIssue .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+    border-color: #908F98;
+}
 #iptDesc {
     width: 90%;
     height: 10vmax;
@@ -144,7 +152,6 @@ thead th {
 
 .ComputerIssue .boutons-descripfion {
     justify-content: center;
-    margin-top: 70px;
     align-items: center;
 }
 

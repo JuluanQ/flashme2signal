@@ -95,14 +95,11 @@
 .dropdown-content {
     display: none;
     position: absolute;
-
-
-    margin-top: 6vh;
+    padding-top: 1em;
     padding-left: 2em;
-
+    top: 5em;
     width: 100vw;
-
-    background-color: rgba(47, 46, 49, 0.7);
+    background-color: rgba(47, 46, 49, 0.9);
 }
 
 .dropdown-content h3 {
