@@ -45,7 +45,6 @@ public class AsyncSend extends AsyncTask<Void, Void, Boolean> {
             Log.e(TAG, "3 - give Response...");
             Log.e(TAG, "4 " + response.toString());
         } catch (Exception e) {
-//displayLoding(false);
             Log.e(TAG, "Error ...");
         }
         Log.e(TAG, "5 - after Response...");
@@ -61,8 +60,6 @@ public class AsyncSend extends AsyncTask<Void, Void, Boolean> {
                     status = true;
                 }
             } catch (JSONException e) {
-//displayLoding(false);
-//e.printStackTrace();
                 Log.e(TAG, "Error " + e.getMessage());
             } finally {
             }
@@ -74,15 +71,11 @@ public class AsyncSend extends AsyncTask<Void, Void, Boolean> {
     }
     @Override
     protected void onPostExecute(Boolean result) {
-//
         Log.e(TAG, "7 - onPostExecute ...");
         if (result) {
             Log.e(TAG, "8 - Update UI ...");
-//setUpdateUI(adv);
         } else {
             Log.e(TAG, "8 - Finish ...");
-//displayLoding(false);
-//finish();
         }
     }
     public String performPostCall(String requestURL, HashMap<String, String> postDataParams) {
@@ -98,11 +91,9 @@ public class AsyncSend extends AsyncTask<Void, Void, Boolean> {
             conn.setDoOutput(true);
             conn.setRequestProperty("Content-Type", "application/json");
             Log.e(TAG, "11 - url : " + requestURL);
-            /*
-             * JSON
-             */
+
+            // JSON
             JSONObject root = new JSONObject(data);
-//
             Log.e(TAG, "12 - root : " + root.toString());
             String str = root.toString();
             byte[] outputBytes = str.getBytes("UTF-8");

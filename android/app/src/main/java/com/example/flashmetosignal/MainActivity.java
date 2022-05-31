@@ -2,8 +2,9 @@ package com.example.flashmetosignal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -11,12 +12,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedWriter;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -32,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        Uri data = intent.getData();
+
 
         // affiche le logo de l'université
         ImageView image = findViewById(R.id.logoUniv);
@@ -99,16 +99,6 @@ public class MainActivity extends AppCompatActivity {
             formattedDate = String.valueOf(laDate);
         }
 
-        //Log.e("date format short : ", formattedDate);
-        //String formattedDate =  DateFormat.getDateInstance(DateFormat.MEDIUM).format(now);
-        //Log.e("date format medium : ", formattedDate);
-        //formattedDate = "2022-05-25T06:33:44.116+00:00";
-
         return "{\"id\":4,\"idMateriel\":{\"id\":1,\"salle\":\"12\",\"type\":\"pc\"},\"severite\":\""+ severite +"\",\"description\":\""+ desc +"\",\"dateDemande\":\"" + formattedDate + "\",\"type\":\"pc\",\"demandeur\":" + ident +",\"etat\":{\"id\":2,\"libelle\":\"grave\"}}";
-
-        //return "{\"id\":,\"idMateriel\":{\"id\":1,\"salle\":\"12\",\"type\":\"pc\"},\"severite\":\" " + severite + "\",\"description\":\"" + desc + "\",\"dateDemande\":\"" + formattedDate + "\",\"type\":\"pc\",\"demandeur\":" + ident +",\"etat\":{\"id\":2,\"libelle\":\"grave\"}}";
-
-        //return "{\"id\":,\"idMateriel\":{\"id\":1,\"salle\":\"1\",\"type\":\"" + type +"\"},\"severite\":\""+ severite + "\",\"description\":\" " + desc + "\",\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\",\"type\":\"panne\",\"etat\":\"0\"}";
-
     }
 }
