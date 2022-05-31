@@ -21,9 +21,11 @@
     flex-direction: column;
     margin-top: 20px;
 }
+/*
 .username .ant-input{
     height: 34px;
 }
+*/
 
 .ant-input, .ant-input-affix-wrapper {
     color: #FFFFFF;
