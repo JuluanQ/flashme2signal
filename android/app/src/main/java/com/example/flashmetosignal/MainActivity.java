@@ -2,8 +2,8 @@ package com.example.flashmetosignal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,6 +18,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
@@ -63,34 +64,20 @@ public class MainActivity extends AppCompatActivity {
         String desc = "";
         desc = descEdit.getText().toString();
 
+        makeData();
+
         // bouton envoi
         Button envoi = findViewById(R.id.boutonEnv);
         envoi.setOnClickListener(v -> {
-            //envoiDonnees("{\"id\":4,\"idMateriel\":{\"id\":1,\"salle\":\"1\",\"type\":\"tablette\"},\"severite\":\"mineur\",\"description\":\"descri\",\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\",\"type\":\"panne\",\"etat\":\"0\"}");
+            postData(makeData());
             Toast toast = Toast.makeText(this, makeData(), Toast.LENGTH_LONG);
             toast.show();
         });
 
     }
 
-    public void envoiDonnees(String data) {
-
-        OutputStream out = null;
-        try {
-            URL url = new URL("http://localhost:8080/demandes");
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            out = new BufferedOutputStream(urlConnection.getOutputStream());
-
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
-            writer.write(data);
-            writer.flush();
-            writer.close();
-            out.close();
-
-            urlConnection.connect();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public void postData(String data) {
+        new AsyncSend(data).execute();
     }
 
     public String makeData() {
@@ -106,7 +93,22 @@ public class MainActivity extends AppCompatActivity {
         String desc = "";
         desc = descEdit.getText().toString();
 
-        return "{\"id\":,\"idMateriel\":{\"id\":1,\"salle\":\"1\",\"type\":\"" + type +"\"},\"severite\":\""+ severite + "\",\"description\":\" " + desc + "\",\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\",\"type\":\"panne\",\"etat\":\"0\"}";
+        String formattedDate = "";
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            LocalDateTime laDate = LocalDateTime.now();
+            formattedDate = String.valueOf(laDate);
+        }
+
+        //Log.e("date format short : ", formattedDate);
+        //String formattedDate =  DateFormat.getDateInstance(DateFormat.MEDIUM).format(now);
+        //Log.e("date format medium : ", formattedDate);
+        //formattedDate = "2022-05-25T06:33:44.116+00:00";
+
+        return "{\"id\":4,\"idMateriel\":{\"id\":1,\"salle\":\"12\",\"type\":\"pc\"},\"severite\":\""+ severite +"\",\"description\":\""+ desc +"\",\"dateDemande\":\"" + formattedDate + "\",\"type\":\"pc\",\"demandeur\":" + ident +",\"etat\":{\"id\":2,\"libelle\":\"grave\"}}";
+
+        //return "{\"id\":,\"idMateriel\":{\"id\":1,\"salle\":\"12\",\"type\":\"pc\"},\"severite\":\" " + severite + "\",\"description\":\"" + desc + "\",\"dateDemande\":\"" + formattedDate + "\",\"type\":\"pc\",\"demandeur\":" + ident +",\"etat\":{\"id\":2,\"libelle\":\"grave\"}}";
+
+        //return "{\"id\":,\"idMateriel\":{\"id\":1,\"salle\":\"1\",\"type\":\"" + type +"\"},\"severite\":\""+ severite + "\",\"description\":\" " + desc + "\",\"dateDemande\":\"2022-05-25T06:33:44.116+00:00\",\"type\":\"panne\",\"etat\":\"0\"}";
 
     }
 }
