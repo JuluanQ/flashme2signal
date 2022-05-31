@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import '../assets/css/LeftMenu.css'
 
 import { NavLink } from 'react-router-dom';
+import {UserContext} from "../context/UserContext";
 
 const LeftMenu = () => {
+    const { setUser } = useState(UserContext);
 
     return (
         <>
@@ -34,7 +36,9 @@ const LeftMenu = () => {
                     <div className='MenusContainer'>
                         <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Demandes</h3></NavLink>
                         <NavLink to="/Appareils" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Appareils</h3></NavLink>
-                        <NavLink to="/co"><h3 className='Deconnexion'>Se Déconnecter</h3></NavLink>
+                        <NavLink to="/co" onClick={() => {
+                            setUser(null);
+                        }}><h3 className='Deconnexion'>Se Déconnecter</h3></NavLink>
                     </div>
                 </div>
             </div>
