@@ -23,3 +23,8 @@
 .issuesContainer{
     margin-top: 50px;
 }
+
+.boutons-descripfion .anticon svg {
+    width: 3em;
+    height: 6em;
+}

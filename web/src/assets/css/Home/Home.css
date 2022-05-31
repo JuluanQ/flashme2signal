@@ -8,3 +8,20 @@
 
     align-items: center;
 }
+
+.ant-modal {
+    color: white !important;
+}
+
+.ant-modal-content {
+    background-color: #3B3B3F !important;
+}
+
+.ant-modal-confirm-body .ant-modal-confirm-title {
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.ant-modal-confirm-body .ant-modal-confirm-content {
+    color: white !important;
+}

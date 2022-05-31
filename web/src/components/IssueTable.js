@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Table, Tag } from 'antd';
 
 
@@ -61,8 +61,8 @@ const IssueTable = (props) => {
             responsive: ['sm'],
             filters: [
                 {
-                    text: 'Urgent',
-                    value: 'Urgent',
+                    text: 'Majeur',
+                    value: 'Majeur',
                 },
                 {
                     text: 'Moyen',
@@ -83,7 +83,7 @@ const IssueTable = (props) => {
                         </Tag>
                     )
                 }
-                if (severite === "Urgent") {
+                if (severite === "Majeur") {
                     return (
                         <Tag className="red" key={severite}>
                             {severite.toUpperCase()}

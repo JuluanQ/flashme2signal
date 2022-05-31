@@ -48,20 +48,89 @@
     width: 20% !important;
     margin-right: 1em;
 }
-
+.DetailContentIssueAppareil {
+    display: flex;
+    margin-top: 4%;
+}
+.DetailContentIssueAppareil .ComputerIssue {
+    width: 25%;
+    margin-left: 1%;
+}
 .addDeviceContainer form input[type="submit"] {
     width: 20% !important;
     margin-right: 1em;
+    justify-content: center;
 }
-
+.addDeviceContainer form input[type="submit"]:hover {
+    font-weight: bold;
+    color: #3452FF;
+    background-color: white !important;
+    transition: 0.3s linear;
+}
+.DescriptionIssueAppareil{
+    background-color: #3B3B3F;
+    width: 75%;
+    border-radius: 4px;
+}
+.DescriptionIssueAppareil .ant-table-filter-trigger, .DescriptionIssueAppareil .ant-table-column-sorter{
+    display: none;
+}
+.DescriptionIssueAppareil .tableContainer {
+    padding: 15px;
+}
+.DescriptionIssueAppareil .issuesContainerAppareil .ant-table-thead > tr > th{
+    padding: 2px;
+}
+.issuesContainerAppareil .IssueTable {
+    width: 100%;
+}
+/*.issuesContainerAppareil .ant-table-thead > tr > th{
+    padding: 0;
+}*/
+.issuesContainerAppareil .tableName{
+    display: none;
+}
+.TopAppareil{
+    display: flex;
+    align-items: baseline;
+}
 @media only screen and (max-width: 950px) {
     .tableAppareilContainer {
-        width: 100%;
+        width: 90%;
         height: 100%;
     }
-
     .addDeviceContainer {
-        width: 100%;
+        width: 90%;
         height: 100%;
+        margin-bottom: 7em;
     }
+    .addDeviceContainer form .inputText {
+        width: 100% !important;
+    }
+    .addDeviceContainer form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+    }
+    .addDeviceContainer form input[type="submit"] {
+        width: 40% !important;
+        margin-top: 20px;
+    }
+    .DetailContentIssueAppareil{
+        flex-direction: column;
+    }
+    .DescriptionIssueAppareil {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .DetailContentIssueAppareil .ComputerIssue{
+        width: 50%;
+        margin: auto;
+    }
+    /*.App {*/
+    /*    height: auto !important;*/
+    /*}*/
 }

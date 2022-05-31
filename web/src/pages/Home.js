@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Modal } from 'antd';
 
 // CSS
 import '../assets/css/Home/Home.css'
@@ -20,12 +21,18 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch("http://212.227.3.231:8085/flashme2signal/demandes")
+        fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/demandes")
             .then(res => res.json())
             .then(data => {
                 setData(data);
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err);
+                Modal.error({
+                    title: 'Erreur !',
+                    content: "L'accès à la base de données est impossible.",
+                });
+            })
     }, []);
 
     useEffect(() => {
@@ -48,7 +55,7 @@ const Home = () => {
                 if (json.dateDemande === now.toISOString().split('T')[0]) {
                     setNbNewIssues(nbNewIssues => nbNewIssues + 1);
                 }
-                if (issue.severity === "Urgent") {
+                if (issue.severity === "Majeur") {
                     setNbUrgentIssues(nbUrgentIssues => nbUrgentIssues + 1)
                 }
                 if (issue.etat != null) {
