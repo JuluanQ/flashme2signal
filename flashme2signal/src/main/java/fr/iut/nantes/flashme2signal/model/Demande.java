@@ -34,6 +34,10 @@ public class Demande {
     @NotNull
     private String type;
 
+    @Column
+    @NotNull
+    private String demandeur;
+
 
     @NotNull
     @ManyToOne
@@ -43,13 +47,14 @@ public class Demande {
     public Demande() {
     }
 
-    public Demande(Materiel idMateriel, String severite, String description, Date dateDemande, String type, Etat etat) {
+    public Demande(Materiel idMateriel, String severite, String description, Date dateDemande, String type, Etat etat, String demandeur) {
         this.idMateriel = idMateriel;
         this.severite = severite;
         this.description = description;
         this.dateDemande = dateDemande;
         this.type = type;
         this.etat = etat;
+        this.demandeur = demandeur;
     }
 
     public Integer getId() {
@@ -108,16 +113,24 @@ public class Demande {
         this.etat = etat;
     }
 
+    public String getDemandeur() {
+        return demandeur;
+    }
+
+    public void setDemandeur(String demandeur) {
+        this.demandeur = demandeur;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Demande demande = (Demande) o;
-        return id == demande.id && Objects.equals(idMateriel, demande.idMateriel) && Objects.equals(severite, demande.severite) && Objects.equals(description, demande.description) && Objects.equals(dateDemande, demande.dateDemande) && Objects.equals(type, demande.type) && Objects.equals(etat, demande.etat);
+        return id == demande.id && Objects.equals(idMateriel, demande.idMateriel) && Objects.equals(severite, demande.severite) && Objects.equals(description, demande.description) && Objects.equals(dateDemande, demande.dateDemande) && Objects.equals(type, demande.type) && Objects.equals(demandeur, demande.demandeur) && Objects.equals(etat, demande.etat);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idMateriel, severite, description, dateDemande, type, etat);
+        return Objects.hash(id, idMateriel, severite, description, dateDemande, type, demandeur, etat);
     }
 }
