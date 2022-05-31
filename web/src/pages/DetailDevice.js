@@ -84,15 +84,20 @@ const DetailDevice = () => {
         <>
             <LeftMenu />
             <div className='ContentIssue'>
-                <p className="IssueTitle">Appareil #{param.id}</p>
-
+                <div className="TopAppareil">
+                    <p className="IssueTitle">Appareil #{param.id}</p>
+                    <p className="DescriptionText">Salle :{device !== undefined ? device.salle : "..."}</p>
+                </div>
                 <div className="bottomNameContainer">
                     <Tag color="green">{nbIssues} problèmes</Tag>
                 </div>
 
-                <div className='DetailContentIssue'>
-                    <div className='DescriptionIssue'>
-                        <p className="DescriptionText">Salle :{device !== undefined ? device.salle : "..."}</p>
+                <div className='DetailContentIssueAppareil'>
+                    <div className='DescriptionIssueAppareil'>
+                        <div className="issuesContainerAppareil">
+                            {issues ? <IssueTable data={issues} /> : <></>}
+                        </div>
+
                     </div>
                     <div className='ComputerIssue'>
                         <div className="qrCodeContainer">
@@ -104,9 +109,7 @@ const DetailDevice = () => {
                         </div>
                     </div>
                 </div>
-                <div className="issuesContainer">
-                    {issues ? <IssueTable data={issues} /> : <></>}
-                </div>
+
             </div>
         </>
     );

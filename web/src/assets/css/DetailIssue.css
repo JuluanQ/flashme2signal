@@ -2,8 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-left: 5%;
-    margin-top: 5%;
+    padding: 5%;
 }
 
 .ContentIssue .ant-tag {
@@ -15,18 +14,21 @@
     background-color: rgba(0, 188, 79, 0.3);
     color: #00BC4F;
     border: none;
+    margin-right: 0;
 }
 
 .orange {
     background-color: rgba(240, 145, 73, 0.3);
     color: #F09149;
     border: none;
+    margin-right: 0;
 }
 
 .red {
     background-color: rgba(240, 73, 73, 0.3);
     color: #F04949;
     border: none;
+    margin-right: 0;
 }
 
 .IssueTitle {
@@ -78,6 +80,7 @@
 .DescriptionText {
     color: #908F98;
     margin-bottom: 0;
+    margin-left: 1%;
 }
 
 #iptDesc {

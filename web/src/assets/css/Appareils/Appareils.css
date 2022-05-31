@@ -48,12 +48,52 @@
     width: 20% !important;
     margin-right: 1em;
 }
-
+.DetailContentIssueAppareil {
+    display: flex;
+    margin-top: 4%;
+}
+.DetailContentIssueAppareil .ComputerIssue {
+    width: 25%;
+    margin-left: 1%;
+}
 .addDeviceContainer form input[type="submit"] {
     width: 20% !important;
     margin-right: 1em;
+    justify-content: center;
 }
-
+.addDeviceContainer form input[type="submit"]:hover {
+    font-weight: bold;
+    color: #3452FF;
+    background-color: white !important;
+    transition: 0.3s linear;
+}
+.DescriptionIssueAppareil{
+    background-color: #3B3B3F;
+    width: 75%;
+    border-radius: 4px;
+}
+.DescriptionIssueAppareil .ant-table-filter-trigger, .DescriptionIssueAppareil .ant-table-column-sorter{
+    display: none;
+}
+.DescriptionIssueAppareil .tableContainer {
+    padding: 15px;
+}
+.DescriptionIssueAppareil .issuesContainerAppareil .ant-table-thead > tr > th{
+    padding: 2px;
+}
+.issuesContainerAppareil .IssueTable {
+    width: 100%;
+}
+/*.issuesContainerAppareil .ant-table-thead > tr > th{
+    padding: 0;
+}*/
+.issuesContainerAppareil .tableName{
+    display: none;
+}
+.TopAppareil{
+    display: flex;
+    align-items: baseline;
+}
 @media only screen and (max-width: 950px) {
     .tableAppareilContainer {
         width: 100%;
