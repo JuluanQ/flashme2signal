@@ -57,7 +57,7 @@ const StatsCard = (props) => {
                             <GoFileDirectory className='imgStatsComp' />
                         </div>
                         <div className='CardText'>
-                            <p className='cardName'>Dossiers ouverts</p>
+                            <p className='cardName'>Demandes ouvertes</p>
                             <p className='nCardOpenIssue cardValue'>{props.open}</p>
                         </div>
                     </div>
@@ -67,7 +67,7 @@ const StatsCard = (props) => {
                             <GoIssueOpened className='imgStatsComp' />
                         </div>
                         <div className='CardText'>
-                            <p className='cardName'>Nouveaux dossiers</p>
+                            <p className='cardName'>Nouvelles demandes</p>
                             <p className='nCardNewIssue cardValue'>{props.new}</p>
                         </div>
                     </div>
@@ -77,7 +77,7 @@ const StatsCard = (props) => {
                             <RiAlarmWarningFill className='imgImportantComp' />
                         </div>
                         <div className='CardText'>
-                            <p className='cardName'>Dossiers urgents</p>
+                            <p className='cardName'>Demandes urgentes</p>
                             <p className='nCardImportantIssue cardValue'>{props.urgent}</p>
                         </div>
                     </div>
