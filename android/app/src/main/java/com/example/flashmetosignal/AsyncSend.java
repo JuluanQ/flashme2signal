@@ -17,12 +17,13 @@ import java.util.HashMap;
 import javax.net.ssl.HttpsURLConnection;
 
 public class AsyncSend extends AsyncTask<Void, Void, Boolean> {
-    String urlString = "http://212.227.3.231:8085/flashme2signal/demande";
+    String urlString;
     private final String TAG = "post json :";
     private Context context;
     private String data;
 
-    public AsyncSend(String data) {
+    public AsyncSend(String url, String data) {
+        this.urlString = url;
         this.data = data;
     }
     @Override

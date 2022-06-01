@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void postData(String data) {
-        new AsyncSend(data).execute();
+        new AsyncSend(getResources().getString(R.string.demande), data).execute();
     }
 
     public String makeData() {
@@ -103,14 +103,14 @@ public class MainActivity extends AppCompatActivity {
             formattedDate = String.valueOf(laDate);
         }
 
-        return "{\"id\":" + getNewId() + ",\"idMateriel\":" + getAppareil() + ",\"severite\":\""+ severite +"\",\"description\":\""+ desc +"\",\"dateDemande\":\"" + formattedDate + "\",\"type\":\"" + type + "\",\"demandeur\":" + ident +",\"etat\":{\"id\":2,\"libelle\":\"Terminé\"}}";
+        return "{\"id\":" + getNewId() + ",\"idMateriel\":" + getAppareil() + ",\"severite\":\""+ severite +"\",\"description\":\""+ desc +"\",\"dateDemande\":\"" + formattedDate + "\",\"type\":\"" + type + "\",\"demandeur\":" + ident +",\"etat\":{\"id\":1,\"libelle\":\"En cours\"}}";
     }
 
     public String getNewId() {
         String ret = "0";
         String data = "";
         try {
-            data = new AsyncGet("http://212.227.3.231:8085/flashme2signal/demandes").execute().get();
+            data = new AsyncGet(getResources().getString(R.string.demandes)).execute().get();
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
