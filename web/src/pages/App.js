@@ -9,19 +9,17 @@ import '../assets/css/App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Connexion from './Connexion.js';
 import DetailDevice from './DetailDevice.js';
-import {UserContext} from "../context/UserContext";
-import {useMemo, useState} from "react";
+import { withCookies, useCookies, CookiesProvider } from "react-cookie";
 
 const App = () => {
-  const [ user, setUser ] = useState(null);
-  const value = useMemo(() => ({ user, setUser }), [user, setUser]);
+    const [cookies, setCookie, removeCookie] = useCookies(['user']);
 
   return (
     <div className="App">
-      <BrowserRouter>
-          <UserContext.Provider value={value}>
+        <CookiesProvider>
+            <BrowserRouter>
           {
-            user ? (
+              cookies.user ? (
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/co" element={<Connexion />} />
@@ -36,10 +34,10 @@ const App = () => {
                 </Routes>
             )
           }
-          </UserContext.Provider>
-      </BrowserRouter>
+          </BrowserRouter>
+      </CookiesProvider>
     </div>
   );
 }
 
-export default App;
+export default withCookies(App);

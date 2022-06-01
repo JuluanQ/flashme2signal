@@ -2,13 +2,13 @@ import React, {useContext, useState} from 'react';
 
 import '../assets/css/connectionCard.css'
 import { Form, Input, Button, message } from 'antd';
-import {UserContext} from "../context/UserContext";
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from "react-cookie";
 
 
 const ConnectionCard = () => {
     let navigate = useNavigate();
-    const { setUser } = useContext(UserContext);
+    const [cookies, setCookie, removeCookie] = useCookies(['user']);
 
     message.config({
         duration: 2,
@@ -18,7 +18,7 @@ const ConnectionCard = () => {
 
     const onFinish = () => {
         if (document.querySelector("input[type=text]").value === "admin" && document.querySelector("input[type=password]").value === "admin") {
-            setUser("admin");
+            setCookie('user', 'admin', { path: '/' });
             navigate("/");
             message.success('Connexion réussie');
         } else {
