@@ -133,4 +133,15 @@
     /*.App {*/
     /*    height: auto !important;*/
     /*}*/
+
 }
+
+.tableName h3 {
+    color: #FFF !important;
+    margin: 0;
+}
+
+.ant-table-tbody > tr > td:nth-child(1), .ant-table-tbody > tr > td:nth-child(5) {
+    text-align: center !important;
+    padding-left: 0 !important;
+  }
