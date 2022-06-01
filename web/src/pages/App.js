@@ -28,11 +28,11 @@ const App = () => {
                   <Route path="/Appareils" element={<Appareils />} />
                   <Route path="/DetailIssue/:id" element={<DetailIssue />} />
                   <Route path="/DetailDevice/:id" element={<DetailDevice />} />
-                  <Route path="/form/" element={<FormDemande />} />
                 </Routes>
             ) : (
                 <Routes>
-                  <Route path="*" element={<Connexion />} />
+                    <Route path="/form/" element={<FormDemande />} />
+                    <Route path="*" element={<Connexion />} />
                 </Routes>
             )
           }
