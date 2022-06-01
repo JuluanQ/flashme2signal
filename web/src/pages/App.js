@@ -9,7 +9,7 @@ import '../assets/css/App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Connexion from './Connexion.js';
 import DetailDevice from './DetailDevice.js';
-import {UserContext, UserProvider} from "../context/UserContext";
+import {UserContext} from "../context/UserContext";
 import {useMemo, useState} from "react";
 
 const App = () => {
@@ -28,11 +28,11 @@ const App = () => {
                   <Route path="/Appareils" element={<Appareils />} />
                   <Route path="/DetailIssue/:id" element={<DetailIssue />} />
                   <Route path="/DetailDevice/:id" element={<DetailDevice />} />
-                  <Route path="/form/" element={<FormDemande />} />
                 </Routes>
             ) : (
                 <Routes>
-                  <Route path="*" element={<Connexion />} />
+                    <Route path="/form/" element={<FormDemande />} />
+                    <Route path="*" element={<Connexion />} />
                 </Routes>
             )
           }
