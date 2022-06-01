@@ -235,16 +235,19 @@ function dateDiff(date1, date2) {
 function handleSauvegarder(data) {
     let description = document.getElementById("iptDesc").value;
     let severite = document.getElementsByClassName("SelectSeverity")[0].textContent;
+    data.dateDemande = (new Date(data.dateDemande)).toISOString()
     data.description = description;
     data.severite = severite;
+    console.log(data);
 
-    fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/demande/" + data.id, {
-        method: "PUT",
+    fetch("http://212.227.3.231:8085/flashme2signal/demande/", {
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "*"
         },
         body: JSON.stringify(data),
     })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
 }
