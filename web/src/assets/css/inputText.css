@@ -1,6 +1,9 @@
 .inputText {
     margin-bottom: 10px;
 }
+form .inputText{
+    margin-bottom: 0;
+}
 
 .inputText > label {
     font-size: 18px;
@@ -10,7 +13,7 @@
 
 input {
     width: 100%;
-    height: 46px;
+    height: 38px;
     font-size: 18px;
     padding-left: 10px;
     border-radius: 4px;
