@@ -19,7 +19,8 @@ const ConnectionCard = () => {
     const onFinish = () => {
         if (document.querySelector("input[type=text]").value === "admin" && document.querySelector("input[type=password]").value === "admin") {
             setCookie('user', 'admin', { path: '/' });
-            navigate("/");
+            window.location.reload();
+            navigate('/');
             message.success('Connexion réussie');
         } else {
             message.error('Utilisateur inconnu');
