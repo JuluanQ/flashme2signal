@@ -8,7 +8,7 @@ import '../assets/css/App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Connexion from './Connexion.js';
 import DetailDevice from './DetailDevice.js';
-import {UserContext, UserProvider} from "../context/UserContext";
+import {UserContext} from "../context/UserContext";
 import {useMemo, useState} from "react";
 
 const App = () => {
