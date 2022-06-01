@@ -68,7 +68,7 @@ const IssueTable = (props) => {
             dataIndex: 'dateDemande',
             key: 'dateDemande',
             responsive: ['sm'],
-            sorter: (a, b) => new Date(a.date) - new Date(b.date),
+            sorter: (a, b) => new Date(b.dateDemande) - new Date(a.dateDemande),
             width: '10%',
         },
         {
