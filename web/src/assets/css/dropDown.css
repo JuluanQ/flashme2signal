@@ -16,7 +16,6 @@
     border: none;
     background-color: #2F2E31;
     color: #FFFFFF;
-    padding-top: 12px;
     font-size: 18px;
 }
 
@@ -48,4 +47,6 @@
 
 .ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector{
     height: 46px;
+    display: flex;
+    align-items: center;
 }
