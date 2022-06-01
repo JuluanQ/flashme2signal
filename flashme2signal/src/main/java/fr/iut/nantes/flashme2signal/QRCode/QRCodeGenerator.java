@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class QRCodeGenerator {
 
-    public void generateQR(String data, String qrName) throws WriterException, IOException {
+    public static void generateQR(String data, String qrName) throws WriterException, IOException {
 
         Map<EncodeHintType, Object> hintMap = new HashMap<>();
 
@@ -40,13 +40,6 @@ public class QRCodeGenerator {
             // Load QR image
             BufferedImage qrImage = MatrixToImageWriter.toBufferedImage(bitMatrix, getMatrixConfig());
 
-            // Load logo image
-            BufferedImage overly = getOverly("QR LOGO PATH");
-
-            // Calculate the delta height and width between QR code and logo
-            int deltaHeight = qrImage.getHeight() - overly.getHeight();
-            int deltaWidth = qrImage.getWidth() - overly.getWidth();
-
             // Initialize combined image
             BufferedImage combined = new BufferedImage(qrImage.getHeight(), qrImage.getWidth(), BufferedImage.TYPE_INT_ARGB);
             Graphics2D g = (Graphics2D) combined.getGraphics();
@@ -55,15 +48,10 @@ public class QRCodeGenerator {
             g.drawImage(qrImage, 0, 0, null);
             g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 
-            // Write logo into combine image at position (deltaWidth / 2) and
-            // (deltaHeight / 2). Background: Left/Right and Top/Bottom must be
-            // the same space for the logo to be centered
-            g.drawImage(overly, (int) Math.round(deltaWidth / 2), (int) Math.round(deltaHeight / 2), null);
-
             // Write combined image as PNG to OutputStream
             ImageIO.write(combined, "png", os);
             // Store Image
-            Files.copy( new ByteArrayInputStream(os.toByteArray()), Paths.get("QRCODE DIR" + qrName + ".png"), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy( new ByteArrayInputStream(os.toByteArray()), Paths.get("qrcode/" + qrName + ".png"), StandardCopyOption.REPLACE_EXISTING);
         } catch (WriterException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -71,11 +59,7 @@ public class QRCodeGenerator {
         }
     }
 
-    private BufferedImage getOverly(String LOGO) throws IOException {
-        return ImageIO.read(new File(LOGO));
-    }
-
-    private MatrixToImageConfig getMatrixConfig() {
+    private static MatrixToImageConfig getMatrixConfig() {
         // ARGB Colors
         // Check Colors ENUM
         return new MatrixToImageConfig(QRCodeGenerator.Colors.WHITE.getArgb(), QRCodeGenerator.Colors.BLACK.getArgb());

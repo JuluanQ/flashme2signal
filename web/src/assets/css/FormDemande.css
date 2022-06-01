@@ -1,0 +1,43 @@
+.FormContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+
+    margin-left: auto;
+    margin-right: auto;
+    justify-items: center;
+}
+
+.boutonEnvoyer{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 93px;
+    border-radius: 4px;
+    background-color: #3452FF;
+    color: white;
+    font-size: 40px;
+    margin-top: 10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 93px;
+    border: none;
+}
+
+.boutonEnvoyer:hover{
+    background-color: #2F2E31;
+    cursor: pointer;
+}
+
+.LogoUnivNantes-min {
+    display: flex;
+    justify-content: left;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.LogoUnivNantes-min img {
+    width: auto;
+    height: 6em;
+}
