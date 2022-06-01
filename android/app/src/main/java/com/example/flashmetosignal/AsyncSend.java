@@ -18,7 +18,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class AsyncSend extends AsyncTask<Void, Void, Boolean> {
     String urlString = "http://212.227.3.231:8085/flashme2signal/demande";
-    private final String TAG = "post json example";
+    private final String TAG = "post json :";
     private Context context;
     private String data;
 
@@ -51,7 +51,6 @@ public class AsyncSend extends AsyncTask<Void, Void, Boolean> {
         if (!response.equalsIgnoreCase("")) {
             try {
                 Log.e(TAG, "6 - response !empty...");
-//
                 JSONObject jRoot = new JSONObject(response);
                 JSONObject d = jRoot.getJSONObject("d");
                 int ResultType = d.getInt("ResultType");

@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,9 +14,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.DateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,11 +36,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Intent intent = getIntent();
-        String action = intent.getAction();
-        Uri data = intent.getData();
-
 
         // affiche le logo de l'université
         ImageView image = findViewById(R.id.logoUniv);
@@ -70,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         Button envoi = findViewById(R.id.boutonEnv);
         envoi.setOnClickListener(v -> {
             postData(makeData());
-            Toast toast = Toast.makeText(this, makeData(), Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, "Demande envoyée !", Toast.LENGTH_LONG);
             toast.show();
         });
 
@@ -99,6 +103,52 @@ public class MainActivity extends AppCompatActivity {
             formattedDate = String.valueOf(laDate);
         }
 
-        return "{\"id\":4,\"idMateriel\":{\"id\":1,\"salle\":\"12\",\"type\":\"pc\"},\"severite\":\""+ severite +"\",\"description\":\""+ desc +"\",\"dateDemande\":\"" + formattedDate + "\",\"type\":\"pc\",\"demandeur\":" + ident +",\"etat\":{\"id\":2,\"libelle\":\"grave\"}}";
+        return "{\"id\":" + getNewId() + ",\"idMateriel\":" + getAppareil() + ",\"severite\":\""+ severite +"\",\"description\":\""+ desc +"\",\"dateDemande\":\"" + formattedDate + "\",\"type\":\"" + type + "\",\"demandeur\":" + ident +",\"etat\":{\"id\":2,\"libelle\":\"Terminé\"}}";
+    }
+
+    public String getNewId() {
+        String ret = "0";
+        String data = "";
+        try {
+            data = new AsyncGet("http://212.227.3.231:8085/flashme2signal/demandes").execute().get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            JSONArray jsonArray = new JSONArray(data);
+            ArrayList num = new ArrayList();
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject row = jsonArray.getJSONObject(i);
+                num.add(row.getInt("id"));
+            }
+            int max = (int) Collections.max(num);
+            max = max + 1;
+            ret = String.valueOf(max);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
+
+    public String getAppareil() {
+        String ret = "";
+        // récupère l'intent
+        Intent intent = getIntent();
+        //String action = intent.getAction();
+        Uri uri = intent.getData();
+
+        if (uri != null) {
+            String uriString = uri.toString();
+            String id = uriString.substring(uriString.length()-1, uriString.length());
+            try {
+                String data = new AsyncGet("http://212.227.3.231:8085/flashme2signal/materiel/" + id).execute().get();
+                ret = data;
+            } catch (ExecutionException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return ret;
     }
 }
