@@ -24,15 +24,34 @@ const FormDemande = () => {
 
     function handleSubmit() {
         console.log("submit");
+        console.log(params.id);
+        let etat ={
+            id : 1,
+            libelle: "En cours"
+        }
+        let materiel = {
+            id: params.id,
+            salle: "12",
+            type: "pc"
+        }
         const data = {
-            idAppareil: params.idApp,
+            dateDemande: new Date().toISOString(),
+            demandeur: document.getElementById('Identifiant').value,
+            description: document.getElementById('description').value,
             severite: document.getElementById('Sévérité').parentElement.parentElement.textContent,
             type: document.getElementById('Type').parentElement.parentElement.textContent,
-            identifiant: document.getElementById('Identifiant').value,
-            description: document.getElementById('description').value
+            etat: etat,
+            idMateriel: materiel
         };
-
         console.log(data);
+
+        fetch("http://212.227.3.231:8085/flashme2signal/demande/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data),
+        });
 
     }
 

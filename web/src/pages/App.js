@@ -29,7 +29,7 @@ const App = () => {
                 </Routes>
             ) : (
                 <Routes>
-                    <Route path="/form/" element={<FormDemande />} />
+                    <Route path="/form/:id" element={<FormDemande />} />
                     <Route path="*" element={<Connexion />} />
                 </Routes>
             )
