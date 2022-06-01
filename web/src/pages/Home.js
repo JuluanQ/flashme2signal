@@ -50,11 +50,14 @@ const Home = () => {
             //If data is an array ?
             if (Array.isArray(data)) {
                 data.forEach(issue => {
+                    let date = new Date(issue.dateDemande);
+                    date = date.toISOString().split('T')[0]
+                    console.log(date);
                     //build a json from the data
                     let json = {
                         id: issue.id,
                         appareil: issue.idMateriel.id,
-                        dateDemande: issue.dateDemande.split('T')[0],
+                        dateDemande: date,
                         demandeur: issue.demandeur,
                         description: issue.description,
                         type: issue.type,
