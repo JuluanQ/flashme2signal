@@ -156,7 +156,10 @@ const DetailIssue = () => {
                 <div className='DetailContentIssue'>
                     <div className='DescriptionIssue'>
                         <label className='DescriptionText'>Description :</label>
-                        <textarea id="iptDesc" name="descriptionDemande" defaultValue={dataIssues !== undefined ? dataIssues.description : "..."}></textarea>
+                        {dataIssues ?
+                            <textarea id="iptDesc" name="descriptionDemande" defaultValue={dataIssues.description}></textarea>
+                            : <></>}
+
                         <p >Cette demande a été créée il y'a <span id="nCreation">{dateDifference} jours</span></p>
                         <div className="comboboxSeverite">
                             <label className='DescriptionText'>Sévérité :</label>
