@@ -67,10 +67,12 @@ const DetailDevice = () => {
         if (dataIssues.length > 0) {
             setIssues([])
             dataIssues.forEach(issue => {
+                let dateD = new Date(issue.dateDemande);
+                dateD = dateD.toISOString().split('T')[0]
                 let json = {
                     "id": issue.id,
                     "appareil": issue.idMateriel.id,
-                    "dateDemande": issue.dateDemande.split('T')[0],
+                    "dateDemande": dateD,
                     "demandeur": issue.demandeur,
                     "description": issue.description,
                     "type": issue.type,

@@ -68,10 +68,12 @@ const DetailIssue = () => {
 
     useEffect(() => {
         if (data !== undefined && dataIssues === undefined) {
+            let dateD = new Date(data.dateDemande);
+            dateD = dateD.toISOString().split('T')[0]
             let json = {
                 "id": data.id,
                 "etat": data.etat,
-                "date": data.dateDemande.split("T")[0],
+                "date": dateD,
                 "description": data.description,
                 "severite": data.severite,
             }
@@ -105,6 +107,8 @@ const DetailIssue = () => {
                     .then(dataIss => {
                         setAllIssues([]);
                         dataIss.forEach(issue => {
+                            let dateD = new Date(issue.dateDemande);
+                            issue.dateDemande = dateD.toISOString().split('T')[0]
                             if (issue.idMateriel !== null) {
                                 //si l'etat de l'issue est en cours
                                 let str = issue.etat.libelle.toLowerCase();

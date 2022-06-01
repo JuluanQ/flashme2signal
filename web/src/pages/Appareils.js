@@ -31,6 +31,8 @@ const Appareils = () => {
             .then(res => res.json())
             .then(data => {
                 data.forEach(issue => {
+                    let dateD = new Date(data.dateDemande);
+                    dateD = dateD.toISOString().split('T')[0]
                     if (issue.idMateriel !== null) {
                         dataDemandes.push(issue)
                     }
