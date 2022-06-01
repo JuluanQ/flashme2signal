@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             String uriString = uri.toString();
             String id = uriString.substring(uriString.length()-1, uriString.length());
             try {
-                String data = new AsyncGet("http://212.227.3.231:8085/flashme2signal/materiel/" + id).execute().get();
+                String data = new AsyncGet(getResources().getString(R.string.materiels) + id).execute().get();
                 ret = data;
             } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();

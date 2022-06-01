@@ -12,4 +12,5 @@
     <!-- ici les liens vers l'API -->
     <string name="demandes">http://212.227.3.231:8085/flashme2signal/demandes</string>
     <string name="demande">http://212.227.3.231:8085/flashme2signal/demande</string>
+    <string name="materiels">http://212.227.3.231:8085/flashme2signal/materiel/</string>
 </resources>
