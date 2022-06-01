@@ -285,16 +285,12 @@ const DetailIssue = () => {
                         </div>
                     </div>
                     <div className='ComputerIssue'>
-                        <p className='ComputerTitle'>Appareil <span id='IdIssue'>#{dataDevice ? dataDevice.id : "?"}</span></p>
+                        <p className='ComputerTitle'>{dataDevice !== undefined ? dataDevice.type : "Appareil"} <span className='ComputerId'>#{dataDevice ? dataDevice.id : "?"}</span></p>
                         <div className="Contain">
                             <div className="TxtInput">
                                 <div className="deviceInfos">
                                     <p>Salle :</p>
                                     {dataDevice !== undefined ? <p className="deviceInfo">{dataDevice.salle}</p> : <p className="deviceInfo">...</p>}
-                                </div>
-                                <div className="deviceInfos">
-                                    <p>Type :</p>
-                                    {dataDevice !== undefined ? <p className="deviceInfo">{dataDevice.type}</p> : <p className="deviceInfo">...</p>}
                                 </div>
                                 <div className='deviceInfos'>
                                     <p>Autres demandes en cours :</p>
