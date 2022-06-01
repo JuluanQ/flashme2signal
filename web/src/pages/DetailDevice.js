@@ -2,7 +2,7 @@ import { Tag } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import ButtonInput from '../components/ButtonInput';
 import IssueTable from '../components/IssueTable';
@@ -13,6 +13,7 @@ import '../assets/css/DetailDevice.css'
 const DetailDevice = () => {
 
     const param = useParams()
+    const location = useLocation();
     const [device, setDevice] = useState()
 
     const [dataIssues, setDataIssues] = useState([]);
@@ -44,7 +45,7 @@ const DetailDevice = () => {
                 setDevice(json)
             })
             .catch(err => console.log(err))
-    }, [param.id]);
+    }, [location]);
 
     useEffect(() => {
         if (data !== undefined && dataIssues.length === 0) {
@@ -96,7 +97,7 @@ const DetailDevice = () => {
                     <p className="DescriptionText">Salle : {device !== undefined ? device.salle : "..."}</p>
                 </div>
                 <div className="bottomNameContainer">
-                    <Tag color="green">{nbIssues} problèmes</Tag>
+                    <Tag className="green">{nbIssues} demande en cours</Tag>
                 </div>
 
                 <div className='DetailContentIssueAppareil'>

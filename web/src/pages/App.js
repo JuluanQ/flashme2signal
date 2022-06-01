@@ -1,6 +1,7 @@
 import Home from './Home.js'
 import Appareils from './Appareils';
 import DetailIssue from './DetailIssue';
+import FormDemande from './FormDemande';
 
 // CSS
 import '../assets/css/App.css'
@@ -27,6 +28,7 @@ const App = () => {
                   <Route path="/Appareils" element={<Appareils />} />
                   <Route path="/DetailIssue/:id" element={<DetailIssue />} />
                   <Route path="/DetailDevice/:id" element={<DetailDevice />} />
+                  <Route path="/form/" element={<FormDemande />} />
                 </Routes>
             ) : (
                 <Routes>
