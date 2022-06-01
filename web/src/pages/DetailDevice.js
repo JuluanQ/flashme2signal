@@ -1,4 +1,4 @@
-import {notification, Tag} from 'antd';
+import { notification, Tag } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 
 import React, { useEffect, useState } from 'react';
@@ -139,12 +139,12 @@ function handleGenerateQrCode(id) {
             "Content-Type": "application/json",
         },
     }).then(response => {
-            if (response.status == 200) {
+        if (response.status === 200) {
 
-                let img = document.getElementById("img-qrcode");
-                img.src = '/qrcode/' + id + '-qrcode.png';
+            let img = document.getElementById("img-qrcode");
+            img.src = '/qrcode/' + id + '-qrcode.png';
 
-            }
-        })
+        }
+    })
         .catch(err => console.log(err))
 }

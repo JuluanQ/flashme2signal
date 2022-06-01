@@ -146,7 +146,7 @@ const DetailIssue = () => {
             body: JSON.stringify(data),
         })
             .then(response => {
-                if (response.status == 200) {
+                if (response.status === 200) {
 
                     navigate("/DetailIssue/" + data.id);
                     notification["success"]({
@@ -180,7 +180,7 @@ const DetailIssue = () => {
             body: JSON.stringify(data),
         })
             .then(response => {
-                if (response.status == 200) {
+                if (response.status === 200) {
 
                     navigate("/DetailIssue/" + data.id);
                     notification["success"]({
@@ -214,7 +214,7 @@ const DetailIssue = () => {
             body: JSON.stringify(data),
         })
             .then(response => {
-                if (response.status == 200) {
+                if (response.status === 200) {
 
                     navigate("/DetailIssue/" + data.id);
                     notification["success"]({
@@ -248,7 +248,7 @@ const DetailIssue = () => {
             body: JSON.stringify(data),
         })
             .then(response => {
-                if (response.status == 200) {
+                if (response.status === 200) {
 
                     navigate("/DetailIssue/" + data.id);
                     notification["success"]({
