@@ -1,17 +1,13 @@
 package fr.iut.nantes.flashme2signal.web.controller;
 
 import fr.iut.nantes.flashme2signal.web.exceptions.DemandeNotFoundException;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import fr.iut.nantes.flashme2signal.dao.DemandeDao;
 import fr.iut.nantes.flashme2signal.model.Demande;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
-
-@Api( description="API pour es opérations CRUD sur les demandes.")
 
 @RestController
 public class DemandeController {
