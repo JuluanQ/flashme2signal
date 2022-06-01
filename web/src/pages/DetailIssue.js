@@ -3,7 +3,7 @@ import LeftMenu from '../components/LeftMenu';
 import ButtonInput from '../components/ButtonInput';
 
 // Imports
-import { Tag, Select } from 'antd';
+import { Tag, Select, notification } from 'antd';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 // CSS
@@ -131,6 +131,45 @@ const DetailIssue = () => {
         }
     }, [data]);
 
+    function handleSauvegarder(data, navig) {
+        let description = document.getElementById("iptDesc").value;
+        let severite = document.getElementsByClassName("SelectSeverity")[0].textContent;
+        data.dateDemande = (new Date(data.dateDemande)).toISOString()
+        data.description = description;
+        data.severite = severite;
+        console.log(data);
+
+        fetch("http://212.227.3.231:8085/flashme2signal/demande/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => {
+                if (response.status == 200) {
+
+                    navigate("/DetailIssue/" + data.id);
+                    notification["success"]({
+                        style: {
+                            backgroundColor: '#2F2E31',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: '4px',
+                            textAlign: 'left',
+                            padding: '10px',
+                        },
+                        message: (<h3 style={{ color: "#fff", }}>Updated</h3>),
+                        description: "Les modifications ont été enregistrées",
+                        closeIcon: (<></>),
+                        maxCount: 1,
+                    });
+                }
+            })
+            .catch(err => console.log(err))
+
+    }
+
     return (
         <>
             <LeftMenu />
@@ -170,7 +209,7 @@ const DetailIssue = () => {
                             </Select>
                         </div>
 
-                        <div className='boutons-descripfion' onClick={() => handleSauvegarder(data)}>
+                        <div className='boutons-descripfion' onClick={() => handleSauvegarder(data, navigate)}>
                             <ButtonInput value="Sauvegarder"></ButtonInput>
                         </div>
                     </div>
@@ -235,22 +274,3 @@ function dateDiff(date1, date2) {
     return diff;
 }
 
-function handleSauvegarder(data) {
-    let description = document.getElementById("iptDesc").value;
-    let severite = document.getElementsByClassName("SelectSeverity")[0].textContent;
-    data.dateDemande = (new Date(data.dateDemande)).toISOString()
-    data.description = description;
-    data.severite = severite;
-    console.log(data);
-
-    fetch("http://212.227.3.231:8085/flashme2signal/demande/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-    })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
-}
