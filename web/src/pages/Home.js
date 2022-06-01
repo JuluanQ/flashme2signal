@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {message, notification} from 'antd';
+import { message, notification } from 'antd';
 
 // CSS
 import '../assets/css/Home/Home.css'
@@ -33,6 +33,7 @@ const Home = () => {
             .then(res => res.json())
             .then(data => {
                 setData(data);
+                console.log(data);
             })
             .catch(err => {
                 console.log(err);
@@ -46,39 +47,48 @@ const Home = () => {
 
     useEffect(() => {
         if (data !== undefined && dataIssues.length === 0) {
-            data.forEach(issue => {
-                //build a json from the data
-                let json = {
-                    id: issue.id,
-                    appareil: issue.idMateriel.id,
-                    dateDemande: issue.dateDemande.split('T')[0],
-                    demandeur: issue.demandeur,
-                    description: issue.description,
-                    type: issue.type,
-                    severite: issue.severite,
-                    statut: issue.etat.libelle,
-                }
-                if (issue.description.length > 50) {
-                    json.description = issue.description.substring(0, 50) + "..."
-                }
-                let now = new Date();
-                if (json.dateDemande === now.toISOString().split('T')[0]) {
-                    setNbNewIssues(nbNewIssues => nbNewIssues + 1);
-                }
-                let str = issue.severite.toLowerCase();
-                if (str === "majeur") {
-                    setNbUrgentIssues(nbUrgentIssues => nbUrgentIssues + 1)
-                }
-                str = issue.etat.libelle.toLowerCase();
-                if (str === "en cours") {
-                    setNbOpenIssues(nbOpenIssues => nbOpenIssues + 1);
-                }
-                dataIssues.push(json);
-            });
-            setFinished(true);
-            console.log(dataIssues);
+            //If data is an array ?
+            if (Array.isArray(data)) {
+                data.forEach(issue => {
+                    //build a json from the data
+                    let json = {
+                        id: issue.id,
+                        appareil: issue.idMateriel.id,
+                        dateDemande: issue.dateDemande.split('T')[0],
+                        demandeur: issue.demandeur,
+                        description: issue.description,
+                        type: issue.type,
+                        severite: issue.severite,
+                        statut: issue.etat.libelle,
+                    }
+                    if (issue.description.length > 50) {
+                        json.description = issue.description.substring(0, 50) + "..."
+                    }
+                    let now = new Date();
+                    if (json.dateDemande === now.toISOString().split('T')[0]) {
+                        setNbNewIssues(nbNewIssues => nbNewIssues + 1);
+                    }
+                    let str = issue.severite.toLowerCase();
+                    if (str === "majeur") {
+                        setNbUrgentIssues(nbUrgentIssues => nbUrgentIssues + 1)
+                    }
+                    str = issue.etat.libelle.toLowerCase();
+                    if (str === "en cours") {
+                        setNbOpenIssues(nbOpenIssues => nbOpenIssues + 1);
+                    }
+                    dataIssues.push(json);
+                });
+                setFinished(true);
+                console.log(dataIssues);
+            }
+            else {
+                notification["error"]({
+                    message: "Database error",
+                    description:
+                        "La base de données est inaccessible",
+                });
+            }
         }
-
     }, [data && !finished]);
 
     return (
