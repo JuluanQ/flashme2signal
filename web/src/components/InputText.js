@@ -6,8 +6,8 @@ const InputText = (props) => {
     return (
         <>
             <div className="inputText">
-                <label htmlFor="">{props.title} :</label>
-                <input type={props.type} />
+                <label htmlFor={props.title}>{props.title} :</label>
+                <input id={props.title} type={props.type} id={props.title} />
             </div>
         </>
     );

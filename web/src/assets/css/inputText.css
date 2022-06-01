@@ -1,18 +1,23 @@
 .inputText {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 20px;
+    margin-bottom: 10px;
+}
+form .inputText{
+    margin-bottom: 0;
+}
+
+.inputText > label {
+    font-size: 18px;
+    color: #908F98;
+    margin-bottom: 4px;
 }
 
 input {
     width: 100%;
-    height: 2em;
-    margin-top: .5em;
+    height: 38px;
+    font-size: 18px;
+    padding-left: 10px;
     border-radius: 4px;
     color: #FFFFFF;
-    text-decoration: none;
-    font-family: 'SourceSansPro', Helvetica, Arial, sans-serif;
     background-color: #2F2E31;
     border: none;
 }

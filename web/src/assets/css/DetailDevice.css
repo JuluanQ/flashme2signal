@@ -1,0 +1,30 @@
+.topNameContainer h3 {
+    color: #fff;
+}
+
+.bodyContainer {
+    display: flex;
+    flex-direction: row;
+
+    width: 90%;
+}
+
+.leftBodyContainer {
+    background-color: #3B3B3F;
+}
+
+.rightBodyContainer {
+    background-color: #3B3B3F;
+}
+.buttonsContainer{
+    display: flex;
+    align-items: center;
+}
+.issuesContainer{
+    margin-top: 50px;
+}
+
+.boutons-descripfion .anticon svg {
+    width: 3em;
+    height: 6em;
+}

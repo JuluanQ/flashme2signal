@@ -2,13 +2,40 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-left: 5%;
-    margin-top: 5%;
+    padding: 5%;
+}
+
+.ContentIssue .ant-tag {
+    padding: 4px 14px;
+    text-transform: uppercase;
+}
+
+.green {
+    background-color: rgba(0, 188, 79, 0.3);
+    color: #00BC4F;
+    border: none;
+    margin-right: 0;
+}
+
+.orange {
+    background-color: rgba(240, 145, 73, 0.3);
+    color: #F09149;
+    border: none;
+    margin-right: 0;
+}
+
+.red {
+    background-color: rgba(240, 73, 73, 0.3);
+    color: #F04949;
+    border: none;
+    margin-right: 0;
 }
 
 .IssueTitle {
     font-weight: bold;
-    font-size: medium;
+    font-size: 28px;
+    margin-bottom: 0;
+    margin-right: 1%;
 }
 
 #IdIssue {
@@ -25,7 +52,7 @@
 }
 
 #IssueSeverity {
-    color: #FFFFFF; 
+    color: #FFFFFF;
 }
 
 .IssueStateCard {
@@ -39,25 +66,184 @@
 
 .DetailContentIssue {
     display: flex;
-    flex-direction: row;
-    margin-top: 4%;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
 .DescriptionIssue {
     background-color: #3B3B3F;
-    width: 90%;
+    width: 60%;
     padding-left: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 4px;
+}
+
+.comboboxSeverite {
+    display: flex;
+    flex-direction: column;
 }
 
 .DescriptionText {
     color: #908F98;
+    margin-bottom: .1em;
+}
+
+.ant-select-selection-placeholder {
+    color: #908F98;
+}
+
+.anticon.anticon-down.ant-select-suffix {
+    fill: black;
+}
+
+.DescriptionIssue .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+    border-color: #908F98;
 }
 
 #iptDesc {
     width: 90%;
     height: 10vmax;
+    padding: 1em;
+    margin-bottom: 10px;
+    background-color: #2F2E31;
+    border-radius: 4px;
+    border-color: #2F2E31;
+    resize: none;
 }
 
 #nCreation {
     font-weight: bold;
+}
+
+.SelectSeverity {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+
+.boutons-descripfion {
+    display: flex;
+}
+
+.boutons-descripfion input {
+    text-align: center;
+    width: 130px;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.boutons-descripfion input:hover,
+.Btn-etat input:first-child:hover {
+    font-weight: bold;
+    color: red;
+    background-color: white !important;
+    transition: 0.3s linear;
+}
+
+.boutons-descripfion input:first-child:hover,
+.Btn-etat input:hover {
+    font-weight: bold;
+    color: #3452FF;
+    background-color: white;
+    transition: 0.3s linear;
+}
+
+tbody td,
+thead th {
+    width: 120px;
+}
+
+.ComputerIssue {
+    width: 30%;
+    border-radius: 4px;
+    margin-left: 5%;
+    padding: 2%;
+    background-color: #3B3B3F;
+}
+
+.ComputerIssue .boutons-descripfion {
+    justify-content: center;
+    align-items: center;
+}
+
+.Contain {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 86%;
+    justify-content: space-between;
+}
+
+.ComputerTitle {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.deviceInfo {
+    background-color: #2F2E31;
+    padding: .5em;
+}
+
+.BtnVoirPlus {
+    margin-top: auto;
+}
+
+.Btn-etat {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tagColor {
+    display: flex;
+    height: 28px;
+}
+
+.Btn-etat input {
+    margin: 0;
+    text-align: center;
+    width: 130px;
+    justify-content: center;
+}
+
+.Btn-etat input:first-child {
+    margin-right: 10px;
+}
+
+.tag .ant-tag:first-child {
+    margin-right: 1%;
+}
+
+.deviceInfo .ant-tag {
+    margin-right: 1%;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 950px) {
+    .DetailContentIssue {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .DescriptionIssue,
+    .ComputerIssue {
+        width: 100%;
+        margin-bottom: 40px;
+        padding: 20px;
+    }
+
+    .ComputerIssue {
+        margin-left: 0;
+    }
+
+    .ContentIssue {
+        padding: 40px;
+        margin-left: 0;
+    }
 }
