@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import '../assets/css/LeftMenu.css'
 
 import { NavLink } from 'react-router-dom';
-import {UserContext} from "../context/UserContext";
+import { UserContext } from "../context/UserContext";
 
 const LeftMenu = () => {
     const { setUser } = useState(UserContext);
@@ -58,7 +58,11 @@ function dropDownClick() {
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
-        document.getElementById("myDropdown").style.display = "none"
+        //est-ce que mobileDisplay est en display block ?
+        if (document.body.getElementsByClassName("mobileDisplay")[0].style.display === "block") {
+            document.getElementById("myDropdown").style.display = "none"
+        }
+
     }
 }
 
