@@ -137,7 +137,35 @@ const DetailIssue = () => {
         data.dateDemande = (new Date(data.dateDemande)).toISOString()
         data.description = description;
         data.severite = severite;
+        fetch("http://212.227.3.231:8085/flashme2signal/demande/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => {
+                if (response.status == 200) {
 
+                    navigate("/DetailIssue/" + data.id);
+                    notification["success"]({
+                        style: {
+                            backgroundColor: '#2F2E31',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: '4px',
+                            textAlign: 'left',
+                            padding: '10px',
+                        },
+                        placement: "topRight",
+                        message: (<h3 style={{ color: "#fff", }}>Updated</h3>),
+                        description: "Les modifications ont été enregistrées",
+                        closeIcon: (<></>),
+                        maxCount: 1,
+                    });
+                }
+            })
+            .catch(err => console.log(err))
     }
 
     function handleAnnuler(data) {
@@ -163,6 +191,7 @@ const DetailIssue = () => {
                             textAlign: 'left',
                             padding: '10px',
                         },
+                        placement: "topRight",
                         message: (<h3 style={{ color: "#fff", }}>Updated</h3>),
                         description: "Les modifications ont été enregistrées",
                         closeIcon: (<></>),
@@ -196,6 +225,7 @@ const DetailIssue = () => {
                             textAlign: 'left',
                             padding: '10px',
                         },
+                        placement: "topRight",
                         message: (<h3 style={{ color: "#fff", }}>Updated</h3>),
                         description: "Les modifications ont été enregistrées",
                         closeIcon: (<></>),
