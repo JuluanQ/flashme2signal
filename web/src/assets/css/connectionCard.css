@@ -47,9 +47,22 @@
 .submitConnexion {
     margin-top: 30px;
     border-radius: 4px;
-    width: 130px;
+    width: 136px;
+    height: 44px;
 }
-
+.ant-btn > span{
+    font-size: 18px;
+}
+.ant-col-offset-8 {
+    margin-left: 0;
+}
+.ant-form-item-control-input-content{
+    display: flex;
+    justify-content: center;
+}
+#basic_username{
+    height: 44px;
+}
 .submitConnexion input[type=submit]{
     width: auto !important;
     padding: 10px !important;

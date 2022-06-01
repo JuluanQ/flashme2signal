@@ -82,6 +82,7 @@
 .buttonReset {
     position: absolute;
     right: 5%;
+    margin-top: 10px;
 }
 .buttonReset input[type=submit]:hover{
     font-weight: bold;
