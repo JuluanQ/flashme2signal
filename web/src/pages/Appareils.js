@@ -1,7 +1,7 @@
-import { Table } from 'antd';
+import { Select, Table, notification } from 'antd';
 
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import LeftMenu from '../components/LeftMenu';
 
@@ -13,7 +13,8 @@ import InputText from '../components/InputText';
 
 const Appareils = () => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
     const [data, setData] = useState();
     const [dataDevices, setDataDevices] = useState([]);
     const [dataDemandes, setDataDemandes] = useState([]);
@@ -21,6 +22,13 @@ const Appareils = () => {
 
     //Get the data from the API
     useEffect(() => {
+        //reset the states
+        setData(undefined);
+        setDataDevices([]);
+        setDataDemandes([]);
+        setFinished(false);
+
+
         fetch("http://212.227.3.231:8085/flashme2signal/materiels")
             .then(res => res.json())
             .then(data => {
@@ -31,15 +39,13 @@ const Appareils = () => {
             .then(res => res.json())
             .then(data => {
                 data.forEach(issue => {
-                    let dateD = new Date(data.dateDemande);
-                    dateD = dateD.toISOString().split('T')[0]
                     if (issue.idMateriel !== null) {
                         dataDemandes.push(issue)
                     }
                 });
             })
             .catch(err => console.log(err))
-    }, []);
+    }, [location]);
 
     useEffect(() => {
         if (data !== undefined && dataDemandes !== undefined && dataDevices.length === 0) {
@@ -104,6 +110,43 @@ const Appareils = () => {
         sticky: true,
     }
 
+    function handleAddDevice(data) {
+        let salle = document.getElementById("Numero de Salle").value;
+        let type = document.body.getElementsByClassName("SelectType")[0].textContent;
+        fetch("http://212.227.3.231:8085/flashme2signal/materiel",
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    salle: salle,
+                    type: type,
+                })
+            })
+            .then(response => {
+                if (response.status == 200) {
+
+                    navigate("/Appareils/");
+                    notification["success"]({
+                        style: {
+                            backgroundColor: '#2F2E31',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: '4px',
+                            textAlign: 'left',
+                            padding: '10px',
+                        },
+                        placement: "topRight",
+                        message: (<h3 style={{ color: "#fff", }}>Updated</h3>),
+                        description: "Les modifications ont été enregistrées",
+                        closeIcon: (<></>),
+                        maxCount: 1,
+                    });
+                }
+            })
+    }
+
     return (
         <>
             <LeftMenu />
@@ -112,7 +155,7 @@ const Appareils = () => {
                     <div className='tableName'>
                         <h3>Liste appareils</h3>
                     </div>
-                    <hr/>
+                    <hr />
                     {
                         finished ?
                             <Table {...tableParam} columns={columns} dataSource={dataDevices}
@@ -128,11 +171,17 @@ const Appareils = () => {
                     }
                 </div>
                 <div className='addDeviceContainer'>
-                    <form action="">
-                        <InputText title="Numero de Salle" />
-                        <InputText title="Type d'appareil" />
+                    <InputText title="Numero de Salle" />
+                    <Select className='SelectType' defaultValue="Ordinateur" >
+                        <Select.Option value="Ordinateur">Ordinateur</Select.Option>
+                        <Select.Option value="Tablette">Tablette</Select.Option>
+                        <Select.Option value="Projecteur">Projecteur</Select.Option>
+                    </Select>
+
+
+                    <div onClick={() => handleAddDevice(data)}>
                         <ButtonInput value="Ajouter" />
-                    </form>
+                    </div>
 
                 </div>
 
@@ -142,3 +191,4 @@ const Appareils = () => {
 };
 
 export default Appareils;
+
