@@ -99,7 +99,7 @@ const Appareils = () => {
         pagination: false,
         size: 'small',
         scroll: { y: 'calc(100vh - 300px)' },
-        bordered: false,
+        bordered: true,
         loading: false,
         sticky: true,
     }
@@ -109,6 +109,10 @@ const Appareils = () => {
             <LeftMenu />
             <div className='mainAppareilContainer'>
                 <div className='tableAppareilContainer'>
+                    <div className='tableName'>
+                        <h3>Liste appareils</h3>
+                    </div>
+                    <hr/>
                     {
                         finished ?
                             <Table {...tableParam} columns={columns} dataSource={dataDevices}
