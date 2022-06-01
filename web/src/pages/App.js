@@ -9,17 +9,14 @@ import '../assets/css/App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Connexion from './Connexion.js';
 import DetailDevice from './DetailDevice.js';
-import { withCookies, useCookies, CookiesProvider } from "react-cookie";
 
 const App = () => {
-    const [cookies, setCookie, removeCookie] = useCookies(['user']);
 
   return (
     <div className="App">
-        <CookiesProvider>
-            <BrowserRouter>
+        <BrowserRouter>
           {
-              cookies.user ? (
+              localStorage.getItem('username') ? (
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/co" element={<Connexion />} />
@@ -29,15 +26,14 @@ const App = () => {
                 </Routes>
             ) : (
                 <Routes>
-                    <Route path="/form/" element={<FormDemande />} />
+                    <Route path="/form/:id" element={<FormDemande />} />
                     <Route path="*" element={<Connexion />} />
                 </Routes>
             )
           }
-          </BrowserRouter>
-      </CookiesProvider>
+        </BrowserRouter>
     </div>
   );
 }
 
-export default withCookies(App);
+export default App;

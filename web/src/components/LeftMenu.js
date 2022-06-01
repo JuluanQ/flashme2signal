@@ -3,10 +3,8 @@ import React, { useState } from 'react';
 import '../assets/css/LeftMenu.css'
 
 import { NavLink } from 'react-router-dom';
-import {useCookies} from "react-cookie";
 
 const LeftMenu = () => {
-    const [cookies, setCookie, removeCookie] = useCookies(['user']);
 
     return (
         <>
@@ -37,7 +35,7 @@ const LeftMenu = () => {
                         <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Demandes</h3></NavLink>
                         <NavLink to="/Appareils" className={({ isActive }) => (isActive ? 'active' : 'inactive')}><h3>Appareils</h3></NavLink>
                         <NavLink to="/co" onClick={() => {
-                            removeCookie('user');
+                            localStorage.removeItem('username');
                         }}><h3 className='Deconnexion'>Se Déconnecter</h3></NavLink>
                     </div>
                 </div>

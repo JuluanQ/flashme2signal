@@ -3,7 +3,7 @@ import LeftMenu from '../components/LeftMenu';
 import ButtonInput from '../components/ButtonInput';
 
 // Imports
-import { Tag, Select } from 'antd';
+import { Tag, Select, notification } from 'antd';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 // CSS
@@ -131,6 +131,111 @@ const DetailIssue = () => {
         }
     }, [data]);
 
+    function handleSauvegarder(data) {
+        let description = document.getElementById("iptDesc").value;
+        let severite = document.getElementsByClassName("SelectSeverity")[0].textContent;
+        data.dateDemande = (new Date(data.dateDemande)).toISOString()
+        data.description = description;
+        data.severite = severite;
+        fetch("http://212.227.3.231:8085/flashme2signal/demande/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => {
+                if (response.status == 200) {
+
+                    navigate("/DetailIssue/" + data.id);
+                    notification["success"]({
+                        style: {
+                            backgroundColor: '#2F2E31',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: '4px',
+                            textAlign: 'left',
+                            padding: '10px',
+                        },
+                        placement: "topRight",
+                        message: (<h3 style={{ color: "#fff", }}>Updated</h3>),
+                        description: "Les modifications ont été enregistrées",
+                        closeIcon: (<></>),
+                        maxCount: 1,
+                    });
+                }
+            })
+            .catch(err => console.log(err))
+    }
+
+    function handleAnnuler(data) {
+        data.etat.id = 3;
+        data.etat.libelle = "Annulé";
+        fetch("http://212.227.3.231:8085/flashme2signal/demande/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => {
+                if (response.status == 200) {
+
+                    navigate("/DetailIssue/" + data.id);
+                    notification["success"]({
+                        style: {
+                            backgroundColor: '#2F2E31',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: '4px',
+                            textAlign: 'left',
+                            padding: '10px',
+                        },
+                        placement: "topRight",
+                        message: (<h3 style={{ color: "#fff", }}>Updated</h3>),
+                        description: "Les modifications ont été enregistrées",
+                        closeIcon: (<></>),
+                        maxCount: 1,
+                    });
+                }
+            })
+            .catch(err => console.log(err))
+    }
+    function handleTerminer(data) {
+        data.etat.id = 2;
+        data.etat.libelle = "Terminé";
+        console.log(data);
+        fetch("http://212.227.3.231:8085/flashme2signal/demande/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => {
+                if (response.status == 200) {
+
+                    navigate("/DetailIssue/" + data.id);
+                    notification["success"]({
+                        style: {
+                            backgroundColor: '#2F2E31',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: '4px',
+                            textAlign: 'left',
+                            padding: '10px',
+                        },
+                        placement: "topRight",
+                        message: (<h3 style={{ color: "#fff", }}>Updated</h3>),
+                        description: "Les modifications ont été enregistrées",
+                        closeIcon: (<></>),
+                        maxCount: 1,
+                    });
+                }
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
         <>
             <LeftMenu />
@@ -147,8 +252,13 @@ const DetailIssue = () => {
                         }
                     </div>
                     <div className='Btn-etat'>
-                        <ButtonInput value="Annuler" color="Red"></ButtonInput>
-                        <ButtonInput value="Terminé"></ButtonInput>
+                        <div onClick={() => handleAnnuler(data)}>
+                            <ButtonInput value="Annuler" color="Red"></ButtonInput>
+                        </div>
+                        <div onClick={() => handleTerminer(data)}>
+                            <ButtonInput value="Terminé"></ButtonInput>
+                        </div>
+
                     </div>
 
                 </div>
@@ -156,7 +266,10 @@ const DetailIssue = () => {
                 <div className='DetailContentIssue'>
                     <div className='DescriptionIssue'>
                         <label className='DescriptionText'>Description :</label>
-                        <textarea id="iptDesc" name="descriptionDemande" defaultValue={dataIssues !== undefined ? dataIssues.description : "..."}></textarea>
+                        {dataIssues ?
+                            <textarea id="iptDesc" name="descriptionDemande" defaultValue={dataIssues.description}></textarea>
+                            : <></>}
+
                         <p >Cette demande a été créée il y'a <span id="nCreation">{dateDifference} jours</span></p>
                         <div className="comboboxSeverite">
                             <label className='DescriptionText'>Sévérité :</label>
@@ -232,19 +345,3 @@ function dateDiff(date1, date2) {
     return diff;
 }
 
-function handleSauvegarder(data) {
-    let description = document.getElementById("iptDesc").value;
-    let severite = document.getElementsByClassName("SelectSeverity")[0].textContent;
-    data.description = description;
-    data.severite = severite;
-
-    fetch("https://api.allorigins.win/raw?url=http://212.227.3.231:8085/flashme2signal/demande/" + data.id, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "*"
-        },
-        body: JSON.stringify(data),
-    })
-}

@@ -1,26 +1,25 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 
 import '../assets/css/connectionCard.css'
 import { Form, Input, Button, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from "react-cookie";
-
 
 const ConnectionCard = () => {
     let navigate = useNavigate();
-    const [cookies, setCookie, removeCookie] = useCookies(['user']);
 
     message.config({
         duration: 2,
         maxCount: 1,
-        rtl: true,
     });
 
     const onFinish = () => {
         if (document.querySelector("input[type=text]").value === "admin" && document.querySelector("input[type=password]").value === "admin") {
-            setCookie('user', 'admin', { path: '/' });
-            navigate("/");
-            message.success('Connexion réussie');
+            localStorage.setItem('username', "admin");
+            navigate('/');
+            message.loading('Connexion en cours...');
+            setTimeout(() => {
+                window.location.reload();
+            },1000);
         } else {
             message.error('Utilisateur inconnu');
         }
