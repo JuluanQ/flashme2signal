@@ -1,4 +1,4 @@
-import { Tag } from 'antd';
+import {notification, Tag} from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 
 import React, { useEffect, useState } from 'react';
@@ -90,16 +90,20 @@ const DetailDevice = () => {
         }
     }, [finished]);
 
+    function generateQrCode() {
+
+    }
+
     return (
         <>
             <LeftMenu />
             <div className='ContentIssue'>
                 <div className="TopAppareil">
-                    <p className="IssueTitle">Appareil #{param.id}</p>
+                    <p className="IssueTitle">{device !== undefined ? device.type : "Appareil"} <span id='IdIssue'>#{param.id}</span></p>
                     <p className="DescriptionText">Salle : {device !== undefined ? device.salle : "..."}</p>
                 </div>
                 <div className="bottomNameContainer">
-                    <Tag className="green">{nbIssues} demande en cours</Tag>
+                    <Tag className="orange">{nbIssues} demande en cours</Tag>
                 </div>
 
                 <div className='DetailContentIssueAppareil'>
@@ -109,13 +113,13 @@ const DetailDevice = () => {
                         </div>
 
                     </div>
-                    <div className='ComputerIssue'>
-                        <div className="qrCodeContainer">
-                            <img src="" alt="" width="10em" height="10em" />
-                        </div>
+                    <div className='DetailQRCode'>
+                        <img className="img-qrcode" src={'/qrcode/' + param.id + '-qrcode.png'} alt="" />
                         <div className="boutons-descripfion">
-                            <ButtonInput value="Générer" />
-                            <DownloadOutlined className='downloadButton' />
+                            <ButtonInput onClick={() => handleGenerateQrCode(param.id)} value="Générer" />
+                            <a className="download-button" href={'/qrcode/' + param.id + '-qrcode.png'} download>
+                                <DownloadOutlined className='downloadButton' />
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -126,3 +130,21 @@ const DetailDevice = () => {
 };
 
 export default DetailDevice;
+
+function handleGenerateQrCode(id) {
+
+    fetch("http://212.227.3.231:8085/flashme2signal/demande/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    }).then(response => {
+            if (response.status == 200) {
+
+                let img = document.getElementById("img-qrcode");
+                img.src = '/qrcode/' + id + '-qrcode.png';
+
+            }
+        })
+        .catch(err => console.log(err))
+}

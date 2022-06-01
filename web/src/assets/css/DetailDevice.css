@@ -2,11 +2,37 @@
     color: #fff;
 }
 
+.download-button{
+    height: 42px;
+    width: 42px;
+    border-radius: 4px;
+    background-color: #2F2E31;
+    padding-left: 9px;
+    padding-top: 9px;
+}
+
+.download-button:hover{
+    background-color: #262527;
+    cursor: pointer;
+}
+
+.img-qrcode{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 .bodyContainer {
     display: flex;
     flex-direction: row;
-
     width: 90%;
+}
+
+.DetailQRCode {
+    width: 30%;
+    border-radius: 4px;
+    margin-left: 5%;
+    padding: 2%;
+    background-color: #3B3B3F;
 }
 
 .leftBodyContainer {
@@ -24,7 +50,7 @@
     margin-top: 50px;
 }
 
-.boutons-descripfion .anticon svg {
-    width: 3em;
-    height: 6em;
+.anticon svg {
+    width: 1.5em;
+    height: 1.5em;
 }
