@@ -24,17 +24,19 @@ const FormDemande = () => {
                 </div>
                 <FormCard />
             </div>
-            <button className='boutonEnvoyer' onClick={handleSubmit}>Envoyer</button>
+            <div className='boutonEnvoyer' onClick={handleSubmit}>
+                Envoyer
+            </div>
         </>
     );
 
 
     function handleSubmit() {
-        let etat ={
-            id : 1,
+        let etat = {
+            id: 1,
             libelle: "En cours"
         }
-        
+
         fetch("http://212.227.3.231:8085/flashme2signal/materiel/" + id)
             .then(res => res.json())
             .then(dataMat => {
@@ -55,7 +57,7 @@ const FormDemande = () => {
                     idMateriel: materiel
                 };
                 console.log(data);
-        
+
                 fetch("http://212.227.3.231:8085/flashme2signal/demande", {
                     method: "POST",
                     headers: {
@@ -92,9 +94,9 @@ const FormDemande = () => {
             .catch(err => {
                 console.log(err);
             });
-            
-        
-        
+
+
+
 
     }
 
