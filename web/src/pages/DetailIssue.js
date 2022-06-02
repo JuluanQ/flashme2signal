@@ -189,7 +189,6 @@ const DetailIssue = () => {
                             color: '#fff',
                             border: 'none',
                             borderRadius: '4px',
-                            
                             padding: '10px',
                         },
                         placement: "topRight",
@@ -223,7 +222,6 @@ const DetailIssue = () => {
                             color: '#fff',
                             border: 'none',
                             borderRadius: '4px',
-                            textAlign: 'left',
                             padding: '10px',
                         },
                         placement: "topRight",
@@ -257,7 +255,6 @@ const DetailIssue = () => {
                             color: '#fff',
                             border: 'none',
                             borderRadius: '4px',
-                            textAlign: 'left',
                             padding: '10px',
                         },
                         placement: "topRight",
@@ -276,30 +273,24 @@ const DetailIssue = () => {
             if (dataIssues.etat === "En cours") {
                 setHtmlButtons(<>
                     <div class="btn-green" onClick={() => handleTerminer(data)}>
-                        <ButtonInput value="Terminer" color="green"  />
-                    </div>
-                    <div class="btn-red" onClick={() => handleAnnuler(data)}>
-                        <ButtonInput value="Annuler" color="red"  />
-                    </div>
-                </>)
-            }
-            if (dataIssues.etat === "Terminé") {
-                setHtmlButtons(<>
-                    <div  class="btn-orange" onClick={() => handleEnCours(data)}>
-                        <ButtonInput value="En cours" color="orange"/>
+                        <ButtonInput value="Terminer" color="green" />
                     </div>
                     <div class="btn-red" onClick={() => handleAnnuler(data)}>
                         <ButtonInput value="Annuler" color="red" />
                     </div>
                 </>)
             }
+            if (dataIssues.etat === "Terminé") {
+                setHtmlButtons(<>
+                    <div class="btn-orange" onClick={() => handleEnCours(data)}>
+                        <ButtonInput value="Réouvrir" color="orange" />
+                    </div>
+                </>)
+            }
             if (dataIssues.etat === "Annulé") {
                 setHtmlButtons(<>
-                    <div class="btn-green" onClick={() => handleTerminer(data)}>
-                        <ButtonInput value="Terminer" color="green" />
-                    </div>
                     <div class="btn-orange" onClick={() => handleEnCours(data)}>
-                        <ButtonInput value="En cours" color="orange" />
+                        <ButtonInput value="Réouvrir" color="orange" />
                     </div>
                 </>)
             }
