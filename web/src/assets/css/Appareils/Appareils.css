@@ -18,30 +18,47 @@
 
     background-color: #3B3B3F;
 
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 3em;
 }
 
 .addDeviceContainer {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     width: 80%;
-    height: 20%;
-    margin-top: 5em;
-    margin-bottom: 5em;
-    margin-left: auto;
-    margin-right: auto;
-
+    margin-bottom: 4em;
+    margin-top: 4em;
     background-color: #3B3B3F;
+    border-radius: 4px;
+    padding: 3em;
+}
+.addDeviceC{
+    display: flex;
+    align-items: center;
+}
+.addDeviceBtn{
+    align-self: flex-end;
+}
 
-    border-radius: 10px;
-    padding: 1em;
+.addDeviceContainer .inputText{
+    margin-bottom: 0;
+    margin-right: 20px;
+}
+.addDeviceContainer .ant-select{
+    align-self: flex-end;
+    margin-right: 20px;
+    height: 38px;
 }
 
 .addDeviceContainer form {
     display: flex;
     align-items: flex-end;
     justify-content: center;
+}
+.addDeviceC .ant-select-selector{
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .addDeviceContainer form .inputText {
@@ -58,12 +75,17 @@
     width: 25%;
     margin-left: 1%;
 }
-.addDeviceContainer form input[type="submit"] {
-    width: 20% !important;
-    margin-right: 1em;
+.addDeviceContainer .addDeviceC .addDeviceBtn {
+    /*width: 20% !important;*/
+    justify-content: center;
+    height: 38px;
+}
+.addDeviceBtn input{
+    height: 100%;
+    width: 130px;
     justify-content: center;
 }
-.addDeviceContainer form input[type="submit"]:hover {
+.addDeviceContainer .addDeviceC .addDeviceBtn input:hover {
     font-weight: bold;
     color: #3452FF;
     background-color: white !important;
@@ -126,9 +148,25 @@
         width: 50%;
         margin: auto;
     }
-    /*.App {*/
-    /*    height: auto !important;*/
-    /*}*/
+    .addDeviceC{
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .addDeviceContainer .inputText {
+        margin-bottom: 20px;
+        margin-right: 0;
+        width: 100%;
+    }
+    .addDeviceContainer .ant-select {
+        margin-bottom: 20px;
+        margin-right: 0;
+        width: 100%;
+    }
+    .addDeviceContainer .addDeviceC .addDeviceBtn {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
 
 }
 
