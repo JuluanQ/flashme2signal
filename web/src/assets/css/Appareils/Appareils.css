@@ -32,19 +32,22 @@
     border-radius: 4px;
     padding: 3em;
 }
-.addDeviceC{
+
+.addDeviceC {
     display: flex;
     align-items: center;
 }
-.addDeviceBtn{
+
+.addDeviceBtn {
     align-self: flex-end;
 }
 
-.addDeviceContainer .inputText{
+.addDeviceContainer .inputText {
     margin-bottom: 0;
     margin-right: 20px;
 }
-.addDeviceContainer .ant-select{
+
+.addDeviceContainer .ant-select {
     align-self: flex-end;
     margin-right: 20px;
     height: 38px;
@@ -55,7 +58,8 @@
     align-items: flex-end;
     justify-content: center;
 }
-.addDeviceC .ant-select-selector{
+
+.addDeviceC .ant-select-selector {
     display: flex;
     align-items: center;
     height: 100%;
@@ -65,66 +69,85 @@
     width: 20% !important;
     margin-right: 1em;
 }
+
 .DetailContentIssueAppareil {
     display: flex;
     flex-direction: row;
     height: auto;
     margin-top: 4%;
 }
+
 .DetailContentIssueAppareil .ComputerIssue {
     width: 25%;
     margin-left: 1%;
 }
+
 .addDeviceContainer .addDeviceC .addDeviceBtn {
     /*width: 20% !important;*/
     justify-content: center;
     height: 38px;
 }
-.addDeviceBtn input{
+
+.img-qrcode {
+    width: 15em;
+}
+
+.addDeviceBtn input {
     height: 100%;
     width: 130px;
     justify-content: center;
 }
+
 .addDeviceContainer .addDeviceC .addDeviceBtn input:hover {
     font-weight: bold;
     color: #3452FF;
     background-color: white !important;
     transition: 0.3s linear;
 }
-.DescriptionIssueAppareil{
+
+.DescriptionIssueAppareil {
     width: 75%;
     border-radius: 4px;
     background-color: #3B3B3F;
 }
-.DescriptionIssueAppareil .ant-table-filter-trigger, .DescriptionIssueAppareil .ant-table-column-sorter{
+
+.DescriptionIssueAppareil .ant-table-filter-trigger,
+.DescriptionIssueAppareil .ant-table-column-sorter {
     display: none;
 }
-.DescriptionIssueAppareil .issuesContainerAppareil .ant-table-thead > tr > th{
+
+.DescriptionIssueAppareil .issuesContainerAppareil .ant-table-thead>tr>th {
     padding: 2px;
 }
+
 .issuesContainerAppareil .IssueTable {
     width: 100%;
 }
+
 /*.issuesContainerAppareil .ant-table-thead > tr > th{
     padding: 0;
 }*/
-.TopAppareil{
+.TopAppareil {
     display: flex;
     align-items: baseline;
 }
+
 @media only screen and (max-width: 950px) {
     .tableAppareilContainer {
         width: 90%;
         height: 100%;
     }
+
     .addDeviceContainer {
         width: 90%;
         height: 100%;
         margin-bottom: 7em;
     }
+
     .addDeviceContainer form .inputText {
         width: 100% !important;
     }
+
     .addDeviceContainer form {
         display: flex;
         align-items: center;
@@ -133,35 +156,43 @@
         width: 100%;
         padding: 10px;
     }
+
     .addDeviceContainer form input[type="submit"] {
         width: 40% !important;
         margin-top: 20px;
     }
-    .DetailContentIssueAppareil{
+
+    .DetailContentIssueAppareil {
         flex-direction: column;
     }
+
     .DescriptionIssueAppareil {
         width: 100%;
         margin-bottom: 50px;
     }
-    .DetailContentIssueAppareil .ComputerIssue{
+
+    .DetailContentIssueAppareil .ComputerIssue {
         width: 50%;
         margin: auto;
     }
-    .addDeviceC{
+
+    .addDeviceC {
         flex-wrap: wrap;
         justify-content: flex-start;
     }
+
     .addDeviceContainer .inputText {
         margin-bottom: 20px;
         margin-right: 0;
         width: 100%;
     }
+
     .addDeviceContainer .ant-select {
         margin-bottom: 20px;
         margin-right: 0;
         width: 100%;
     }
+
     .addDeviceContainer .addDeviceC .addDeviceBtn {
         display: flex;
         width: 100%;
@@ -175,7 +206,8 @@
     margin: 0;
 }
 
-.ant-table-tbody > tr > td:nth-child(1), .ant-table-tbody > tr > td:nth-child(5) {
+.ant-table-tbody>tr>td:nth-child(1),
+.ant-table-tbody>tr>td:nth-child(5) {
     text-align: center !important;
     padding-left: 0 !important;
-  }
+}
