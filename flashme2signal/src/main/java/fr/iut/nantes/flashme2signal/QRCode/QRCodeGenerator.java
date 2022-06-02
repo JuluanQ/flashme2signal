@@ -51,7 +51,7 @@ public class QRCodeGenerator {
             // Write combined image as PNG to OutputStream
             ImageIO.write(combined, "png", os);
             // Store Image
-            Files.copy( new ByteArrayInputStream(os.toByteArray()), Paths.get("qrcode/" + qrName + ".png"), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy( new ByteArrayInputStream(os.toByteArray()), Paths.get( qrName + ".png"), StandardCopyOption.REPLACE_EXISTING);
         } catch (WriterException e) {
             e.printStackTrace();
         } catch (IOException e) {
