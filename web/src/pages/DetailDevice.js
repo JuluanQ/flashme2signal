@@ -87,7 +87,7 @@ const DetailDevice = () => {
             <LeftMenu />
             <div className='ContentIssue'>
                 <div className="TopAppareil">
-                    <p className="DeviceTitle">{device !== undefined ? device.type : "Appareil"} <span id='IdIssue'>#{param.id}</span></p>
+                    <p className="DeviceTitle">{device !== undefined ? device.type : "Appareil"} #{param.id}</p>
                     <p className="DescriptionText">Salle : {device !== undefined ? device.salle : "..."}</p>
                 </div>
                 <div className="bottomNameContainer">
