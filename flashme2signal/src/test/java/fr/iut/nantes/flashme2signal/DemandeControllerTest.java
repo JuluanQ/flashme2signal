@@ -1,8 +1,8 @@
 package fr.iut.nantes.flashme2signal;
 
-import fr.iut.nantes.flashme2signal.dao.DemandeDao;
-import fr.iut.nantes.flashme2signal.dao.MaterielDao;
 import fr.iut.nantes.flashme2signal.web.exceptions.DemandeNotFoundException;
+import fr.iut.nantes.flashme2signal.web.exceptions.EtatNotFoundException;
+import fr.iut.nantes.flashme2signal.web.exceptions.MaterielNotFoundException;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -28,29 +28,13 @@ class DemandeControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
 
-	@Autowired
-	private MaterielDao materielDao;
-
-	@Autowired
-	private DemandeDao demandeDao;
-
 	@Test
 	@Order(1)
-	public void emptyDemande() throws Exception {
-		demandeDao.deleteAll();
-		materielDao.deleteAll();
-		this.mockMvc.perform(get("/demandes"))
-				.andDo(print())
-				.andExpect(status().isOk())
-				.andExpect(content().string("[]"));
-	}
-
-	@Test
-	@Order(2)
 	public void addMateriel() throws Exception {
-		String s = "{\"id\":1," +
+		String s = "{\"id\":1000000," +
 				"\"salle\":\"1\"," +
 				"\"type\":\"tablette\"}";
+
 		this.mockMvc.perform(
 						post("/materiel")
 								.contentType(MediaType.APPLICATION_JSON)
@@ -62,10 +46,11 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(3)
+	@Order(2)
 	public void addEtat() throws Exception {
-		String s = "{\"id\":1," +
-				"\"libelle\":\"en cours\"}";
+		String s = "{\"id\":4," +
+				"\"libelle\":\"test\"}";
+
 		this.mockMvc.perform(
 						post("/etat")
 								.contentType(MediaType.APPLICATION_JSON)
@@ -77,20 +62,23 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(4)
+	@Order(3)
 	public void addDemande1() throws Exception {
-		String s = "{\"id\": 1," +
-				"\"idMateriel\": {" +
-				"\"id\": 1," +
-				"\"salle\": \"1\"," +
-				"\"type\": \"tablette\"}," +
-				"\"severite\": \"grave\"," +
-				"\"description\": \"desc\"," +
-				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
-				"\"type\": \"panne\"," +
-				"\"etat\": {" +
-				"\"id\": 1," +
-				"\"libelle\": \"en cours\"" +
+		String s = "{" +
+				"\"id\":1000000," +
+				"\"idMateriel\":{" +
+				"\"id\":1000000," +
+				"\"salle\":\"1\"," +
+				"\"type\":\"tablette\"" +
+				"}," +
+				"\"severite\":\"Moyen\"," +
+				"\"description\":\"Panne d'ecran test\"," +
+				"\"dateDemande\":1653986668717," +
+				"\"type\":\"panne\"," +
+				"\"demandeur\":\"E21A421F\"," +
+				"\"etat\":{" +
+				"\"id\":4," +
+				"\"libelle\":\"test\"" +
 				"}" +
 				"}";
 
@@ -99,6 +87,33 @@ class DemandeControllerTest {
 								.contentType(MediaType.APPLICATION_JSON)
 								.content(s)
 				)
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().string(s));
+	}
+
+	@Test
+	@Order(4)
+	public void Demande1() throws Exception {
+		String s = "{" +
+				"\"id\":1000000," +
+				"\"idMateriel\":{" +
+				"\"id\":1000000," +
+				"\"salle\":\"1\"," +
+				"\"type\":\"tablette\"" +
+				"}," +
+				"\"severite\":\"Moyen\"," +
+				"\"description\":\"Panne d'ecran test\"," +
+				"\"dateDemande\":1653986668717," +
+				"\"type\":\"panne\"," +
+				"\"demandeur\":\"E21A421F\"," +
+				"\"etat\":{" +
+				"\"id\":4," +
+				"\"libelle\":\"test\"" +
+				"}" +
+				"}";
+
+		this.mockMvc.perform(get("/demande/1000000"))
 				.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(content().string(s));
@@ -106,43 +121,22 @@ class DemandeControllerTest {
 
 	@Test
 	@Order(5)
-	public void Demande1() throws Exception {
-		String s = "{\"id\": 1," +
-				"\"idMateriel\": {" +
-				"\"id\": 1," +
-				"\"salle\": \"1\"," +
-				"\"type\": \"tablette\"}," +
-				"\"severite\": \"grave\"," +
-				"\"description\": \"desc\"," +
-				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
-				"\"type\": \"panne\"," +
-				"\"etat\": {" +
-				"\"id\": 1," +
-				"\"libelle\": \"en cours\"" +
-				"}" +
-				"}";
-
-		this.mockMvc.perform(get("/demandes"))
-				.andDo(print())
-				.andExpect(status().isOk())
-				.andExpect(content().string("["+s+"]"));
-	}
-
-	@Test
-	@Order(6)
 	public void addDemande2() throws Exception {
-		String s = "{\"id\": 1," +
-				"\"idMateriel\": {" +
-				"\"id\": 1," +
-				"\"salle\": \"1\"," +
-				"\"type\": \"tablette\"}," +
-				"\"severite\": \"pas grave\"," +
-				"\"description\": \"description\"," +
-				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
-				"\"type\": \"tablette\"," +
-				"\"etat\": {" +
-				"\"id\": 1," +
-				"\"libelle\": \"en cours\"" +
+		String s = "{" +
+				"\"id\":1000000," +
+				"\"idMateriel\":{" +
+				"\"id\":1000000," +
+				"\"salle\":\"1\"," +
+				"\"type\":\"tablette\"" +
+				"}," +
+				"\"severite\":\"Mineure\"," +
+				"\"description\":\"Panne test\"," +
+				"\"dateDemande\":1653986668717," +
+				"\"type\":\"panne\"," +
+				"\"demandeur\":\"E21A221F\"," +
+				"\"etat\":{" +
+				"\"id\":4," +
+				"\"libelle\":\"test\"" +
 				"}" +
 				"}";
 
@@ -151,6 +145,33 @@ class DemandeControllerTest {
 								.contentType(MediaType.APPLICATION_JSON)
 								.content(s)
 				)
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().string(s));
+	}
+
+	@Test
+	@Order(6)
+	public void Demande2() throws Exception {
+		String s = "{" +
+				"\"id\":1000000," +
+				"\"idMateriel\":{" +
+				"\"id\":1000000," +
+				"\"salle\":\"1\"," +
+				"\"type\":\"tablette\"" +
+				"}," +
+				"\"severite\":\"Mineure\"," +
+				"\"description\":\"Panne test\"," +
+				"\"dateDemande\":1653986668717," +
+				"\"type\":\"panne\"," +
+				"\"demandeur\":\"E21A221F\"," +
+				"\"etat\":{" +
+				"\"id\":4," +
+				"\"libelle\":\"test\"" +
+				"}" +
+				"}";
+
+		this.mockMvc.perform(get("/demande/1000000"))
 				.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(content().string(s));
@@ -158,43 +179,22 @@ class DemandeControllerTest {
 
 	@Test
 	@Order(7)
-	public void Demande2() throws Exception {
-		String s = "{\"id\": 1," +
-				"\"idMateriel\": {" +
-				"\"id\": 1," +
-				"\"salle\": \"1\"," +
-				"\"type\": \"tablette\"}," +
-				"\"severite\": \"grave\"," +
-				"\"description\": \"desc\"," +
-				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
-				"\"type\": \"panne\"," +
-				"\"etat\": {" +
-				"\"id\": 1," +
-				"\"libelle\": \"en cours\"" +
-				"}" +
-				"}";
-
-		this.mockMvc.perform(get("/demandes"))
-				.andDo(print())
-				.andExpect(status().isOk())
-				.andExpect(content().string("["+s+"]"));
-	}
-
-	@Test
-	@Order(8)
 	public void addDemande3() throws Exception {
-		String s = "{\"id\": 2," +
-				"\"idMateriel\": {" +
-				"\"id\": 1," +
-				"\"salle\": \"1\"," +
-				"\"type\": \"tablette\"}," +
-				"\"severite\": \"grave\"," +
-				"\"description\": \"desc\"," +
-				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
-				"\"type\": \"panne\"," +
-				"\"etat\": {" +
-				"\"id\": 1," +
-				"\"libelle\": \"en cours\"" +
+		String s = "{" +
+				"\"id\":1000001," +
+				"\"idMateriel\":{" +
+				"\"id\":1000000," +
+				"\"salle\":\"1\"," +
+				"\"type\":\"tablette\"" +
+				"}," +
+				"\"severite\":\"Majeur\"," +
+				"\"description\":\"Panne ecran test\"," +
+				"\"dateDemande\":1653986668717," +
+				"\"type\":\"panne\"," +
+				"\"demandeur\":\"E21A251F\"," +
+				"\"etat\":{" +
+				"\"id\":4," +
+				"\"libelle\":\"test\"" +
 				"}" +
 				"}";
 
@@ -209,94 +209,89 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(9)
+	@Order(8)
 	public void Demande3() throws Exception {
-		String s1 = "{\"id\": 1," +
-				"\"idMateriel\": {" +
-				"\"id\": 1," +
-				"\"salle\": \"1\"," +
-				"\"type\": \"tablette\"}," +
-				"\"severite\": \"grave\"," +
-				"\"description\": \"desc\"," +
-				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
-				"\"type\": \"panne\"," +
-				"\"etat\": {" +
-				"\"id\": 1," +
-				"\"libelle\": \"en cours\"" +
+		String s = "{" +
+				"\"id\":1000001," +
+				"\"idMateriel\":{" +
+				"\"id\":1000000," +
+				"\"salle\":\"1\"," +
+				"\"type\":\"tablette\"" +
+				"}," +
+				"\"severite\":\"Majeur\"," +
+				"\"description\":\"Panne ecran test\"," +
+				"\"dateDemande\":1653986668717," +
+				"\"type\":\"panne\"," +
+				"\"demandeur\":\"E21A251F\"," +
+				"\"etat\":{" +
+				"\"id\":4," +
+				"\"libelle\":\"test\"" +
 				"}" +
 				"}";
-		String s2 = "{\"id\": 2," +
-				"\"idMateriel\": {" +
-				"\"id\": 1," +
-				"\"salle\": \"1\"," +
-				"\"type\": \"tablette\"}," +
-				"\"severite\": \"grave\"," +
-				"\"description\": \"desc\"," +
-				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
-				"\"type\": \"panne\"," +
-				"\"etat\": {" +
-				"\"id\": 1," +
-				"\"libelle\": \"en cours\"" +
-				"}" +
-				"}";
-		this.mockMvc.perform(get("/demandes"))
+		this.mockMvc.perform(get("/demande/1000001"))
 				.andDo(print())
 				.andExpect(status().isOk())
-				.andExpect(content().string("["+s1+","+s2+"]"));
+				.andExpect(content().string(s));
 	}
 
 	@Test
-	@Order(10)
+	@Order(9)
 	public void deleteDemande1() throws Exception {
 		this.mockMvc.perform(
-						delete("/demande/1")
+						delete("/demande/1000001")
 				)
 				.andDo(print())
 				.andExpect(status().isOk());
 	}
 
 	@Test
-	@Order(11)
+	@Order(10)
 	public void Demande4() throws Exception {
-		String s2 = "{\"id\": 2," +
-				"\"idMateriel\": {" +
-				"\"id\": 1," +
-				"\"salle\": \"1\"," +
-				"\"type\": \"tablette\"}," +
-				"\"severite\": \"grave\"," +
-				"\"description\": \"desc\"," +
-				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
-				"\"type\": \"panne\"," +
-				"\"etat\": {" +
-				"\"id\": 1," +
-				"\"libelle\": \"en cours\"" +
+		String s = "{" +
+				"\"id\":1000000," +
+				"\"idMateriel\":{" +
+				"\"id\":1000000," +
+				"\"salle\":\"1\"," +
+				"\"type\":\"tablette\"" +
+				"}," +
+				"\"severite\":\"Mineure\"," +
+				"\"description\":\"Panne test\"," +
+				"\"dateDemande\":1653986668717," +
+				"\"type\":\"panne\"," +
+				"\"demandeur\":\"E21A221F\"," +
+				"\"etat\":{" +
+				"\"id\":4," +
+				"\"libelle\":\"test\"" +
 				"}" +
 				"}";
-		this.mockMvc.perform(get("/demandes"))
+		this.mockMvc.perform(get("/demande/1000000"))
 				.andDo(print())
 				.andExpect(status().isOk())
-				.andExpect(content().string("["+s2+"]"));
+				.andExpect(content().string(s));
 	}
 
 	@Test
-	@Order(12)
+	@Order(11)
 	public void updateDemande() throws Exception {
-		String s = "{\"id\": 2," +
-				"\"idMateriel\": {" +
-				"\"id\": 1," +
-				"\"salle\": \"1\"," +
-				"\"type\": \"tablette\"}," +
-				"\"severite\": \"tres grave\"," +
-				"\"description\": \"desc\"," +
-				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
-				"\"type\": \"panne\"," +
-				"\"etat\": {" +
-				"\"id\": 1," +
-				"\"libelle\": \"en cours\"" +
+		String s = "{" +
+				"\"id\":1000000," +
+				"\"idMateriel\":{" +
+				"\"id\":1000000," +
+				"\"salle\":\"1\"," +
+				"\"type\":\"tablette\"" +
+				"}," +
+				"\"severite\":\"Majeur\"," +
+				"\"description\":\"test\"," +
+				"\"dateDemande\":1653986668717," +
+				"\"type\":\"panne\"," +
+				"\"demandeur\":\"E21A251F\"," +
+				"\"etat\":{" +
+				"\"id\":4," +
+				"\"libelle\":\"test\"" +
 				"}" +
 				"}";
 		this.mockMvc.perform(
-						put("/demande/2")
+						put("/demande/1000000")
 								.contentType(MediaType.APPLICATION_JSON)
 								.content(s)
 				)
@@ -305,33 +300,36 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(13)
+	@Order(12)
 	public void Demande5() throws Exception {
-		String s2 = "{\"id\": 2," +
-				"\"idMateriel\": {" +
-				"\"id\": 1," +
-				"\"salle\": \"1\"," +
-				"\"type\": \"tablette\"}," +
-				"\"severite\": \"tres grave\"," +
-				"\"description\": \"desc\"," +
-				"\"dateDemande\": \"2011-11-11T00:00:00.000+00:00\"," +
-				"\"type\": \"panne\"," +
-				"\"etat\": {" +
-				"\"id\": 1," +
-				"\"libelle\": \"en cours\"" +
+		String s = "{" +
+				"\"id\":1000000," +
+				"\"idMateriel\":{" +
+				"\"id\":1000000," +
+				"\"salle\":\"1\"," +
+				"\"type\":\"tablette\"" +
+				"}," +
+				"\"severite\":\"Majeur\"," +
+				"\"description\":\"test\"," +
+				"\"dateDemande\":1653986668717," +
+				"\"type\":\"panne\"," +
+				"\"demandeur\":\"E21A221F\"," +
+				"\"etat\":{" +
+				"\"id\":4," +
+				"\"libelle\":\"test\"" +
 				"}" +
 				"}";
-		this.mockMvc.perform(get("/demandes"))
+		this.mockMvc.perform(get("/demande/1000000"))
 				.andDo(print())
 				.andExpect(status().isOk())
-				.andExpect(content().string("["+s2+"]"));
+				.andExpect(content().string(s));
 	}
 
 	@Test
-	@Order(14)
+	@Order(13)
 	public void deleteDemande2() throws Exception {
 		this.mockMvc.perform(
-						delete("/demande/2")
+						delete("/demande/1000000")
 				)
 				.andDo(print())
 				.andExpect(status().isOk())
@@ -339,21 +337,33 @@ class DemandeControllerTest {
 	}
 
 	@Test
-	@Order(15)
-	public void Demande6() throws Exception {
-		String s2 = "";
-		this.mockMvc.perform(get("/demandes"))
-				.andDo(print())
-				.andExpect(status().isOk())
-				.andExpect(content().string("["+s2+"]"));
-	}
-
-	@Test
-	@Order(16)
+	@Order(14)
 	public void DemandeNotFoundException() throws Exception {
 		this.mockMvc.perform(get("/demande/6000"))
 				.andDo(print())
 				.andExpect(status().isNotFound())
 				.andExpect(result -> assertTrue(result.getResolvedException() instanceof DemandeNotFoundException));
+	}
+
+	@Test
+	@Order(15)
+	public void deleteEtat() throws Exception {
+		this.mockMvc.perform(
+						delete("/etat/4")
+				)
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(result -> assertFalse(result.getResolvedException() instanceof EtatNotFoundException));
+	}
+
+	@Test
+	@Order(16)
+	public void deleteMateriel() throws Exception {
+		this.mockMvc.perform(
+						delete("/materiel/1000000")
+				)
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(result -> assertFalse(result.getResolvedException() instanceof MaterielNotFoundException));
 	}
 }
