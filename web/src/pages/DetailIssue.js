@@ -3,14 +3,14 @@ import LeftMenu from '../components/LeftMenu';
 import ButtonInput from '../components/ButtonInput';
 
 // Imports
-import {Tag, Select, notification} from 'antd';
-import {useLocation, useNavigate, useParams} from 'react-router-dom';
+import { Tag, Select, notification } from 'antd';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 // CSS
 import '../assets/css/DetailIssue.css';
 import "antd/dist/antd.css";
 
-const {Option} = Select;
+const { Option } = Select;
 
 
 const DetailIssue = () => {
@@ -108,17 +108,11 @@ const DetailIssue = () => {
                     .then(dataIss => {
                         setAllIssues([]);
                         dataIss.forEach(issue => {
-                            let dateD = new Date(issue.dateDemande);
-                            issue.dateDemande = dateD.toISOString().split('T')[0]
-                            if (issue.idMateriel !== null) {
-                                //si l'etat de l'issue est en cours
-                                let str = issue.etat.libelle.toLowerCase();
-                                if (str === "en cours") {
-                                    if (issue.idMateriel.id === data.idMateriel.id) {
-                                        setAllIssues(allIssues => [...allIssues, issue]);
-                                    }
+                            let str = issue.etat.libelle.toLowerCase();
+                            if (str === "en cours") {
+                                if (issue.idMateriel.id === data.idMateriel.id && issue.id !== data.id) {
+                                    setAllIssues(allIssues => [...allIssues, issue]);
                                 }
-
                             }
                         });
                     })
@@ -159,7 +153,7 @@ const DetailIssue = () => {
                             padding: '10px',
                         },
                         placement: "topRight",
-                        message: (<h3 style={{color: "#fff",}}>Updated</h3>),
+                        message: (<h3 style={{ color: "#fff", }}>Updated</h3>),
                         description: "Les modifications ont été enregistrées",
                         closeIcon: (<></>),
                         maxCount: 1,
@@ -192,7 +186,7 @@ const DetailIssue = () => {
                             padding: '10px',
                         },
                         placement: "topRight",
-                        message: (<h3 style={{color: "#fff",}}>Updated</h3>),
+                        message: (<h3 style={{ color: "#fff", }}>Updated</h3>),
                         description: "Les modifications ont été enregistrées",
                         closeIcon: (<></>),
                         maxCount: 1,
@@ -324,14 +318,14 @@ const DetailIssue = () => {
                         <label className='DescriptionText'>Description :</label>
                         {dataIssues ?
                             <textarea id="iptDesc" name="descriptionDemande"
-                                      defaultValue={dataIssues.description}></textarea>
+                                defaultValue={dataIssues.description}></textarea>
                             : <></>}
 
                         <p>Cette demande a été créée il y'a <span id="nCreation">{dateDifference} jours</span></p>
                         <div className="comboboxSeverite">
                             <label className='DescriptionText'>Sévérité :</label>
                             <Select className='SelectSeverity' size="small" value={severite ? severite : "..."}
-                                    onChange={(value) => setSeverite(value)}>
+                                onChange={(value) => setSeverite(value)}>
                                 <Option value="Majeur">Majeur</Option>
                                 <Option value="Moyen">Moyen</Option>
                                 <Option value="Mineur">Mineur</Option>
@@ -357,7 +351,7 @@ const DetailIssue = () => {
                                     <div className="deviceInfo">
                                         {allIssues.map(issue => (
                                             <Tag className={severiteColors(issue.severite) + " hvr-grow"}
-                                                 onClick={() => navigate("/DetailIssue/" + issue.id)}>{issue.id}</Tag>
+                                                onClick={() => navigate("/DetailIssue/" + issue.id)}>{issue.id}</Tag>
                                         ))}
                                     </div>
                                     : <p className="deviceInfo">...</p>
@@ -367,7 +361,7 @@ const DetailIssue = () => {
                         {
                             dataDevice !== undefined ?
                                 <div className='boutons-description'
-                                     onClick={() => navigate('/DetailDevice/' + dataDevice.id)}>
+                                    onClick={() => navigate('/DetailDevice/' + dataDevice.id)}>
                                     <ButtonInput value="Voir plus" className="BtnVoirPlus"></ButtonInput>
                                 </div> : <></>
                         }

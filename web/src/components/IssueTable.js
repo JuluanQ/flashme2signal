@@ -52,7 +52,7 @@ const IssueTable = (props) => {
             title: 'ID',
             dataIndex: 'id',
             key: 'id',
-            width: '10%',
+            width: '8%',
 
         },
         {
@@ -82,7 +82,7 @@ const IssueTable = (props) => {
             title: 'Description',
             dataIndex: 'description',
             key: 'description',
-            width: '30%',
+            width: '25%',
         },
         {
             title: 'Type',
@@ -111,7 +111,7 @@ const IssueTable = (props) => {
                 }
             ],
             onFilter: (value, record) => record.severite.indexOf(value) === 0,
-            width: '10%',
+            width: '12%',
             render: (_, { severite }) => {
                 severite = severite.toLowerCase()
                 if (severite === "moyen") {
@@ -156,7 +156,7 @@ const IssueTable = (props) => {
                 }
             ],
             onFilter: (value, record) => record.statut.indexOf(value) === 0,
-            width: '10%',
+            width: '12%',
             render: (_, { statut }) => {
                 statut = statut.toLowerCase()
                 if (statut === "en cours") {

@@ -135,7 +135,7 @@
     margin-right: 10px;
 }
 
-.boutons-description input:hover{
+.boutons-description input:hover {
     font-weight: bold;
     color: red;
     background-color: white !important;
@@ -149,18 +149,21 @@
     background-color: white;
     transition: 0.3s linear;
 }
+
 .Btn-etat .btn-orange input:hover {
     font-weight: bold;
     color: orange;
     background-color: white !important;
     transition: 0.3s linear;
 }
+
 .Btn-etat .btn-green input:hover {
     font-weight: bold;
     color: green;
     background-color: white !important;
     transition: 0.3s linear;
 }
+
 .Btn-etat .btn-red input:hover {
     font-weight: bold;
     color: red;
@@ -191,7 +194,7 @@ thead th {
     font-size: 40px;
 }
 
-.ComputerId{
+.ComputerId {
     font-size: 30px;
     font-weight: lighter;
 }
@@ -201,7 +204,7 @@ thead th {
     padding: .5em;
 }
 
-.TxtInput{
+.TxtInput {
     margin-bottom: 40px;
 }
 
@@ -237,7 +240,7 @@ thead th {
 }
 
 .deviceInfo .ant-tag {
-    margin-right: 1%;
+    margin: 1%;
     cursor: pointer;
 }
 
@@ -262,10 +265,12 @@ thead th {
         padding: 40px;
         margin-left: 0;
     }
-    .tag{
+
+    .tag {
         flex-direction: column;
         align-items: unset;
     }
+
     .Btn-etat {
         margin-top: 20px;
     }
