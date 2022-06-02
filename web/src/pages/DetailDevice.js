@@ -53,6 +53,7 @@ const DetailDevice = () => {
                 .then(res => res.json())
                 .then(data => {
                     setIssues([])
+                    setNbIssues(0)
                     data.forEach(issue => {
                         if (issue.idMateriel.id === parseInt(param.id)) {
                             issue.dateDemande = new Date(issue.dateDemande).toISOString().split('T')[0];
@@ -130,8 +131,17 @@ function handleGenerateQrCode(id) {
 
             let img = document.getElementById("img-qrcode");
             img.src = '/qrcode/' + id + '-qrcode.png';
-
+            handleNotification("QR Code généré")
         }
     })
         .catch(err => console.log(err))
+}
+
+//Write a notification to the user if the device is not found in the database or if the device is not connected
+function handleNotification(message) {
+    notification.open({
+        message: message,
+        description: '',
+        icon: <Tag color="orange">!</Tag>,
+    });
 }
