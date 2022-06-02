@@ -102,7 +102,7 @@ const DetailDevice = () => {
                     </div>
                     <div className='DetailQRCode'>
                         <img className="img-qrcode" src={'/qrcode/' + param.id + '-qrcode.png'} alt="" />
-                        <div className="boutons-descripfion">
+                        <div className="boutons-description">
                             <ButtonInput onClick={() => handleGenerateQrCode(param.id)} value="Générer" />
                             <a className="download-button" href={'/qrcode/' + param.id + '-qrcode.png'} download>
                                 <DownloadOutlined className='downloadButton' />

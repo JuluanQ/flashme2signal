@@ -344,7 +344,7 @@ const DetailIssue = () => {
                             </Select>
                         </div>
 
-                        <div className='boutons-descripfion' onClick={() => handleSauvegarder(data)}>
+                        <div className='boutons-description' onClick={() => handleSauvegarder(data)}>
                             <ButtonInput value="Sauvegarder"></ButtonInput>
                         </div>
                     </div>
@@ -371,7 +371,7 @@ const DetailIssue = () => {
                             </div>
                             {
                                 dataDevice !== undefined ?
-                                    <div className='boutons-descripfion' onClick={() => navigate('/DetailDevice/' + dataDevice.id)}>
+                                    <div className='boutons-description' onClick={() => navigate('/DetailDevice/' + dataDevice.id)}>
                                         <ButtonInput value="Voir plus" className="BtnVoirPlus" ></ButtonInput>
                                     </div> : <></>
                             }
