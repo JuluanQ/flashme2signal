@@ -83,7 +83,7 @@
     width: 130px;
     justify-content: center;
 }
-.addDeviceContainer .addDeviceC .addDeviceBtn:hover {
+.addDeviceContainer .addDeviceC .addDeviceBtn input:hover {
     font-weight: bold;
     color: #3452FF;
     background-color: white !important;
