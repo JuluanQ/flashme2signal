@@ -35,8 +35,9 @@ public class MaterielController {
 
     @ApiOperation(value = "Créé un materiel")
     @RequestMapping(value = "/materiel", method = RequestMethod.POST)
-    public Materiel createMateriel(@RequestBody Materiel materiel) {
+    public Materiel createMateriel(@RequestBody Materiel materiel) throws IOException, WriterException {
         materielDao.save(materiel);
+        QRCodeGenerator.generateQR("http://212.227.3.231/form?id=" + materiel.getId(), materiel.getId() + "-qrcode");
         return materiel;
     }
 
@@ -61,7 +62,7 @@ public class MaterielController {
     @RequestMapping(value = "/materiel/{id}/qrcode", method = RequestMethod.POST)
     public String generateQrcode(@PathVariable("id") int id) throws IOException, WriterException {
         Materiel materiel = materielDao.findById(id);
-        QRCodeGenerator.generateQR("http://212.227.3.231/build/Form/" + id, materiel.getId() + "-qrcode");
+        QRCodeGenerator.generateQR("http://212.227.3.231/form?id=" + id, id + "-qrcode");
         return materiel.getId() + "-qrcode.png";
     }
 
