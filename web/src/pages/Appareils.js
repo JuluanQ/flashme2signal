@@ -77,6 +77,8 @@ const Appareils = () => {
             title: 'Salle',
             dataIndex: 'salle',
             key: 'salle',
+            //sort this column
+            sorter: (a, b) => a.salle - b.salle,
         },
         {
             title: 'Type',

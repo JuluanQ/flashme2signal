@@ -318,7 +318,7 @@ const DetailIssue = () => {
                         {dataIssues ?
                             <textarea id="iptDesc" name="descriptionDemande"
                                 defaultValue={dataIssues.description}></textarea>
-                            : <></>}
+                            : <>...</>}
 
                         <p>Cette demande a été créée il y'a <span id="nCreation">{dateDifference} jours</span></p>
                         <div className="comboboxSeverite">
