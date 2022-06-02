@@ -1,7 +1,5 @@
 package fr.iut.nantes.flashme2signal;
 
-import fr.iut.nantes.flashme2signal.dao.DemandeDao;
-import fr.iut.nantes.flashme2signal.dao.MaterielDao;
 import fr.iut.nantes.flashme2signal.web.exceptions.MaterielNotFoundException;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -28,27 +26,10 @@ public class MaterielControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
-    private MaterielDao materielDao;
-
-    @Autowired
-    private DemandeDao demandeDao;
-
     @Test
     @Order(1)
-    public void emptyMateriel() throws Exception {
-        demandeDao.deleteAll();
-        materielDao.deleteAll();
-        this.mockMvc.perform(get("/materiels"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string("[]"));
-    }
-
-    @Test
-    @Order(2)
     public void addMateriel1() throws Exception {
-        String s = "{\"id\":1," +
+        String s = "{\"id\":1000000," +
                 "\"salle\":\"1\"," +
                 "\"type\":\"tablette\"}";
 
@@ -57,6 +38,18 @@ public class MaterielControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(s)
                 )
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(s));
+    }
+
+    @Test
+    @Order(2)
+    public void Materiels1() throws Exception {
+        String s = "{\"id\":1000000," +
+                "\"salle\":\"1\"," +
+                "\"type\":\"tablette\"}";
+        this.mockMvc.perform(get("/materiel/1000000"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(s));
@@ -64,21 +57,9 @@ public class MaterielControllerTest {
 
     @Test
     @Order(3)
-    public void Materiels1() throws Exception {
-        String s = "{\"id\":1," +
-                "\"salle\":\"1\"," +
-                "\"type\":\"tablette\"}";
-        this.mockMvc.perform(get("/materiels"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string("["+s+"]"));
-    }
-
-    @Test
-    @Order(4)
     public void addMateriel3() throws Exception {
-        String s = "{\"id\":1," +
-                "\"salle\":\"12\"," +
+        String s = "{\"id\":1000000," +
+                "\"salle\":\"2\"," +
                 "\"type\":\"pc\"}";
 
         this.mockMvc.perform(
@@ -86,6 +67,18 @@ public class MaterielControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(s)
                 )
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(s));
+    }
+
+    @Test
+    @Order(4)
+    public void Materiels2() throws Exception {
+        String s = "{\"id\":1000000," +
+                "\"salle\":\"2\"," +
+                "\"type\":\"pc\"}";
+        this.mockMvc.perform(get("/materiel/1000000"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(s));
@@ -93,22 +86,10 @@ public class MaterielControllerTest {
 
     @Test
     @Order(5)
-    public void Materiels2() throws Exception {
-        String s = "{\"id\":1," +
-                "\"salle\":\"12\"," +
-                "\"type\":\"pc\"}";
-        this.mockMvc.perform(get("/materiels"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string("["+s+"]"));
-    }
-
-    @Test
-    @Order(6)
     public void addMateriel2() throws Exception {
-        String s = "{\"id\":2," +
-                "\"salle\":\"salle2\"," +
-                "\"type\":\"telephone\"}";
+        String s = "{\"id\":1000001," +
+                "\"salle\":\"1\"," +
+                "\"type\":\"tablette\"}";
 
         this.mockMvc.perform(
                         post("/materiel")
@@ -121,50 +102,35 @@ public class MaterielControllerTest {
     }
 
     @Test
-    @Order(7)
+    @Order(6)
     public void Materiels3() throws Exception {
-        String s1 = "{\"id\":1," +
-                "\"salle\":\"12\"," +
-                "\"type\":\"pc\"}";
-        String s2 = "{\"id\":2," +
-                "\"salle\":\"salle2\"," +
-                "\"type\":\"telephone\"}";
-        this.mockMvc.perform(get("/materiels"))
+        String s = "{\"id\":1000001," +
+                "\"salle\":\"1\"," +
+                "\"type\":\"tablette\"}";
+        this.mockMvc.perform(get("/materiel/1000001"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string("["+s1+","+s2+"]"));
+                .andExpect(content().string(s));
     }
 
     @Test
-    @Order(8)
+    @Order(7)
     public void deleteMateriel1() throws Exception {
         this.mockMvc.perform(
-                        delete("/materiel/1")
+                        delete("/materiel/1000001")
                 )
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    @Order(9)
-    public void Materiels4() throws Exception {
-        String s2 = "{\"id\":2," +
-                "\"salle\":\"salle2\"," +
-                "\"type\":\"telephone\"}";
-        this.mockMvc.perform(get("/materiels"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string("["+s2+"]"));
-    }
-
-    @Test
-    @Order(10)
+    @Order(8)
     public void updateMateriel() throws Exception {
-        String s = "{\"id\":2," +
-                "\"salle\":\"salle12\"," +
-                "\"type\":\"pc\"}";
+        String s = "{\"id\":1000000," +
+                "\"salle\":\"salle2\"," +
+                "\"type\":\"tablette\"}";
         this.mockMvc.perform(
-                        put("/materiel/2")
+                        put("/materiel/1000000")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(s)
                 )
@@ -173,22 +139,22 @@ public class MaterielControllerTest {
     }
 
     @Test
-    @Order(11)
+    @Order(9)
     public void Materiels5() throws Exception {
-        String s = "{\"id\":2," +
-                "\"salle\":\"salle12\"," +
-                "\"type\":\"pc\"}";
-        this.mockMvc.perform(get("/materiels"))
+        String s = "{\"id\":1000000," +
+                "\"salle\":\"salle2\"," +
+                "\"type\":\"tablette\"}";
+        this.mockMvc.perform(get("/materiel/1000000"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string("["+s+"]"));
+                .andExpect(content().string(s));
     }
 
     @Test
-    @Order(12)
+    @Order(10)
     public void deleteMateriel2() throws Exception {
         this.mockMvc.perform(
-                        delete("/materiel/2")
+                        delete("/materiel/1000000")
                 )
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -196,17 +162,7 @@ public class MaterielControllerTest {
     }
 
     @Test
-    @Order(13)
-    public void Materiels6() throws Exception {
-        String s2 = "";
-        this.mockMvc.perform(get("/materiels"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string("["+s2+"]"));
-    }
-
-    @Test
-    @Order(14)
+    @Order(11)
     public void MaterielNotFoundException() throws Exception {
         this.mockMvc.perform(get("/materiel/1500"))
                 .andDo(print())

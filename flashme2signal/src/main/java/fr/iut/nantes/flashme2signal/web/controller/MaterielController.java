@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
+@CrossOrigin(origins = "http://212.227.3.231/flashme/materiel", maxAge = 3600)
 @RestController
 public class MaterielController {
 

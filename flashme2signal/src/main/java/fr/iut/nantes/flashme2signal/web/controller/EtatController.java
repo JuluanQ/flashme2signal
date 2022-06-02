@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://212.227.3.231/flashme/etat", maxAge = 3600)
 @RestController
 public class EtatController {
 
