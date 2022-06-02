@@ -189,7 +189,7 @@ const DetailIssue = () => {
                             color: '#fff',
                             border: 'none',
                             borderRadius: '4px',
-                            textAlign: 'left',
+                            
                             padding: '10px',
                         },
                         placement: "topRight",
@@ -275,30 +275,30 @@ const DetailIssue = () => {
         if (dataIssues !== undefined) {
             if (dataIssues.etat === "En cours") {
                 setHtmlButtons(<>
-                    <div onClick={() => handleTerminer(data)}>
-                        <ButtonInput value="Terminer" color="green" />
+                    <div class="btn-green" onClick={() => handleTerminer(data)}>
+                        <ButtonInput value="Terminer" color="green"  />
                     </div>
-                    <div onClick={() => handleAnnuler(data)}>
-                        <ButtonInput value="Annuler" color="red" />
+                    <div class="btn-red" onClick={() => handleAnnuler(data)}>
+                        <ButtonInput value="Annuler" color="red"  />
                     </div>
                 </>)
             }
             if (dataIssues.etat === "Terminé") {
                 setHtmlButtons(<>
-                    <div onClick={() => handleEnCours(data)}>
-                        <ButtonInput value="En cours" color="orange" />
+                    <div  class="btn-orange" onClick={() => handleEnCours(data)}>
+                        <ButtonInput value="En cours" color="orange"/>
                     </div>
-                    <div onClick={() => handleAnnuler(data)}>
+                    <div class="btn-red" onClick={() => handleAnnuler(data)}>
                         <ButtonInput value="Annuler" color="red" />
                     </div>
                 </>)
             }
             if (dataIssues.etat === "Annulé") {
                 setHtmlButtons(<>
-                    <div onClick={() => handleTerminer(data)}>
+                    <div class="btn-green" onClick={() => handleTerminer(data)}>
                         <ButtonInput value="Terminer" color="green" />
                     </div>
-                    <div onClick={() => handleEnCours(data)}>
+                    <div class="btn-orange" onClick={() => handleEnCours(data)}>
                         <ButtonInput value="En cours" color="orange" />
                     </div>
                 </>)
