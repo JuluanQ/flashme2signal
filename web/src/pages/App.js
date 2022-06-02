@@ -18,11 +18,12 @@ const App = () => {
           {
               localStorage.getItem('username') ? (
                 <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/co" element={<Connexion />} />
-                  <Route path="/Appareils" element={<Appareils />} />
-                  <Route path="/DetailIssue/:id" element={<DetailIssue />} />
-                  <Route path="/DetailDevice/:id" element={<DetailDevice />} />
+                    <Route path="/" element={<Home />} />
+                    <Route path="/co" element={<Connexion />} />
+                    <Route path="/Appareils" element={<Appareils />} />
+                    <Route path="/DetailIssue/:id" element={<DetailIssue />} />
+                    <Route path="/DetailDevice/:id" element={<DetailDevice />} />
+                    <Route path="/form/:id" element={<FormDemande />} />
                 </Routes>
             ) : (
                 <Routes>
