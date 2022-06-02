@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import {useParams, useSearchParams} from 'react-router-dom';
 
 // Components
 import FormCard from '../components/FormCard';
@@ -8,6 +8,11 @@ import FormCard from '../components/FormCard';
 import '../assets/css/FormDemande.css'
 
 const FormDemande = () => {
+
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const id = searchParams.get("id");
+
     const params = useParams();
     return (
         <>
@@ -28,7 +33,7 @@ const FormDemande = () => {
             libelle: "En cours"
         }
         
-        fetch("http://212.227.3.231:8085/flashme2signal/materiel/" + params.id)
+        fetch("http://212.227.3.231:8085/flashme2signal/materiel/" + id)
             .then(res => res.json())
             .then(dataMat => {
 
