@@ -3,6 +3,7 @@ package com.example.flashmetosignal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -70,13 +71,26 @@ public class MainActivity extends AppCompatActivity {
 
         makeData();
 
+        // pour vérifier si on passe par le QR Code
+        Intent intent = getIntent();
+        Uri uri = intent.getData();
+
         // bouton envoi
         Button envoi = findViewById(R.id.boutonEnv);
-        envoi.setOnClickListener(v -> {
-            postData(makeData());
-            Toast toast = Toast.makeText(this, "Demande envoyée !", Toast.LENGTH_LONG);
-            toast.show();
-        });
+        if (uri != null) {
+            envoi.setOnClickListener(v -> {
+                postData(makeData());
+                Toast toast = Toast.makeText(this, "Demande envoyée !", Toast.LENGTH_LONG);
+                toast.show();
+            });
+        } else {
+            envoi.setBackgroundColor(Color.parseColor("#FF0000"));
+            envoi.setOnClickListener(v -> {
+                Toast toast = Toast.makeText(this, "Vous devez scanner un QR Code pour envoyer une demande", Toast.LENGTH_LONG);
+                toast.show();
+            });
+        }
+
 
     }
 
