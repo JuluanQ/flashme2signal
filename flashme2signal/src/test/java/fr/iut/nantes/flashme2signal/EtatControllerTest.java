@@ -1,7 +1,5 @@
 package fr.iut.nantes.flashme2signal;
 
-import fr.iut.nantes.flashme2signal.dao.DemandeDao;
-import fr.iut.nantes.flashme2signal.dao.EtatDao;
 import fr.iut.nantes.flashme2signal.web.exceptions.EtatNotFoundException;
 import fr.iut.nantes.flashme2signal.web.exceptions.MaterielNotFoundException;
 import org.junit.jupiter.api.MethodOrderer;
@@ -29,28 +27,11 @@ public class EtatControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
-    private EtatDao etatDao;
-
-    @Autowired
-    private DemandeDao demandeDao;
-
     @Test
     @Order(1)
-    public void emptyEtat() throws Exception {
-        demandeDao.deleteAll();
-        etatDao.deleteAll();
-        this.mockMvc.perform(get("/etats"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string("[]"));
-    }
-
-    @Test
-    @Order(2)
     public void addEtat1() throws Exception {
-        String s = "{\"id\":1," +
-                "\"libelle\":\"En cours\"}";
+        String s = "{\"id\":4," +
+                "\"libelle\":\"test\"}";
 
         this.mockMvc.perform(
                         post("/etat")
@@ -63,28 +44,39 @@ public class EtatControllerTest {
     }
 
     @Test
-    @Order(3)
+    @Order(2)
     public void Etats1() throws Exception {
-        String s = "{\"id\":1," +
-                "\"libelle\":\"En cours\"}";
-        this.mockMvc.perform(get("/etats"))
+        String s = "{\"id\":4," +
+                "\"libelle\":\"test\"}";
+        this.mockMvc.perform(get("/etat/4"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string("["+s+"]"));
+                .andExpect(content().string(s));
     }
 
 
     @Test
-    @Order(4)
+    @Order(3)
     public void addEtat3() throws Exception {
-        String s = "{\"id\":1," +
-                "\"libelle\":\"termine\"}";
+        String s = "{\"id\":4," +
+                "\"libelle\":\"test2\"}";
 
         this.mockMvc.perform(
                         post("/etat")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(s)
                 )
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(s));
+    }
+
+    @Test
+    @Order(4)
+    public void Etats2() throws Exception {
+        String s = "{\"id\":4," +
+                "\"libelle\":\"test2\"}";
+        this.mockMvc.perform(get("/etat/4"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(s));
@@ -92,20 +84,9 @@ public class EtatControllerTest {
 
     @Test
     @Order(5)
-    public void Etats2() throws Exception {
-        String s = "{\"id\":1," +
-                "\"libelle\":\"termine\"}";
-        this.mockMvc.perform(get("/etats"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string("["+s+"]"));
-    }
-
-    @Test
-    @Order(6)
     public void addEtat2() throws Exception {
-        String s = "{\"id\":2," +
-                "\"libelle\":\"En cours\"}";
+        String s = "{\"id\":5," +
+                "\"libelle\":\"test\"}";
 
         this.mockMvc.perform(
                         post("/etat")
@@ -118,46 +99,44 @@ public class EtatControllerTest {
     }
 
     @Test
-    @Order(7)
+    @Order(6)
     public void Etats3() throws Exception {
-        String s1 = "{\"id\":1," +
-                "\"libelle\":\"termine\"}";
-        String s2 = "{\"id\":2," +
-                "\"libelle\":\"En cours\"}";
-        this.mockMvc.perform(get("/etats"))
+        String s = "{\"id\":5," +
+                "\"libelle\":\"test\"}";
+        this.mockMvc.perform(get("/etat/5"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string("["+s1+","+s2+"]"));
+                .andExpect(content().string(s));
     }
 
     @Test
-    @Order(8)
+    @Order(7)
     public void deleteEtat1() throws Exception {
         this.mockMvc.perform(
-                        delete("/etat/2")
+                        delete("/etat/5")
                 )
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    @Order(9)
+    @Order(8)
     public void Etats4() throws Exception {
-        String s2 = "{\"id\":1," +
-                "\"libelle\":\"termine\"}";
-        this.mockMvc.perform(get("/etats"))
+        String s = "{\"id\":4," +
+                "\"libelle\":\"test2\"}";
+        this.mockMvc.perform(get("/etat/4"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string("["+s2+"]"));
+                .andExpect(content().string(s));
     }
 
     @Test
-    @Order(10)
+    @Order(9)
     public void updateEtat() throws Exception {
-        String s = "{\"id\":1," +
-                "\"libelle\":\"pas termine\"}";
+        String s = "{\"id\":4," +
+                "\"libelle\":\"test33\"}";
         this.mockMvc.perform(
-                        put("/etat/1")
+                        put("/etat/4")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(s)
                 )
@@ -166,39 +145,29 @@ public class EtatControllerTest {
     }
 
     @Test
-    @Order(11)
+    @Order(10)
     public void Etats5() throws Exception {
-        String s = "{\"id\":1," +
-                "\"libelle\":\"pas termine\"}";
-        this.mockMvc.perform(get("/etats"))
+        String s = "{\"id\":4," +
+                "\"libelle\":\"test33\"}";
+        this.mockMvc.perform(get("/etat/4"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string("["+s+"]"));
+                .andExpect(content().string(s));
+    }
+
+    @Test
+    @Order(11)
+    public void deleteEtat2() throws Exception {
+        this.mockMvc.perform(
+                        delete("/etat/4")
+                )
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(result -> assertFalse(result.getResolvedException() instanceof EtatNotFoundException));
     }
 
     @Test
     @Order(12)
-    public void deleteEtat2() throws Exception {
-        this.mockMvc.perform(
-                        delete("/etat/1")
-                )
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(result -> assertFalse(result.getResolvedException() instanceof MaterielNotFoundException));
-    }
-
-    @Test
-    @Order(13)
-    public void Etats6() throws Exception {
-        String s2 = "";
-        this.mockMvc.perform(get("/etats"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string("["+s2+"]"));
-    }
-
-    @Test
-    @Order(14)
     public void EtatNotFoundException() throws Exception {
         this.mockMvc.perform(get("/etat/1500"))
                 .andDo(print())
