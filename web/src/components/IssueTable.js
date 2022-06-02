@@ -199,7 +199,7 @@ const IssueTable = (props) => {
             </div>
             <div className='tableContainer'>
                 <div className='tableName'>
-                    <h3>Liste demandes</h3>
+                    <h3>Liste des demandes :</h3>
                 </div>
                 <div className='tableData'>
                     <Table {...param} columns={columns} dataSource={props.data} className="tableDemandes"
