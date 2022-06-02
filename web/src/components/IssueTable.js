@@ -53,7 +53,7 @@ const IssueTable = (props) => {
             dataIndex: 'id',
             key: 'id',
             width: '8%',
-
+            sorter: (a, b) => a.id - b.id,
         },
         {
             title: 'Appareil',

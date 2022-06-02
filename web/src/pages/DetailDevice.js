@@ -67,8 +67,8 @@ const DetailDevice = () => {
                                 "severite": issue.severite,
                                 "statut": issue.etat.libelle,
                             }
-                            if (issue.description.length > 50) {
-                                json.description = issue.description.substring(0, 50) + "..."
+                            if (issue.description.length > 30) {
+                                json.description = issue.description.substring(0, 30) + "..."
                             }
                             if (issue.etat.libelle === "En cours") {
                                 setNbIssues(nbIssues => nbIssues + 1)
