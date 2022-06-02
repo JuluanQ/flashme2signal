@@ -10,7 +10,6 @@
 	</parent>
 	<groupId>fr.iut.nantes</groupId>
 	<artifactId>flashme2signal</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>flashme2signal</name>
 	<description>Application de ticketing </description>
 	<packaging>war</packaging>
