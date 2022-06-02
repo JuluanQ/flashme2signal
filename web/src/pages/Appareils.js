@@ -77,6 +77,8 @@ const Appareils = () => {
             title: 'Salle',
             dataIndex: 'salle',
             key: 'salle',
+            //sort this column
+            sorter: (a, b) => a.salle - b.salle,
         },
         {
             title: 'Type',
@@ -146,7 +148,7 @@ const Appareils = () => {
             <div className='mainAppareilContainer'>
                 <div className='tableAppareilContainer'>
                     <div className='tableName'>
-                        <h3>Liste appareils</h3>
+                        <h3>Liste des appareils :</h3>
                     </div>
                     <hr />
                     {

@@ -64,8 +64,8 @@ const Home = () => {
                         severite: issue.severite,
                         statut: issue.etat.libelle,
                     }
-                    if (issue.description.length > 50) {
-                        json.description = issue.description.substring(0, 50) + "..."
+                    if (issue.description.length > 30) {
+                        json.description = issue.description.substring(0, 30) + "..."
                     }
                     let now = new Date();
                     if (json.dateDemande === now.toISOString().split('T')[0]) {
