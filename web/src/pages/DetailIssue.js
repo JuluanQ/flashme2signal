@@ -149,7 +149,6 @@ const DetailIssue = () => {
                             color: '#fff',
                             border: 'none',
                             borderRadius: '4px',
-                            textAlign: 'left',
                             padding: '10px',
                         },
                         placement: "topRight",
