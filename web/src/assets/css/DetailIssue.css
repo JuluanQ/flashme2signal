@@ -125,6 +125,7 @@
 
 .boutons-description {
     display: flex;
+    flex-direction: row;
 }
 
 .boutons-description input {

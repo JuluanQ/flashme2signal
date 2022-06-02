@@ -58,6 +58,10 @@
     padding: 0 !important;
 }
 
+.ant-table-body {
+    max-height: 25em !important;
+}
+
 tr {
     text-align: center;
 }
