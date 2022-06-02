@@ -16,18 +16,15 @@ const Appareils = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [data, setData] = useState();
-    const [dataDevices, setDataDevices] = useState([]);
-    const [dataDemandes, setDataDemandes] = useState([]);
-    const [finished, setFinished] = useState(false);
+    const [dataDevices, setDataDevices] = useState();
+    const [dataDemandes, setDataDemandes] = useState();
 
     //Get the data from the API
     useEffect(() => {
         //reset the states
         setData(undefined);
-        setDataDevices([]);
-        setDataDemandes([]);
-        setFinished(false);
-
+        setDataDevices(undefined);
+        setDataDemandes(undefined);
 
         fetch("http://212.227.3.231:8085/flashme2signal/materiels")
             .then(res => res.json())
@@ -38,18 +35,14 @@ const Appareils = () => {
         fetch("http://212.227.3.231:8085/flashme2signal/demandes/")
             .then(res => res.json())
             .then(data => {
-                data.forEach(issue => {
-                    if (issue.idMateriel !== null) {
-                        dataDemandes.push(issue)
-                    }
-                });
+                setDataDemandes(data)
             })
             .catch(err => console.log(err))
     }, [location]);
 
     useEffect(() => {
-        if (data !== undefined && dataDemandes !== undefined && dataDevices.length === 0) {
-
+        if (data && dataDemandes && !dataDevices) {
+            setDataDevices([])
             data.forEach(device => {
                 let json = {
                     id: device.id,
@@ -57,20 +50,20 @@ const Appareils = () => {
                     type: device.type,
                 }
                 let nbD = 0;
-                json.nbDemande = nbD;
-                dataDemandes.forEach(issue => {
-                    if (issue.idMateriel.id === device.id) {
-                        if (issue.etat.libelle === "En cours") {
-                            json.nbDemande = nbD;
+                json.nbDemande = 0;
+
+                dataDemandes.forEach(demande => {
+                    if (demande.idMateriel.id === device.id) {
+                        if (demande.etat.libelle === "En cours") {
+                            nbD++;
                         }
                     }
-                    nbD++;
                 });
-                dataDevices.push(json);
+                json.nbDemande = nbD;
+                setDataDevices(dataDevices => [...dataDevices, json]);
             });
-            setFinished(true)
         }
-    }, [data && dataDemandes && !finished]);
+    }, [data && dataDemandes]);
 
     const columns = [
         {
@@ -125,7 +118,7 @@ const Appareils = () => {
                 })
             })
             .then(response => {
-                if (response.status == 200) {
+                if (response.status === 200) {
 
                     navigate("/Appareils/");
                     notification["success"]({
@@ -157,7 +150,7 @@ const Appareils = () => {
                     </div>
                     <hr />
                     {
-                        finished ?
+                        dataDevices ?
                             <Table {...tableParam} columns={columns} dataSource={dataDevices}
                                 onRow={(record, rowIndex) => {
                                     return {

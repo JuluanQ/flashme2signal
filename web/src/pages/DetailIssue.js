@@ -24,6 +24,7 @@ const DetailIssue = () => {
     const [dataDevice, setDataDevice] = useState();
     const [dateDifference, setDateDifference] = useState(0);
 
+    const [htmlButtons, setHtmlButtons] = useState();
     const [severite, setSeverite] = useState();
 
     const severiteColors = (severite) => {
@@ -145,7 +146,7 @@ const DetailIssue = () => {
             body: JSON.stringify(data),
         })
             .then(response => {
-                if (response.status == 200) {
+                if (response.status === 200) {
 
                     navigate("/DetailIssue/" + data.id);
                     notification["success"]({
@@ -179,7 +180,7 @@ const DetailIssue = () => {
             body: JSON.stringify(data),
         })
             .then(response => {
-                if (response.status == 200) {
+                if (response.status === 200) {
 
                     navigate("/DetailIssue/" + data.id);
                     notification["success"]({
@@ -213,7 +214,7 @@ const DetailIssue = () => {
             body: JSON.stringify(data),
         })
             .then(response => {
-                if (response.status == 200) {
+                if (response.status === 200) {
 
                     navigate("/DetailIssue/" + data.id);
                     notification["success"]({
@@ -236,6 +237,75 @@ const DetailIssue = () => {
             .catch(err => console.log(err))
     }
 
+    function handleEnCours(data) {
+        data.etat.id = 1;
+        data.etat.libelle = "En cours";
+        fetch("http://212.227.3.231:8085/flashme2signal/demande/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => {
+                if (response.status === 200) {
+
+                    navigate("/DetailIssue/" + data.id);
+                    notification["success"]({
+                        style: {
+                            backgroundColor: '#2F2E31',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: '4px',
+                            textAlign: 'left',
+                            padding: '10px',
+                        },
+                        placement: "topRight",
+                        message: (<h3 style={{ color: "#fff", }}>Updated</h3>),
+                        description: "Les modifications ont été enregistrées",
+                        closeIcon: (<></>),
+                        maxCount: 1,
+                    });
+                }
+            })
+            .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        if (dataIssues !== undefined) {
+            if (dataIssues.etat === "En cours") {
+                setHtmlButtons(<>
+                    <div onClick={() => handleTerminer(data)}>
+                        <ButtonInput value="Terminer" color="green" />
+                    </div>
+                    <div onClick={() => handleAnnuler(data)}>
+                        <ButtonInput value="Annuler" color="red" />
+                    </div>
+                </>)
+            }
+            if (dataIssues.etat === "Terminé") {
+                setHtmlButtons(<>
+                    <div onClick={() => handleEnCours(data)}>
+                        <ButtonInput value="En cours" color="orange" />
+                    </div>
+                    <div onClick={() => handleAnnuler(data)}>
+                        <ButtonInput value="Annuler" color="red" />
+                    </div>
+                </>)
+            }
+            if (dataIssues.etat === "Annulé") {
+                setHtmlButtons(<>
+                    <div onClick={() => handleTerminer(data)}>
+                        <ButtonInput value="Terminer" color="green" />
+                    </div>
+                    <div onClick={() => handleEnCours(data)}>
+                        <ButtonInput value="En cours" color="orange" />
+                    </div>
+                </>)
+            }
+        }
+    }, [dataIssues]);
+
     return (
         <>
             <LeftMenu />
@@ -252,13 +322,7 @@ const DetailIssue = () => {
                         }
                     </div>
                     <div className='Btn-etat'>
-                        <div onClick={() => handleAnnuler(data)}>
-                            <ButtonInput value="Annuler" color="Red"></ButtonInput>
-                        </div>
-                        <div onClick={() => handleTerminer(data)}>
-                            <ButtonInput value="Terminé"></ButtonInput>
-                        </div>
-
+                        {htmlButtons ? htmlButtons : <></>}
                     </div>
 
                 </div>
