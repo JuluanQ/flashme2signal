@@ -164,16 +164,17 @@ const Appareils = () => {
                     }
                 </div>
                 <div className='addDeviceContainer'>
-                    <InputText title="Numero de Salle" />
-                    <Select className='SelectType' defaultValue="Ordinateur" >
-                        <Select.Option value="Ordinateur">Ordinateur</Select.Option>
-                        <Select.Option value="Tablette">Tablette</Select.Option>
-                        <Select.Option value="Projecteur">Projecteur</Select.Option>
-                    </Select>
+                    <div className='addDeviceC'>
+                        <InputText title="Numero de Salle" />
+                        <Select className='SelectType' defaultValue="Ordinateur" >
+                            <Select.Option value="Ordinateur">Ordinateur</Select.Option>
+                            <Select.Option value="Tablette">Tablette</Select.Option>
+                            <Select.Option value="Projecteur">Projecteur</Select.Option>
+                        </Select>
 
-
-                    <div onClick={() => handleAddDevice(data)}>
-                        <ButtonInput value="Ajouter" />
+                        <div class="addDeviceBtn" onClick={() => handleAddDevice(data)}>
+                            <ButtonInput value="Ajouter" />
+                        </div>
                     </div>
 
                 </div>
