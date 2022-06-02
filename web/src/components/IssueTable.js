@@ -1,12 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table, Tag } from 'antd';
 
 
 import '../assets/css/Home/IssueTable.css'
 import "antd/dist/antd.css";
 import { Navigate, useNavigate } from 'react-router-dom';
+import ButtonInput from "./ButtonInput";
 
-const IssueTable = () => {
+const IssueTable = (props) => {
+
+    const DemandeFilters = {
+        open: "EN COURS",
+        urgent: "MAJEUR",
+        new: new Date().toISOString().split('T')[0],
+        none: ""
+    };
+
+    function filterData(filter) {
+        var trs = document.querySelectorAll('tbody tr');
+        for (var i = 1; i < trs.length; i++) {
+            var td = null
+            if (filter === DemandeFilters.open) {
+                td = trs[i].getElementsByTagName("td")[7];
+            } else if (filter === DemandeFilters.urgent) {
+                td = trs[i].getElementsByTagName("td")[6];
+            } else if (filter === DemandeFilters.new) {
+                td = trs[i].getElementsByTagName("td")[2];
+            }
+            else if (filter === DemandeFilters.none) {
+                trs[i].style.display = "";
+                document.body.getElementsByClassName('buttonReset')[0].style.display = "none";
+            }
+
+            if (td && filter !== DemandeFilters.none) {
+                var txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    trs[i].style.display = "";
+                } else {
+                    trs[i].style.display = "none";
+                }
+                document.body.getElementsByClassName('buttonReset')[0].style.display = "";
+            }
+        }
+    }
+
 
     const navigate = useNavigate()
 
@@ -15,28 +52,31 @@ const IssueTable = () => {
             title: 'ID',
             dataIndex: 'id',
             key: 'id',
-            width: '5%',
+            width: '10%',
+
         },
         {
             title: 'Appareil',
             dataIndex: 'appareil',
             key: 'appareil',
-            width: '5%',
+
             responsive: ['sm'],
+            width: '10%',
         },
         {
             title: 'Date',
-            dataIndex: 'date',
-            key: 'date',
-            width: '5%',
+            dataIndex: 'dateDemande',
+            key: 'dateDemande',
             responsive: ['sm'],
+            sorter: (a, b) => new Date(b.dateDemande) - new Date(a.dateDemande),
+            width: '10%',
         },
         {
             title: 'Demandeur',
             dataIndex: 'demandeur',
             key: 'demandeur',
-            width: '5%',
             responsive: ['sm'],
+            width: '10%',
         },
         {
             title: 'Description',
@@ -48,33 +88,49 @@ const IssueTable = () => {
             title: 'Type',
             dataIndex: 'type',
             key: 'type',
-            width: '5%',
             responsive: ['sm'],
+            width: '10%',
         },
         {
             title: 'Sévérité',
             dataIndex: 'severite',
             key: 'severite',
             responsive: ['sm'],
-            width: '5%',
+            filters: [
+                {
+                    text: 'Majeur',
+                    value: 'Majeur',
+                },
+                {
+                    text: 'Moyen',
+                    value: 'Moyen',
+                },
+                {
+                    text: 'Mineur',
+                    value: 'Mineur',
+                }
+            ],
+            onFilter: (value, record) => record.severite.indexOf(value) === 0,
+            width: '10%',
             render: (_, { severite }) => {
-                if (severite === "Moyen") {
+                severite = severite.toLowerCase()
+                if (severite === "moyen") {
                     return (
-                        <Tag color="volcano" key={severite}>
+                        <Tag className="orange" key={severite}>
                             {severite.toUpperCase()}
                         </Tag>
                     )
                 }
-                if (severite === "Urgent") {
+                if (severite === "majeur") {
                     return (
-                        <Tag color="red" key={severite}>
+                        <Tag className="red" key={severite}>
                             {severite.toUpperCase()}
                         </Tag>
                     )
                 }
-                if (severite === "Mineur") {
+                if (severite === "mineur") {
                     return (
-                        <Tag color="green" key={severite}>
+                        <Tag className="green" key={severite}>
                             {severite.toUpperCase()}
                         </Tag>
                     )
@@ -85,25 +141,41 @@ const IssueTable = () => {
             title: 'Statut',
             dataIndex: 'statut',
             key: 'statut',
-            width: '5%',
+            filters: [
+                {
+                    text: 'Terminé',
+                    value: 'Terminé',
+                },
+                {
+                    text: 'En cours',
+                    value: 'En cours',
+                },
+                {
+                    text: 'Annulé',
+                    value: 'Annulé',
+                }
+            ],
+            onFilter: (value, record) => record.statut.indexOf(value) === 0,
+            width: '10%',
             render: (_, { statut }) => {
-                if (statut === "En Cours") {
+                statut = statut.toLowerCase()
+                if (statut === "en cours") {
                     return (
-                        <Tag color="volcano" key={statut}>
+                        <Tag className="orange" key={statut}>
                             {statut.toUpperCase()}
                         </Tag>
                     )
                 }
-                if (statut === "Annulé") {
+                if (statut === "annulé") {
                     return (
-                        <Tag color="red" key={statut}>
+                        <Tag className="red" key={statut}>
                             {statut.toUpperCase()}
                         </Tag>
                     )
                 }
-                if (statut === "Terminé") {
+                if (statut === "terminé") {
                     return (
-                        <Tag color="green" key={statut}>
+                        <Tag className="green" key={statut}>
                             {statut.toUpperCase()}
                         </Tag>
                     )
@@ -112,62 +184,34 @@ const IssueTable = () => {
         }
     ];
 
-    const data = [
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Moyen',
-            statut: 'En Cours',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Urgent',
-            statut: 'Annulé',
-        },
-        {
-            id: '123',
-            appareil: '#28',
-            date: '12/03/2021',
-            demandeur: 'E183247G',
-            description: 'L’ordinateur ne démarre pas quand...',
-            type: '',
-            severite: 'Mineur',
-            statut: 'Terminé',
-        },
-    ];
-
     const param = {
-        bordered: false,
-
+        bordered: true,
         loading: false,
         pagination: false,
         size: 'default',
+        sticky: true,
     }
 
     return (
         <div className='IssueTable'>
+            <div className="buttonReset" onClick={() => filterData(DemandeFilters.none)} style={{ display: "none" }}>
+                <ButtonInput value="Reset" />
+            </div>
             <div className='tableContainer'>
                 <div className='tableName'>
                     <h3>Liste demandes</h3>
                 </div>
                 <div className='tableData'>
-                    <Table {...param} columns={columns} dataSource={data} className="tableDemandes"
+                    <Table {...param} columns={columns} dataSource={props.data} className="tableDemandes"
                         onRow={(record, rowIndex) => {
                             return {
                                 onClick: event => {
-
-                                    navigate("/Detail/" + record.id)
-                                }, // click row
+                                    navigate("/DetailIssue/" + record.id)
+                                },
                             };
+                        }}
+                        scroll={{
+                            y: 240,
                         }}
                     />
                 </div>

@@ -5,7 +5,7 @@ import '../assets/css/buttonInput.css'
 const ButtonInput = (props) => {
     return (
         <>
-            <input type="submit" value={props.value} />
+            <input type="submit" value={props.value} style={{ backgroundColor: props.color }} />
         </>
     );
 };
