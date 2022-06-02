@@ -52,9 +52,27 @@ const DetailDevice = () => {
             fetch("http://212.227.3.231:8085/flashme2signal/demandes/")
                 .then(res => res.json())
                 .then(data => {
+                    setIssues([])
                     data.forEach(issue => {
                         if (issue.idMateriel.id === parseInt(param.id)) {
-                            dataIssues.push(issue)
+                            issue.dateDemande = new Date(issue.dateDemande).toISOString().split('T')[0];
+                            let json = {
+                                "id": issue.id,
+                                "appareil": issue.idMateriel.id,
+                                "dateDemande": issue.dateDemande,
+                                "demandeur": issue.demandeur,
+                                "description": issue.description,
+                                "type": issue.type,
+                                "severite": issue.severite,
+                                "statut": issue.etat.libelle,
+                            }
+                            if (issue.description.length > 50) {
+                                json.description = issue.description.substring(0, 50) + "..."
+                            }
+                            if (issue.etat.libelle === "En cours") {
+                                setNbIssues(nbIssues => nbIssues + 1)
+                            }
+                            setIssues(issues => [...issues, json])
                         }
                     });
                     setFinished(true)
@@ -62,37 +80,6 @@ const DetailDevice = () => {
                 .catch(err => console.log(err))
         }
     }, [data]);
-
-    useEffect(() => {
-        if (dataIssues.length > 0) {
-            setIssues([])
-            dataIssues.forEach(issue => {
-                let dateD = new Date(issue.dateDemande);
-                dateD = dateD.toISOString().split('T')[0]
-                let json = {
-                    "id": issue.id,
-                    "appareil": issue.idMateriel.id,
-                    "dateDemande": dateD,
-                    "demandeur": issue.demandeur,
-                    "description": issue.description,
-                    "type": issue.type,
-                    "severite": issue.severite,
-                    "statut": issue.etat.libelle,
-                }
-                if (issue.description.length > 50) {
-                    json.description = issue.description.substring(0, 50) + "..."
-                }
-                if (issue.etat.libelle === "En cours") {
-                    setNbIssues(nbIssues => nbIssues + 1)
-                }
-                setIssues(issues => [...issues, json])
-            });
-        }
-    }, [finished]);
-
-    function generateQrCode() {
-
-    }
 
     return (
         <>
